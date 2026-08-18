@@ -129,7 +129,7 @@ export default function LandingPage() {
               </div>
               <div className="flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>고려대 45+개 공식 동아리 DB</span>
+                <span>고려대 100+개 공식 & 애기능 동아리 DB</span>
               </div>
             </motion.div>
           </div>
