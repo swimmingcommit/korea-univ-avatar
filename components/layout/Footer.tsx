@@ -23,6 +23,7 @@ export const Footer: React.FC = () => {
             <Link href="/" className="hover:text-white transition-colors">홈</Link>
             <Link href="/create" className="hover:text-white transition-colors">아바타 생성</Link>
             <Link href="/create/quiz" className="hover:text-white transition-colors">성향 퀴즈</Link>
+            <Link href="/admin" className="hover:text-white transition-colors text-amber-300">동아리 데이터 관리</Link>
             <Link href="/about" className="hover:text-white transition-colors">소개 & Gemini</Link>
             <a
               href="https://klub.kr"

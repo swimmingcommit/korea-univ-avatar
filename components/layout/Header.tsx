@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Compass, Info, User, LogOut } from "lucide-react";
+import { Sparkles, Compass, Info, User, LogOut, Sliders } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 export const Header: React.FC = () => {
@@ -36,6 +36,14 @@ export const Header: React.FC = () => {
           >
             <Compass className="w-3.5 h-3.5" />
             <span>아바타 만들기</span>
+          </Link>
+
+          <Link
+            href="/admin"
+            className="p-2 rounded-full text-slate-600 hover:text-ku-crimson hover:bg-slate-50 transition-colors"
+            title="동아리 데이터 관리 스튜디오"
+          >
+            <Sliders className="w-4 h-4" />
           </Link>
 
           <Link
