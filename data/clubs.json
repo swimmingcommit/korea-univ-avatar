@@ -1,190 +1,117 @@
 [
   {
-    "id": "club_it_01",
-    "name": "DevKor (데브코어)",
-    "category": ["IT/개발"],
-    "college": "정보대학",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 3,
-      "activity": 2,
-      "creativity": 5,
-      "leadership": 3,
-      "expertise": 5
-    },
-    "keywords": ["웹개발", "앱개발", "프로젝트", "해커톤", "풀스택", "코딩"],
-    "description_short": "고려대학교 소프트웨어 개발 및 IT 프로젝트 중심의 학술 개발 동아리",
-    "external_link": "https://klub.kr/club/devkor",
-    "recruit_period": "9월 초 신입 부원 모집"
-  },
-  {
-    "id": "club_it_02",
-    "name": "KUDT (고려대 데이터사이언스)",
-    "category": ["IT/개발", "학술"],
+    "id": "ku_club_26",
+    "name": "ALC",
+    "category": [
+      "학술"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 2,
-      "activity": 2,
-      "creativity": 4,
-      "leadership": 3,
-      "expertise": 5
-    },
-    "keywords": ["데이터분석", "머신러닝", "인공지능", "AI", "파이썬", "캐글"],
-    "description_short": "데이터 분석, 머신러닝 모델링 및 AI 솔루션 스터디/공모전 동아리",
-    "external_link": "https://klub.kr/club/kudt",
-    "recruit_period": "8월 말 ~ 9월 초"
-  },
-  {
-    "id": "club_it_03",
-    "name": "고려대 멋쟁이사자처럼 (LIKELION KU)",
-    "category": ["IT/개발", "창업"],
-    "college": "전체",
-    "type": "연합/중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
-      "leadership": 4,
-      "expertise": 4
-    },
-    "keywords": ["웹서비스", "스타트업", "해커톤", "비전공자코딩", "아이디어구현"],
-    "description_short": "내 아이디어를 직접 웹 서비스로 런칭하고 빌딩하는 프로그래밍/창업 동아리",
-    "external_link": "https://klub.kr/club/likelion-ku",
-    "recruit_period": "학기별 정기 모집"
-  },
-  {
-    "id": "club_it_04",
-    "name": "고파스 (Koreapas Labs)",
-    "category": ["IT/개발", "미디어/방송"],
-    "college": "전체",
-    "type": "자치동아리",
+    "type": "중앙동아리 (학술연구)",
     "traits": {
       "sociability": 3,
       "activity": 2,
       "creativity": 4,
       "leadership": 3,
-      "expertise": 4
-    },
-    "keywords": ["커뮤니티", "캠퍼스웹", "서버운영", "고파스", "서비스개발"],
-    "description_short": "고려대 최대 커뮤니티 고파스 서비스 개선 및 캠퍼스 데이터 프로젝트",
-    "external_link": "https://klub.kr/club/koreapas",
-    "recruit_period": "상시 및 9월 초"
-  },
-  {
-    "id": "club_it_05",
-    "name": "KAI (고려대학교 인공지능학회)",
-    "category": ["IT/개발", "학술"],
-    "college": "정보대학",
-    "type": "학술소모임",
-    "traits": {
-      "sociability": 2,
-      "activity": 1,
-      "creativity": 4,
-      "leadership": 3,
       "expertise": 5
     },
-    "keywords": ["딥러닝", "LLM", "컴퓨터비전", "논문리딩", "AI연구"],
-    "description_short": "최신 생성형 AI 및 딥러닝 논문 연구와 산학 프로젝트를 진행하는 학회",
-    "external_link": "https://klub.kr/club/kai",
-    "recruit_period": "9월 초"
+    "keywords": [
+      "ALC",
+      "학술연구",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 학술연구분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=4",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_art_01",
-    "name": "고대극예술연구회 (고극)",
-    "category": ["예술/공연"],
+    "id": "ku_club_1",
+    "name": "ATP",
+    "category": [
+      "예술/공연"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 5,
       "activity": 4,
-      "creativity": 5,
-      "leadership": 4,
-      "expertise": 3
-    },
-    "keywords": ["연극", "배우", "무대연출", "음향조명", "연기", "정기공연"],
-    "description_short": "1950년대부터 이어진 고려대 유서 깊은 중앙 연극 동아리",
-    "external_link": "https://klub.kr/club/gogeuk",
-    "recruit_period": "개강 첫 주 모집"
-  },
-  {
-    "id": "club_art_02",
-    "name": "고려대학교 중앙 락밴드 1905 (일맥)",
-    "category": ["예술/공연"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 5,
-      "activity": 5,
       "creativity": 4,
       "leadership": 3,
       "expertise": 4
     },
-    "keywords": ["밴드", "기타", "드럼", "보컬", "베이스", "대동제버스킹", "합주"],
-    "description_short": "열정적인 합주와 축제 무대를 함께 만드는 고려대 대표 락밴드",
-    "external_link": "https://klub.kr/club/ilmaek",
-    "recruit_period": "9월 초 모집"
+    "keywords": [
+      "어쿠스틱",
+      "통기타",
+      "보컬",
+      "자작곡",
+      "합주",
+      "버스킹",
+      "음악"
+    ],
+    "description_short": "통기타와 어쿠스틱 사운드로 감미로운 멜로디를 전하는 중앙 어쿠스틱 밴드",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_art_03",
-    "name": "KULC (고려대학교 스트릿댄스 동아리)",
-    "category": ["예술/공연", "스포츠"],
+    "id": "ku_club_61",
+    "name": "CCC",
+    "category": [
+      "종교"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 5,
-      "leadership": 4,
-      "expertise": 4
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
     },
-    "keywords": ["스트릿댄스", "힙합", "팝핀", "걸스힙합", "안무", "버스킹", "배틀"],
-    "description_short": "다양한 스트릿댄스 장르를 배우고 캠퍼스 공연을 펼치는 댄스 동아리",
-    "external_link": "https://klub.kr/club/kulc",
-    "recruit_period": "8월 말 ~ 9월 초"
+    "keywords": [
+      "기독교",
+      "선교",
+      "성경공부",
+      "순모임",
+      "캠퍼스전도",
+      "공동체"
+    ],
+    "description_short": "캠퍼스에서 복음을 전하고 사랑의 공동체를 이루어가는 기독학생회",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_art_04",
-    "name": "고려대학교 관악부 (KU Wind Orchestra)",
-    "category": ["예술/공연"],
+    "id": "ku_club_104",
+    "name": "Clo.Z",
+    "category": [
+      "취미/친목"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (생활문화)",
     "traits": {
-      "sociability": 4,
+      "sociability": 5,
       "activity": 3,
       "creativity": 4,
       "leadership": 3,
-      "expertise": 4
-    },
-    "keywords": ["관악기", "오케스트라", "플루트", "클라리넷", "트럼펫", "정기연주회"],
-    "description_short": "금관·목관·타악기가 어우러져 웅장한 하모니를 만드는 오케스트라",
-    "external_link": "https://klub.kr/club/kuwind",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_art_05",
-    "name": "노래마당 (통기타 & 어쿠스틱)",
-    "category": ["예술/공연", "취미/친목"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 5,
-      "activity": 3,
-      "creativity": 4,
-      "leadership": 2,
       "expertise": 3
     },
-    "keywords": ["통기타", "어쿠스틱", "보컬", "자작곡", "민주광장버스킹", "감성"],
-    "description_short": "통기타 선율과 따뜻한 목소리로 민주광장을 채우는 어쿠스틱 음악 동아리",
-    "external_link": "https://klub.kr/club/songmadang",
-    "recruit_period": "9월 초"
+    "keywords": [
+      "Clo.Z",
+      "생활문화",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 생활문화분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_art_06",
-    "name": "크림슨 스트링스 (KU Crimson Strings)",
-    "category": ["예술/공연"],
+    "id": "ku_club_27",
+    "name": "ECS",
+    "category": [
+      "학술"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (학술연구)",
     "traits": {
       "sociability": 3,
       "activity": 2,
@@ -192,143 +119,49 @@
       "leadership": 3,
       "expertise": 5
     },
-    "keywords": ["현악", "바이올린", "첼로", "비올라", "클래식", "실내악"],
-    "description_short": "현악 4중주 및 챔버 오케스트라로 클래식 음악을 연주하는 동아리",
-    "external_link": "https://klub.kr/club/crimsonstrings",
-    "recruit_period": "8월 말 ~ 9월 초"
+    "keywords": [
+      "ECS",
+      "학술연구",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 학술연구분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=4",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_art_07",
-    "name": "호랑이화폭 (미술 & 일러스트레이션)",
-    "category": ["예술/공연", "취미/친목"],
+    "id": "ku_club_62",
+    "name": "ENM",
+    "category": [
+      "종교"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 3,
-      "activity": 2,
-      "creativity": 5,
-      "leadership": 2,
-      "expertise": 3
-    },
-    "keywords": ["드로잉", "유화", "수채화", "디지털드로잉", "전시회", "굿즈제작"],
-    "description_short": "그림을 사랑하는 호랑이들이 모여 정기 전시회와 창작을 하는 미술 동아리",
-    "external_link": "https://klub.kr/club/tigerart",
-    "recruit_period": "상시 및 9월 초"
-  },
-  {
-    "id": "club_academic_01",
-    "name": "피그말리온 (경영전략학회)",
-    "category": ["학술", "창업"],
-    "college": "경영대학",
-    "type": "단과대학회",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 4,
-      "leadership": 5,
-      "expertise": 5
-    },
-    "keywords": ["경영전략", "컨설팅", "케이스스터디", "전략기획", "PT", "비즈니스"],
-    "description_short": "기업 문제 해결 케이스 스터디 및 비즈니스 전략을 연구하는 명문 학회",
-    "external_link": "https://klub.kr/club/pygmalion",
-    "recruit_period": "8월 말 리크루팅"
-  },
-  {
-    "id": "club_academic_02",
-    "name": "고려대학교 토론학회 (KUDC)",
-    "category": ["학술"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 4,
-      "leadership": 5,
-      "expertise": 4
-    },
-    "keywords": ["의회식토론", "디베이트", "시사이슈", "스피치", "전국대회", "논리"],
-    "description_short": "국내외 시사 이슈를 바탕으로 의회식 토론과 논리적 스피치를 훈련하는 학회",
-    "external_link": "https://klub.kr/club/kudc",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_academic_03",
-    "name": "고려대 모의유엔총회 (KUMUN)",
-    "category": ["학술"],
-    "college": "정경대학",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
       "activity": 3,
       "creativity": 3,
-      "leadership": 5,
-      "expertise": 5
-    },
-    "keywords": ["국제정치", "외교", "모의유엔", "영어토론", "글로벌이슈", "대사단"],
-    "description_short": "국제 사회의 현안을 외교관의 시각으로 모의 회의 및 협상하는 학술 단체",
-    "external_link": "https://klub.kr/club/kumun",
-    "recruit_period": "8월 말 ~ 9월 초"
-  },
-  {
-    "id": "club_academic_04",
-    "name": "KUIC (고려대학교 가치투자동아리)",
-    "category": ["학술"],
-    "college": "경영대학",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 3,
-      "activity": 2,
-      "creativity": 3,
-      "leadership": 4,
-      "expertise": 5
-    },
-    "keywords": ["주식투자", "재무제표", "기업분석", "가치투자", "금융공학", "리서치"],
-    "description_short": "철저한 기업 가치 분석과 산업 리서치를 바탕으로 실전 투자를 연구하는 동아리",
-    "external_link": "https://klub.kr/club/kuic",
-    "recruit_period": "9월 초 정기선발"
-  },
-  {
-    "id": "club_academic_05",
-    "name": "고려대 천문연구회 (KUAA)",
-    "category": ["학술", "취미/친목"],
-    "college": "이과대학",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 3,
-      "activity": 3,
-      "creativity": 4,
-      "leadership": 2,
-      "expertise": 4
-    },
-    "keywords": ["천체관측", "망원경", "별자리", "은하수", "야간관측회", "우주과학"],
-    "description_short": "망원경으로 밤하늘을 관측하고 별자리 캠프를 떠나는 천문 연구 동아리",
-    "external_link": "https://klub.kr/club/kuaa",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_sport_01",
-    "name": "고려대학교 국궁회/활쏘기회",
-    "category": ["스포츠"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 3,
-      "activity": 4,
-      "creativity": 2,
       "leadership": 3,
-      "expertise": 4
+      "expertise": 2
     },
-    "keywords": ["국궁", "활쏘기", "전통무예", "집중력", "정궁", "심신수련"],
-    "description_short": "전통 국궁을 연마하며 고요한 집중과 명중의 쾌감을 느끼는 동아리",
-    "external_link": "https://klub.kr/club/kugung",
-    "recruit_period": "9월 초"
+    "keywords": [
+      "ENM",
+      "종교",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 종교분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_sport_02",
-    "name": "고려대 중앙 축구동아리 FC KU",
-    "category": ["스포츠"],
+    "id": "ku_club_70",
+    "name": "ENTHES",
+    "category": [
+      "스포츠"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
       "activity": 5,
@@ -336,17 +169,1069 @@
       "leadership": 4,
       "expertise": 4
     },
-    "keywords": ["축구", "풋살", "총장배", "고연전응원", "정기운동", "체력단련"],
-    "description_short": "녹지운동장에서 함께 땀 흘리며 대학 축구리그 우승을 노리는 축구 동아리",
-    "external_link": "https://klub.kr/club/fcku",
-    "recruit_period": "8월 말 ~ 9월 초"
+    "keywords": [
+      "ENTHES",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_sport_03",
-    "name": "고려대학교 중앙 농구부 (KUBBA)",
-    "category": ["스포츠"],
+    "id": "ku_club_71",
+    "name": "FC엘리제",
+    "category": [
+      "스포츠"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "여자축구",
+      "풋살",
+      "K리그퀸컵",
+      "녹지운동장",
+      "팀워크"
+    ],
+    "description_short": "열정과 끈기로 그라운드를 누비는 고려대학교 중앙 여자 축구 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_63",
+    "name": "IVF",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "기독교",
+      "소그룹",
+      "말씀묵상",
+      "학사모임",
+      "신앙나눔"
+    ],
+    "description_short": "캠퍼스와 세상 속에서 기독교적 가치관을 탐구하는 복음주의 학생운동",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_2",
+    "name": "JASS",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "재즈",
+      "재즈피아노",
+      "색소폰",
+      "드럼",
+      "즉흥연주",
+      "재즈합주"
+    ],
+    "description_short": "자유로운 스윙과 그루브, 즉흥 연주를 즐기는 고려대학교 중앙 재즈 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_64",
+    "name": "JOY",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "JOY",
+      "종교",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 종교분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_72",
+    "name": "KUBC",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "배드민턴",
+      "셔틀콕",
+      "스매시",
+      "전국대회",
+      "정기운동"
+    ],
+    "description_short": "코트 위에서 빠른 스피드와 강력한 스매시를 즐기는 중앙 배드민턴 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_109",
+    "name": "KUBOX",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "KUBOX",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_73",
+    "name": "KUBT",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "KUBT",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_20",
+    "name": "KUCC",
+    "category": [
+      "IT/개발",
+      "학술"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (학술연구)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "컴퓨터",
+      "코딩",
+      "개발",
+      "웹개발",
+      "알고리즘",
+      "해커톤",
+      "프로그래밍",
+      "파이썬"
+    ],
+    "description_short": "고려대학교 대표 중앙 컴퓨터 학술 연구 및 소프트웨어 개발 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=4",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_31",
+    "name": "KUDT",
+    "category": [
+      "예술/공연",
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "스트릿댄스",
+      "힙합",
+      "팝핀",
+      "걸스힙합",
+      "안무",
+      "버스킹",
+      "공연",
+      "배틀"
+    ],
+    "description_short": "스트릿댄스의 모든 장르를 아우르는 고려대학교 중앙 스트릿댄스 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_74",
+    "name": "KULAX",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "KULAX",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_12",
+    "name": "KURC",
+    "category": [
+      "봉사"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "KURC",
+      "사회",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 사회분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_13",
+    "name": "KUSA",
+    "category": [
+      "봉사",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "유네스코",
+      "평화나눔",
+      "국제이슈",
+      "사회공헌",
+      "캠페인"
+    ],
+    "description_short": "유네스코의 이념을 이어받아 평화와 인권, 사회봉사를 실천하는 학생회",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_14",
+    "name": "KUSEP",
+    "category": [
+      "봉사"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "KUSEP",
+      "사회",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 사회분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_114",
+    "name": "KUSPA",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 5,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 3
+    },
+    "keywords": [
+      "KUSPA",
+      "생활문화",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 생활문화분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_105",
+    "name": "KUTIME",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "테니스",
+      "라켓",
+      "서브",
+      "테니스코트",
+      "대학테니스"
+    ],
+    "description_short": "경쾌한 타구감과 함께 테니스를 배우고 즐기는 중앙 테니스 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_89",
+    "name": "KUTR",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "태권도",
+      "품새",
+      "겨루기",
+      "발차기",
+      "국기원",
+      "무도"
+    ],
+    "description_short": "대한민국 국기 태권도의 품새와 격파, 겨루기를 수련하는 중앙 태권도 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_28",
+    "name": "LECA",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 5,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 2,
+      "expertise": 3
+    },
+    "keywords": [
+      "보드게임",
+      "전략게임",
+      "파티게임",
+      "e스포츠",
+      "친목"
+    ],
+    "description_short": "전략 보드게임과 다양한 게임을 함께 즐기며 친목을 다지는 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_32",
+    "name": "LoGS",
+    "category": [
+      "예술/공연",
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "마술",
+      "멘탈마술",
+      "마술공연",
+      "손기술",
+      "신기함"
+    ],
+    "description_short": "마술 예술의 매력을 탐구하고 관객에게 놀라움을 선물하는 중앙 마술 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_40",
+    "name": "NewLearn",
+    "category": [
+      "학술"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (학술연구)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "뇌과학",
+      "인지과학",
+      "인공신경망",
+      "융합연구",
+      "학술세미나"
+    ],
+    "description_short": "뇌과학, 인지과학, 인공지능의 접점을 연구하고 탐구하는 융합 학술동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=4",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_58",
+    "name": "PAPCon",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "PAPCon",
+      "전시창작",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 전시창작분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_65",
+    "name": "SFC",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "SFC",
+      "종교",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 종교분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_33",
+    "name": "TERRA",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "흑인음악",
+      "힙합",
+      "랩",
+      "R&B",
+      "비트메이킹",
+      "공연"
+    ],
+    "description_short": "자작 랩과 그루브 넘치는 비트를 창작하는 고려대 중앙 흑인음악 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_3",
+    "name": "TTP",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "TTP",
+      "기악예술",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 기악예술분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_41",
+    "name": "UNSA",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 5,
+      "expertise": 5
+    },
+    "keywords": [
+      "모의유엔",
+      "국제기구",
+      "외교",
+      "영어토론",
+      "글로벌이슈",
+      "세미나"
+    ],
+    "description_short": "국제 사회 이슈를 외교관의 시각으로 토론하고 모의유엔을 여는 학술동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_52",
+    "name": "거의격월간몰라도되는데",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "거의격월간몰라도되는데",
+      "전시창작",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 전시창작분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_4",
+    "name": "고대농악대",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "고대농악대",
+      "기악예술",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 기악예술분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_42",
+    "name": "고대문학회",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "고대문학회",
+      "전시창작",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 전시창작분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_43",
+    "name": "고란도란",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "고란도란",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_15",
+    "name": "고려대고양이쉼터",
+    "category": [
+      "봉사",
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 2
+    },
+    "keywords": [
+      "고양이",
+      "동물보호",
+      "급식소",
+      "캠퍼스고양이",
+      "치료봉사",
+      "따뜻함"
+    ],
+    "description_short": "안암 캠퍼스의 길고양이들을 보호하고 돌보는 따뜻한 동물권 봉사동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_5",
+    "name": "고전기타부",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "고전기타부",
+      "기악예술",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 기악예술분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_16",
+    "name": "고집",
+    "category": [
+      "봉사"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 3,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "해비타트",
+      "집짓기",
+      "주거환경개선",
+      "건축봉사",
+      "연대"
+    ],
+    "description_short": "열악한 주거 환경을 개선하고 보금자리를 짓는 한국해비타트 봉사동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_6",
+    "name": "관악부",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "오케스트라",
+      "관악기",
+      "트럼펫",
+      "플루트",
+      "클라리넷",
+      "정기연주회"
+    ],
+    "description_short": "금관·목관·타악기가 만드는 웅장한 사운드의 KU Wind Orchestra",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_7",
+    "name": "관현악단",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "클래식",
+      "오케스트라",
+      "바이올린",
+      "첼로",
+      "교향악",
+      "정기연주회"
+    ],
+    "description_short": "풀 편성 오케스트라로 대규모 교향곡을 연주하는 중앙 아마추어 오케스트라",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_8",
+    "name": "국악연구회",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "국악연구회",
+      "기악예술",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 기악예술분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_75",
+    "name": "궁도회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 3,
+      "activity": 4,
+      "creativity": 2,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "국궁",
+      "활쏘기",
+      "전통무예",
+      "집중력",
+      "정궁",
+      "심신수련"
+    ],
+    "description_short": "전통 국궁을 연마하며 고요한 집중과 명중의 쾌감을 느끼는 중앙 궁도회",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_9",
+    "name": "그루터기",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "락밴드",
+      "통기타",
+      "어쿠스틱락",
+      "밴드음악",
+      "정기공연",
+      "합주"
+    ],
+    "description_short": "따뜻한 감성과 에너지를 함께 노래하는 고려대학교 중앙 락밴드",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_53",
+    "name": "그림마당",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 2,
+      "expertise": 4
+    },
+    "keywords": [
+      "유화",
+      "수채화",
+      "아크릴",
+      "드로잉",
+      "미술전시회"
+    ],
+    "description_short": "캔버스 위에 자유로운 예술적 영감을 채우는 중앙 미술 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_34",
+    "name": "극예술연구회",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "연극",
+      "배우",
+      "무대연출",
+      "음향조명",
+      "연기",
+      "정기공연"
+    ],
+    "description_short": "1950년대부터 이어진 유서 깊은 고려대학교 중앙 연극 동아리 고극",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_21",
+    "name": "기호회(구 고대바둑사랑)",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 5,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 3
+    },
+    "keywords": [
+      "기호회(구 고대바둑사랑)",
+      "생활문화",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 생활문화분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_10",
+    "name": "노래얼",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "노래얼",
+      "기악예술",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 기악예술분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_76",
+    "name": "농구연구회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
       "activity": 5,
@@ -354,297 +1239,1060 @@
       "leadership": 4,
       "expertise": 4
     },
-    "keywords": ["농구", "3on3", "화정체육관", "대학농구리그", "팀플레이"],
-    "description_short": "화정체육관에서 농구를 즐기고 아마추어 대학 리그에 출전하는 중앙 농구부",
-    "external_link": "https://klub.kr/club/kubba",
-    "recruit_period": "9월 초"
+    "keywords": [
+      "농구",
+      "3on3",
+      "화정체육관",
+      "대학농구",
+      "팀플레이"
+    ],
+    "description_short": "화정체육관에서 농구를 연구하고 리그 경기를 뛰는 중앙 농구 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_sport_04",
-    "name": "고려대 스노우보드 & 서핑 동아리 (KUSAC)",
-    "category": ["스포츠", "취미/친목"],
+    "id": "ku_club_22",
+    "name": "뇌의주름",
+    "category": [
+      "취미/친목"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "방탈출",
+      "추리",
+      "퍼즐",
+      "크라임씬",
+      "두뇌게임"
+    ],
+    "description_short": "추리 게임, 방탈출, 퍼즐 문제를 풀며 지적 유희를 즐기는 두뇌 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_54",
+    "name": "돌빛",
+    "category": [
+      "예술/공연",
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 2,
+      "expertise": 4
+    },
+    "keywords": [
+      "만화",
+      "웹툰",
+      "일러스트",
+      "캐릭터드로잉",
+      "회지제작",
+      "전시회"
+    ],
+    "description_short": "만화, 일러스트, 웹툰 창작과 정기 회지 발간을 진행하는 만화동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_17",
+    "name": "로타랙트",
+    "category": [
+      "봉사"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "지역봉사",
+      "멘토링",
+      "사회공헌",
+      "친목",
+      "기획봉사"
+    ],
+    "description_short": "청소년 교육 멘토링과 창의적인 기획 봉사를 실천하는 중앙 봉사동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_84",
+    "name": "리베르타스",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "리베르타스",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_35",
+    "name": "미스디렉션",
+    "category": [
+      "예술/공연",
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "마술",
+      "클로즈업마술",
+      "카드마술",
+      "스테이지마술",
+      "공연"
+    ],
+    "description_short": "손끝에서 펼쳐지는 신비로운 마술과 무대 퍼포먼스를 연마하는 마술 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_77",
+    "name": "백구회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "백구회",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_66",
+    "name": "불교학생회",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "불교",
+      "참선",
+      "명상",
+      "사찰순례",
+      "부처님오신날",
+      "마음챙김"
+    ],
+    "description_short": "참선과 명상, 사찰 답사를 통해 마음의 평안과 지혜를 찾는 중앙 불교학생회",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_36",
+    "name": "불아스",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "불아스",
+      "연행예술",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 연행예술분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_44",
+    "name": "사람과사람",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "사람과사람",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_55",
+    "name": "서화회",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "서예",
+      "붓글씨",
+      "한문서예",
+      "캘리그라피",
+      "정기전시회"
+    ],
+    "description_short": "먹향 가득한 서예와 붓글씨의 멋을 계승하는 중앙 서화예술 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_23",
+    "name": "소믈리에",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 5,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "와인",
+      "와인테이스팅",
+      "페어링",
+      "미식",
+      "소믈리에",
+      "네트워킹"
+    ],
+    "description_short": "다양한 와인의 품종과 풍미를 배우며 미식을 함께하는 중앙 와인 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_37",
+    "name": "소울메이트",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "R&B",
+      "보컬",
+      "소울",
+      "가창",
+      "감성보컬",
+      "버스킹"
+    ],
+    "description_short": "소울 넘치는 감미로운 보컬과 R&B 음악을 함께하는 중앙 보컬 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_45",
+    "name": "수레바퀴",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "수레바퀴",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_78",
+    "name": "수호회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 4,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "수영",
+      "자유형",
+      "접영",
+      "수영대회",
+      "체력증진",
+      "수중운동"
+    ],
+    "description_short": "물살을 가르며 체력을 다지고 아마추어 수영대회에 출전하는 중앙 수영 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_79",
+    "name": "아마추어축구부",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "축구",
+      "풋살",
+      "총장배",
+      "대학리그",
+      "녹지운동장",
+      "체력단련"
+    ],
+    "description_short": "녹지운동장에서 함께 땀 흘리며 대학 축구리그에 출전하는 중앙 남자 축구부",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_46",
+    "name": "열두루달",
+    "category": [
+      "학술"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (학술연구)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "열두루달",
+      "학술연구",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 학술연구분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=4",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_67",
+    "name": "예수전도단",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "예수전도단",
+      "종교",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 종교분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_47",
+    "name": "예술비평연구회",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "예술비평연구회",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_18",
+    "name": "운화회",
+    "category": [
+      "봉사"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "운화회",
+      "사회",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 사회분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_68",
+    "name": "원불교학생회",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "원불교학생회",
+      "종교",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 종교분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_24",
+    "name": "유스호스텔",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 5,
       "activity": 5,
       "creativity": 3,
+      "leadership": 4,
+      "expertise": 2
+    },
+    "keywords": [
+      "여행",
+      "국내여행",
+      "배낭여행",
+      "캠핑",
+      "추억만들기"
+    ],
+    "description_short": "전국 각지로 낭만 넘치는 여행과 힐링을 떠나는 중앙 여행 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_87",
+    "name": "자진근로반",
+    "category": [
+      "봉사"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (사회)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "자진근로반",
+      "사회",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 사회분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=2",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_69",
+    "name": "젊은예수",
+    "category": [
+      "종교"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "가톨릭",
+      "성당",
+      "미사",
+      "신앙나눔",
+      "피정",
+      "친목"
+    ],
+    "description_short": "신앙과 나눔 속에서 따뜻한 청년 공동체를 만들어가는 중앙 가톨릭 학생회",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=8",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_48",
+    "name": "철학마을",
+    "category": [
+      "학술"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "철학",
+      "고전강독",
+      "인문학",
+      "사유",
+      "학술세미나"
+    ],
+    "description_short": "동서양 철학 고전을 강독하며 삶과 사유의 본질을 탐구하는 인문학술 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_56",
+    "name": "캘리쿠",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 4,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 2,
+      "expertise": 4
+    },
+    "keywords": [
+      "캘리그라피",
+      "손글씨",
+      "굿즈제작",
+      "디자인",
+      "전시회"
+    ],
+    "description_short": "감성적인 손글씨 캘리그라피와 굿즈 디자인을 창작하는 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_110",
+    "name": "커리손으로먹기연구회",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 5,
+      "activity": 3,
+      "creativity": 4,
       "leadership": 3,
       "expertise": 3
     },
-    "keywords": ["스노우보드", "서핑", "웨이크보드", "익스트림스포츠", "시즌방", "여행"],
-    "description_short": "여름엔 양양 서핑, 겨울엔 슬로프 스노우보드를 즐기는 익스트림 레포츠 동아리",
-    "external_link": "https://klub.kr/club/kusac",
-    "recruit_period": "학기 초"
+    "keywords": [
+      "커리손으로먹기연구회",
+      "생활문화",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 생활문화분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_sport_05",
-    "name": "고려대학교 산악부 (KUMC)",
-    "category": ["스포츠"],
+    "id": "ku_club_57",
+    "name": "쿠리에이터",
+    "category": [
+      "미디어/방송",
+      "예술/공연"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "유튜브",
+      "영상제작",
+      "크리에이터",
+      "영상편집",
+      "콘텐츠기획"
+    ],
+    "description_short": "트렌디한 영상 콘텐츠와 유튜브 웹콘텐츠를 기획·제작하는 크리에이터 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_11",
+    "name": "크림슨",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (기악예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "락밴드",
+      "일렉기타",
+      "드럼",
+      "보컬",
+      "헤비메탈",
+      "축제공연",
+      "합주"
+    ],
+    "description_short": "강렬한 비트와 사운드로 캠퍼스 무대를 장악하는 고려대 중앙 락밴드",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=1",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_80",
+    "name": "탁구사랑회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "탁구사랑회",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_81",
+    "name": "택견한울",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "택견한울",
+      "체육",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 체육분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_107",
+    "name": "팬케이KU",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
+    "traits": {
+      "sociability": 4,
+      "activity": 5,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "펜싱",
+      "플뢰레",
+      "에페",
+      "사브르",
+      "귀족스포츠"
+    ],
+    "description_short": "짜릿한 승부와 민첩한 검술을 겨루는 고려대학교 중앙 펜싱 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_50",
+    "name": "한국근현대사연구회",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "한국근현대사연구회",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_51",
+    "name": "한국사회연구회",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (인문과학)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": [
+      "한국사회연구회",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_59",
+    "name": "한국화회",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "한국화회",
+      "전시창작",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 전시창작분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_82",
+    "name": "한량회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 4,
       "activity": 5,
       "creativity": 2,
       "leadership": 4,
-      "expertise": 5
+      "expertise": 4
     },
-    "keywords": ["등산", "암벽등반", "백패킹", "히말라야", "트레킹", "자연"],
-    "description_short": "북한산 암벽부터 지리산 종주, 해외 고산 원정까지 도전하는 역사 깊은 산악부",
-    "external_link": "https://klub.kr/club/kumc",
-    "recruit_period": "9월 초"
+    "keywords": [
+      "검도",
+      "죽도",
+      "호구",
+      "기합",
+      "심신단련",
+      "무예"
+    ],
+    "description_short": "정직한 칼끝과 기합으로 예를 배우고 검도를 수련하는 중앙 검도 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=9",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_volunteer_01",
-    "name": "고려대학교 로타랙트 (KU Rotaract)",
-    "category": ["봉사"],
+    "id": "ku_club_30",
+    "name": "한일문화연구회",
+    "category": [
+      "취미/친목"
+    ],
     "college": "전체",
-    "type": "중앙동아리",
+    "type": "중앙동아리 (생활문화)",
+    "traits": {
+      "sociability": 5,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 3
+    },
+    "keywords": [
+      "한일문화연구회",
+      "생활문화",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 생활문화분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_38",
+    "name": "합창단",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (연행예술)",
     "traits": {
       "sociability": 5,
       "activity": 4,
       "creativity": 4,
-      "leadership": 4,
-      "expertise": 2
-    },
-    "keywords": ["지역봉사", "멘토링", "환경캠페인", "기획봉사", "친목", "사회공헌"],
-    "description_short": "청소년 멘토링 및 창의적인 사회봉사 프로젝트를 기획하고 실행하는 동아리",
-    "external_link": "https://klub.kr/club/rotaract",
-    "recruit_period": "8월 말 ~ 9월 초"
-  },
-  {
-    "id": "club_volunteer_02",
-    "name": "햇살 (고려대 야학 봉사단)",
-    "category": ["봉사", "학술"],
-    "college": "사범대학",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
-      "leadership": 4,
-      "expertise": 3
-    },
-    "keywords": ["교육봉사", "야학", "검정고시", "배움나눔", "선생님", "사회연대"],
-    "description_short": "배움의 기회를 놓친 성인 학습자분들께 검정고시 수업을 지원하는 야학 동아리",
-    "external_link": "https://klub.kr/club/haetsal",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_volunteer_03",
-    "name": "고려대학교 유니세프 (KUNICEF)",
-    "category": ["봉사", "미디어/방송"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
-      "leadership": 4,
-      "expertise": 3
-    },
-    "keywords": ["아동인권", "캠페인기획", "모금행사", "카드뉴스제작", "글로벌나눔"],
-    "description_short": "어린이 권리 옹호 캠페인과 창의적인 펀드레이징 행사를 기획하는 동아리",
-    "external_link": "https://klub.kr/club/kunicef",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_media_01",
-    "name": "KUBS (고려대학교 교육방송국)",
-    "category": ["미디어/방송"],
-    "college": "미디어학부",
-    "type": "언론사/중앙기구",
-    "traits": {
-      "sociability": 4,
-      "activity": 4,
-      "creativity": 5,
-      "leadership": 4,
+      "leadership": 3,
       "expertise": 4
     },
-    "keywords": ["방송제작", "아나운서", "영상PD", "기술엔지니어", "고연전중계", "석탑방송제"],
-    "description_short": "교내 정규 오디오/영상 방송 및 고연전 생중계를 제작하는 고려대 대표 방송국",
-    "external_link": "https://klub.kr/club/kubs",
-    "recruit_period": "8월 말 수습기자 모집"
+    "keywords": [
+      "합창",
+      "보컬",
+      "성악",
+      "하모니",
+      "정기연주회",
+      "콘서트콰이어"
+    ],
+    "description_short": "아름다운 목소리의 하모니로 감동을 전하는 고려대학교 중앙 합창단",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=5",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_media_02",
-    "name": "고대신문사 (The Korea University News)",
-    "category": ["미디어/방송", "학술"],
+    "id": "ku_club_108",
+    "name": "호박회",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
     "college": "전체",
-    "type": "언론사/중앙기구",
+    "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 3,
+      "activity": 2,
       "creativity": 4,
       "leadership": 4,
       "expertise": 5
     },
-    "keywords": ["신문기자", "취재기사", "칼럼", "대학언론", "사진기자", "시사보도"],
-    "description_short": "1947년 창간되어 대학 사회와 시대를 기록하는 고려대학교 정론 신문사",
-    "external_link": "https://klub.kr/club/kudanews",
-    "recruit_period": "학기 초 수습기자 모집"
+    "keywords": [
+      "호박회",
+      "인문과학",
+      "고려대",
+      "중앙동아리"
+    ],
+    "description_short": "고려대학교 동아리연합회 인문과학분과 소속 중앙동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=6",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   },
   {
-    "id": "club_media_03",
-    "name": "KUTV (고려대학교 텔레비전방송국)",
-    "category": ["미디어/방송"],
-    "college": "미디어학부",
-    "type": "언론사/중앙기구",
+    "id": "ku_club_60",
+    "name": "호영회",
+    "category": [
+      "미디어/방송",
+      "예술/공연"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (전시창작)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "사진",
+      "전시회",
+      "출사",
+      "DSLR",
+      "흑백사진",
+      "작품전"
+    ],
+    "description_short": "사진 예술의 미학을 탐구하고 정기 사진전을 여는 중앙 사진예술회",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=7",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_club_25",
+    "name": "호진회",
+    "category": [
+      "취미/친목",
+      "미디어/방송"
+    ],
+    "college": "전체",
+    "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 4,
       "activity": 4,
       "creativity": 5,
-      "leadership": 4,
-      "expertise": 4
-    },
-    "keywords": ["영상제작", "유튜브콘텐츠", "웹드라마", "다큐멘터리", "영상편집", "카메라"],
-    "description_short": "트렌디한 웹 콘텐츠, 대학 뉴스, 예능 및 다큐멘터리를 제작하는 영상 방송국",
-    "external_link": "https://klub.kr/club/kutv",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_hobby_01",
-    "name": "CATUS (고려대학교 보드게임 동아리)",
-    "category": ["취미/친목"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 5,
-      "activity": 2,
-      "creativity": 3,
-      "leadership": 2,
-      "expertise": 3
-    },
-    "keywords": ["보드게임", "전략게임", "파티게임", "마피아", "친목도모", "방탈출"],
-    "description_short": "수백 종의 보드게임을 함께 즐기며 두뇌 싸움과 즐거운 친목을 다지는 동아리",
-    "external_link": "https://klub.kr/club/catus",
-    "recruit_period": "상시 및 9월 초"
-  },
-  {
-    "id": "club_hobby_02",
-    "name": "고려대 여행동아리 (KU Travel Club)",
-    "category": ["취미/친목"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 5,
-      "activity": 5,
-      "creativity": 3,
-      "leadership": 3,
-      "expertise": 2
-    },
-    "keywords": ["국내여행", "맛집탐방", "글램핑", "내일로", "감성여행", "추억만들기"],
-    "description_short": "주말마다 전국 방방곡곡 숨은 명소와 맛집을 찾아 떠나는 힐링 여행 동아리",
-    "external_link": "https://klub.kr/club/kutravel",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_hobby_03",
-    "name": "KULCUS (고려대 와인 & 미식 소사이어티)",
-    "category": ["취미/친목"],
-    "college": "전체",
-    "type": "학술/소모임",
-    "traits": {
-      "sociability": 5,
-      "activity": 2,
-      "creativity": 3,
       "leadership": 3,
       "expertise": 4
     },
-    "keywords": ["와인테이스팅", "페어링", "미식탐방", "소믈리에", "파인다이닝", "네트워킹"],
-    "description_short": "다양한 와인과 음식 페어링을 배우며 고급스러운 미식을 즐기는 동아리",
-    "external_link": "https://klub.kr/club/wineku",
-    "recruit_period": "8월 말 ~ 9월 초"
-  },
-  {
-    "id": "club_startup_01",
-    "name": "인사이더스 (Insiders - 고려대 창업학회)",
-    "category": ["창업", "학술"],
-    "college": "경영대학",
-    "type": "연합/중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 4,
-      "creativity": 5,
-      "leadership": 5,
-      "expertise": 4
-    },
-    "keywords": ["스타트업창업", "린스타트업", "IR피칭", "VC투자", "비즈니스모델", "빌더"],
-    "description_short": "실제 사업 아이템을 런칭하고 초기 투자를 유치하는 실전 스타트업 창업 학회",
-    "external_link": "https://klub.kr/club/insiders",
-    "recruit_period": "8월 말 리크루팅"
-  },
-  {
-    "id": "club_religion_01",
-    "name": "고려대학교 가톨릭학생회 (KUC)",
-    "category": ["종교", "봉사"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 2,
-      "creativity": 3,
-      "leadership": 3,
-      "expertise": 2
-    },
-    "keywords": ["미사", "신앙나눔", "피정", "친목", "봉사", "안암학사"],
-    "description_short": "캠퍼스 안에서 신앙과 따뜻한 공동체를 나누며 함께 성장하는 가톨릭 모임",
-    "external_link": "https://klub.kr/club/kucatholic",
-    "recruit_period": "상시 모집"
-  },
-  {
-    "id": "club_religion_02",
-    "name": "고려대 기독학생회 (IVF / CCC)",
-    "category": ["종교"],
-    "college": "전체",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
-      "leadership": 3,
-      "expertise": 2
-    },
-    "keywords": ["성경스터디", "찬양", "공동체", "캠퍼스전도", "소그룹모임"],
-    "description_short": "캠퍼스 속에서 기독교 가치관을 탐구하고 서로를 응원하는 신앙 동아리",
-    "external_link": "https://klub.kr/club/kuchristian",
-    "recruit_period": "상시 모집"
-  },
-  {
-    "id": "club_social_01",
-    "name": "사회과학연구회 (사연)",
-    "category": ["사회과학", "학술"],
-    "college": "정경대학",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 3,
-      "activity": 3,
-      "creativity": 4,
-      "leadership": 4,
-      "expertise": 4
-    },
-    "keywords": ["사회학", "정치비평", "학술세미나", "사회연대", "학술제", "독서토론"],
-    "description_short": "한국 사회의 구조적 문제와 현대 사상을 비판적으로 성찰하는 학술 세미나 동아리",
-    "external_link": "https://klub.kr/club/sayeon",
-    "recruit_period": "9월 초"
-  },
-  {
-    "id": "club_social_02",
-    "name": "고려대학교 모의국회 (KUP)",
-    "category": ["사회과학", "학술"],
-    "college": "정경대학",
-    "type": "중앙동아리",
-    "traits": {
-      "sociability": 4,
-      "activity": 3,
-      "creativity": 4,
-      "leadership": 5,
-      "expertise": 4
-    },
-    "keywords": ["법안발의", "의회민주주의", "정치외교", "입법정책", "국회본회의시뮬레이션"],
-    "description_short": "대한민국 국회의 의사결정과 법안 심사를 직접 시뮬레이션하는 정책 학술 동아리",
-    "external_link": "https://klub.kr/club/kup",
-    "recruit_period": "8월 말 ~ 9월 초"
+    "keywords": [
+      "사진",
+      "필름카메라",
+      "출사",
+      "암실인화",
+      "스냅사진"
+    ],
+    "description_short": "카메라 렌즈에 낭만과 일상을 담아내는 유서 깊은 중앙 사진 동아리",
+    "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
+    "recruit_period": "2026-2학기 가두모집 (9월 초)"
   }
 ]
