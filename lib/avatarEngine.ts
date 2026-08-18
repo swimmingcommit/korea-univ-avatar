@@ -1,11 +1,15 @@
 import { Traits, UserPreferences, calculateUserTraits } from "./recommendEngine";
 
+export type AvatarArchetypeId = "01" | "02" | "03" | "04" | "05" | "06" | "07" | "08";
+
 export interface AvatarConfiguration {
   id: string;
+  archetypeId: AvatarArchetypeId;
   title: string;
   subtitle: string;
   description: string;
   speechQuote: string;
+  geminiToneExample: string;
   colorTheme: {
     primary: string;
     secondary: string;
@@ -14,16 +18,15 @@ export interface AvatarConfiguration {
   };
   parts: {
     skinTone: string;
-    hairType: "short_dandy" | "wavy_perm" | "long_straight" | "red_headband" | "street_beanie" | "ku_cap";
+    animalType: "panther" | "owl" | "fairy_tiger" | "scholar_tiger" | "runner_tiger" | "explorer_tiger" | "hermit_tiger" | "freshman_tiger";
+    hairType: "stage_glam" | "messy_night" | "soft_fairy" | "dandy_neat" | "sport_band" | "hip_beanie" | "classic_part" | "ku_varsity_cap";
     hairColor: string;
-    eyeType: "energetic" | "confident" | "friendly" | "focused" | "winking";
+    eyeType: "stage_fierce" | "dark_circle" | "gentle_smile" | "sharp_glasses" | "runner_sparkle" | "curious_round" | "deep_calm" | "freshman_sparkle";
     mouthType: "smile" | "laugh" | "cool" | "talking";
-    outfitType: "ku_varsity" | "tech_hoodie" | "stage_rock" | "suit_chic" | "sports_jersey" | "volunteer_vest" | "casual_knit";
-    propType: "macbook" | "electric_guitar" | "basketball" | "microphone" | "book_pen" | "camera" | "coffee_cup";
-    backgroundType: "central_plaza" | "hana_square" | "festival_stage" | "club_room" | "anam_street" | "library";
-    effectType: "sparkles" | "code_binary" | "music_notes" | "fire_passion" | "heart_vibe";
-    tigerEars: boolean;
-    kuBadge: boolean;
+    outfitType: "stage_glam_jacket" | "night_hoodie" | "volunteer_eco_vest" | "formal_president_suit" | "sport_running_wear" | "explorer_casual" | "hermit_knit" | "ku_crimson_varsity";
+    propType: "stand_mic" | "energy_drink_laptop" | "eco_tumbler" | "laser_pointer_slide" | "smartwatch_dumbbell" | "camera_map" | "vintage_book_pen" | "campus_guide_map";
+    backgroundType: "stage_spotlight" | "night_coding_room" | "peace_nature" | "presentation_hall" | "central_plaza_track" | "chamsali_adventure" | "quiet_library_study" | "ku_main_hall_front";
+    effectType: "stage_lights" | "green_matrix" | "sprout_leaves" | "presentation_chart" | "fire_stamina" | "adventure_stars" | "coffee_aroma" | "freshman_twinkle";
   };
   stats: {
     passion: number;
@@ -37,181 +40,384 @@ export interface AvatarConfiguration {
 export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
   const traits = calculateUserTraits(prefs);
   const primaryCat = prefs.categories[0] || "IT/개발";
-  const secondaryCat = prefs.categories[1] || "";
+  const allCats = prefs.categories || [];
   const interests = (prefs.interests || "").toLowerCase();
+  const isNoClub =
+    prefs.currentClub?.includes("없음") ||
+    prefs.currentClub?.includes("새내기") ||
+    prefs.currentClub?.includes("탐색") ||
+    !prefs.currentClub;
 
-  // Determine Dominant Trait
-  const maxTrait = (Object.keys(traits) as (keyof Traits)[]).reduce((a, b) =>
-    traits[a] > traits[b] ? a : b
-  );
+  // 1. Archetype Decision Tree based on User Request 8 Archetypes:
+  // 01: 무대 위의 야망 흑표범 (공연/예술, 활동성/창작성 高)
+  // 02: 밤샘 코딩 잉크 부족 올빼미 (IT/개발, 전문성/창작성 高, 사교성 低)
+  // 03: 캠퍼스 평화주의 텀블러 요정 (봉사/환경/사회과학, 사교성/리더십 高)
+  // 04: 전략적 투머치토커 학회장 (학술/토론/리더십, 전문성/리더십/사교성 高)
+  // 05: 근손실 걱정하는 중앙광장 러너 (스포츠/체육, 활동성 高)
+  // 06: 미지의 취미 탐험가 #갓생살기 (취미/친목, 창작성/사교성 高)
+  // 07: 조용한 카리스마 서재의 은둔자 (학술/인문/철학, 전문성 高, 사교성 低)
+  // 08: 과잠 입은 새내기 (무소속의 야망) (새내기/탐색/무소속, 밸런스)
 
-  // 1. Outfit Selection based on Primary Category
-  let outfitType: AvatarConfiguration["parts"]["outfitType"] = "ku_varsity";
-  if (primaryCat === "IT/개발" || interests.includes("코딩") || interests.includes("개발")) {
-    outfitType = "tech_hoodie";
-  } else if (primaryCat === "예술/공연" || interests.includes("밴드") || interests.includes("음악")) {
-    outfitType = "stage_rock";
-  } else if (primaryCat === "스포츠" || interests.includes("운동") || interests.includes("축구")) {
-    outfitType = "sports_jersey";
-  } else if (primaryCat === "봉사" || interests.includes("봉사") || interests.includes("멘토링")) {
-    outfitType = "volunteer_vest";
-  } else if (primaryCat === "학술" || primaryCat === "사회과학" || primaryCat === "창업") {
-    outfitType = "suit_chic";
-  } else if (primaryCat === "취미/친목") {
-    outfitType = "casual_knit";
+  let archetypeId: AvatarArchetypeId = "08";
+
+  if (isNoClub && allCats.length === 0 && !interests) {
+    archetypeId = "08";
+  } else if (
+    primaryCat === "예술/공연" ||
+    interests.includes("밴드") ||
+    interests.includes("공연") ||
+    interests.includes("무대") ||
+    interests.includes("댄스") ||
+    interests.includes("음악") ||
+    interests.includes("보컬")
+  ) {
+    archetypeId = "01";
+  } else if (
+    primaryCat === "IT/개발" ||
+    interests.includes("코딩") ||
+    interests.includes("개발") ||
+    interests.includes("해커톤") ||
+    interests.includes("파이썬") ||
+    interests.includes("웹") ||
+    interests.includes("알고리즘")
+  ) {
+    archetypeId = "02";
+  } else if (
+    primaryCat === "봉사" ||
+    interests.includes("봉사") ||
+    interests.includes("환경") ||
+    interests.includes("멘토링") ||
+    interests.includes("나눔")
+  ) {
+    archetypeId = "03";
+  } else if (
+    (primaryCat === "학술" || primaryCat === "사회과학" || primaryCat === "창업") &&
+    (traits.leadership >= 3.5 || traits.sociability >= 3.5 || interests.includes("토론") || interests.includes("전략") || interests.includes("발표"))
+  ) {
+    archetypeId = "04";
+  } else if (
+    primaryCat === "스포츠" ||
+    interests.includes("운동") ||
+    interests.includes("축구") ||
+    interests.includes("농구") ||
+    interests.includes("러닝") ||
+    interests.includes("헬스") ||
+    traits.activity >= 4.0
+  ) {
+    archetypeId = "05";
+  } else if (
+    primaryCat === "취미/친목" ||
+    interests.includes("여행") ||
+    interests.includes("보드게임") ||
+    interests.includes("맛집") ||
+    interests.includes("다양") ||
+    interests.includes("갓생")
+  ) {
+    archetypeId = "06";
+  } else if (
+    primaryCat === "학술" ||
+    primaryCat === "사회과학" ||
+    interests.includes("철학") ||
+    interests.includes("인문") ||
+    interests.includes("독서") ||
+    traits.sociability <= 2.5
+  ) {
+    archetypeId = "07";
+  } else if (isNoClub) {
+    archetypeId = "08";
   } else {
-    outfitType = "ku_varsity";
+    archetypeId = "06";
   }
 
-  // 2. Prop Selection based on Secondary Category or keywords
-  let propType: AvatarConfiguration["parts"]["propType"] = "macbook";
-  if (interests.includes("기타") || interests.includes("노래") || primaryCat === "예술/공연") {
-    propType = "electric_guitar";
-  } else if (interests.includes("마이크") || interests.includes("방송") || primaryCat === "미디어/방송") {
-    propType = "microphone";
-  } else if (interests.includes("공") || interests.includes("농구") || primaryCat === "스포츠") {
-    propType = "basketball";
-  } else if (interests.includes("카메라") || interests.includes("영상") || secondaryCat === "미디어/방송") {
-    propType = "camera";
-  } else if (primaryCat === "학술" || primaryCat === "사회과학" || interests.includes("공부") || interests.includes("책")) {
-    propType = "book_pen";
-  } else if (primaryCat === "취미/친목" || interests.includes("카페")) {
-    propType = "coffee_cup";
-  } else {
-    propType = "macbook";
+  // 2. Archetype Definitions (Matching User Specifications Exactly)
+  switch (archetypeId) {
+    case "01": // 무대 위의 야망 흑표범
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "무대 위의 야망 흑표범",
+        subtitle: "#공연 #예술 #열정 (활동성·창작성 高)",
+        description: "화려한 조명 아래서 가장 빛나는 카리스마 아티스트! 내 안의 넘치는 끼를 스튜디오나 동방에 가둘 수 없습니다.",
+        speechQuote: "너의 끼는 스튜디오나 동아리방에 갇혀있을 수 없어! 화려한 조명 아래서 가장 빛나는 너!",
+        geminiToneExample: "너의 끼는 스튜디오나 동아리방에 갇혀있을 수 없어! 화려한 조명 아래서 가장 빛나는 너!",
+        colorTheme: {
+          primary: "#1E1B4B",
+          secondary: "#831843",
+          accent: "#F43F5E",
+          background: "#FFF1F2",
+        },
+        parts: {
+          skinTone: "#1E293B", // Sleek black panther tone
+          animalType: "panther",
+          hairType: "stage_glam",
+          hairColor: "#0F172A",
+          eyeType: "stage_fierce",
+          mouthType: "laugh",
+          outfitType: "stage_glam_jacket",
+          propType: "stand_mic",
+          backgroundType: "stage_spotlight",
+          effectType: "stage_lights",
+        },
+        stats: {
+          passion: 98,
+          sociability: 85,
+          intellect: 70,
+          creativity: 95,
+          chill: 50,
+        },
+      };
+
+    case "02": // 밤샘 코딩 잉크 부족 올빼미
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "밤샘 코딩 잉크 부족 올빼미",
+        subtitle: "#IT/개발 #밤샘 #몰입 (전문성·창작성 高, 사교성 低)",
+        description: "에러 로그와 치열하게 싸우다 아침을 맞이하는 하드코어 빌더! 잉크는 닳았지만 화면 속 초록색 코드는 쏟아집니다.",
+        speechQuote: "오류와 싸우다 아침을 맞이하는 너, 잉크는 없지만 코드는 넘쳐나! (근데 좀 자...)",
+        geminiToneExample: "오류와 싸우다 아침을 맞이하는 너, 잉크는 없지만 코드는 넘쳐나! (근데 좀 자...)",
+        colorTheme: {
+          primary: "#0F172A",
+          secondary: "#10B981",
+          accent: "#38BDF8",
+          background: "#F0FDF4",
+        },
+        parts: {
+          skinTone: "#E2E8F0",
+          animalType: "owl",
+          hairType: "messy_night",
+          hairColor: "#334155",
+          eyeType: "dark_circle",
+          mouthType: "cool",
+          outfitType: "night_hoodie",
+          propType: "energy_drink_laptop",
+          backgroundType: "night_coding_room",
+          effectType: "green_matrix",
+        },
+        stats: {
+          passion: 88,
+          sociability: 35,
+          intellect: 98,
+          creativity: 92,
+          chill: 30,
+        },
+      };
+
+    case "03": // 캠퍼스 평화주의 텀블러 요정
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "캠퍼스 평화주의 텀블러 요정",
+        subtitle: "#봉사 #환경 #사회과학 (사교성·리더십 高)",
+        description: "세상을 더 따뜻하고 나은 곳으로 바꾸려는 선한 영향력의 소유자! 텀블러처럼 꽉 찬 정의감과 배려심으로 캠퍼스를 밝힙니다.",
+        speechQuote: "세상을 더 나은 곳으로 만들려는 너의 마음! 텀블러처럼 꽉 찬 너의 정의감과 따뜻함!",
+        geminiToneExample: "세상을 더 나은 곳으로 만들려는 너의 마음! 텀블러처럼 꽉 찬 너의 정의감과 따뜻함!",
+        colorTheme: {
+          primary: "#047857",
+          secondary: "#F59E0B",
+          accent: "#10B981",
+          background: "#ECFDF5",
+        },
+        parts: {
+          skinTone: "#FEF08A",
+          animalType: "fairy_tiger",
+          hairType: "soft_fairy",
+          hairColor: "#65A30D",
+          eyeType: "gentle_smile",
+          mouthType: "smile",
+          outfitType: "volunteer_eco_vest",
+          propType: "eco_tumbler",
+          backgroundType: "peace_nature",
+          effectType: "sprout_leaves",
+        },
+        stats: {
+          passion: 85,
+          sociability: 96,
+          intellect: 78,
+          creativity: 82,
+          chill: 90,
+        },
+      };
+
+    case "04": // 전략적 투머치토커 학회장
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "전략적 투머치토커 학회장",
+        subtitle: "#학술 #토론 #리더십 (전문성·리더십·사교성 高)",
+        description: "철저한 팩트와 논리로 무장한 발표의 달인! 한번 마이크를 잡으면 끝나지 않는 열정 스피치로 청중을 압도합니다.",
+        speechQuote: "팩트와 논리로 무장한 너! 너의 스피치에 모두가 집중할 수밖에! (조금만 짧게 말해줘..)",
+        geminiToneExample: "팩트와 논리로 무장한 너! 너의 스피치에 모두가 집중할 수밖에! (조금만 짧게 말해줘..)",
+        colorTheme: {
+          primary: "#1E3A8A",
+          secondary: "#B45309",
+          accent: "#862633",
+          background: "#EFF6FF",
+        },
+        parts: {
+          skinTone: "#FDE047",
+          animalType: "scholar_tiger",
+          hairType: "dandy_neat",
+          hairColor: "#1E293B",
+          eyeType: "sharp_glasses",
+          mouthType: "talking",
+          outfitType: "formal_president_suit",
+          propType: "laser_pointer_slide",
+          backgroundType: "presentation_hall",
+          effectType: "presentation_chart",
+        },
+        stats: {
+          passion: 92,
+          sociability: 90,
+          intellect: 96,
+          creativity: 80,
+          chill: 45,
+        },
+      };
+
+    case "05": // 근손실 걱정하는 중앙광장 러너
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "근손실 걱정하는 중앙광장 러너",
+        subtitle: "#스포츠 #체육 #건강 (활동성 高)",
+        description: "안암골 캠퍼스 전체가 나의 트랙! 과잠보다 트레이닝복이 찰떡같이 어울리는 지치지 않는 활력의 에너자이저.",
+        speechQuote: "캠퍼스는 너의 트랙! 과잠보다 운동복이 더 잘 어울리는 너, 오늘 혹시 하체 데이?",
+        geminiToneExample: "캠퍼스는 너의 트랙! 과잠보다 운동복이 더 잘 어울리는 너, 오늘 혹시 하체 데이?",
+        colorTheme: {
+          primary: "#DC2626",
+          secondary: "#EA580C",
+          accent: "#FBBF24",
+          background: "#FEF2F2",
+        },
+        parts: {
+          skinTone: "#FBBF24",
+          animalType: "runner_tiger",
+          hairType: "sport_band",
+          hairColor: "#451A03",
+          eyeType: "runner_sparkle",
+          mouthType: "laugh",
+          outfitType: "sport_running_wear",
+          propType: "smartwatch_dumbbell",
+          backgroundType: "central_plaza_track",
+          effectType: "fire_stamina",
+        },
+        stats: {
+          passion: 99,
+          sociability: 82,
+          intellect: 65,
+          creativity: 60,
+          chill: 70,
+        },
+      };
+
+    case "06": // 미지의 취미 탐험가 #갓생살기
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "미지의 취미 탐험가 #갓생살기",
+        subtitle: "#취미/친목 #다양성 #도전 (창작성·사교성 高)",
+        description: "이것저것 다 해보고 싶은 캠퍼스 욕심쟁이! 카메라 메고 보드게임, 맛집, 여행까지 매일이 새로운 어드벤처입니다.",
+        speechQuote: "이것저것 다 해보고 싶은 욕심쟁이! 너의 캠퍼스 라이프는 매일이 새로운 어드벤처!",
+        geminiToneExample: "이것저것 다 해보고 싶은 욕심쟁이! 너의 캠퍼스 라이프는 매일이 새로운 어드벤처!",
+        colorTheme: {
+          primary: "#7C3AED",
+          secondary: "#EC4899",
+          accent: "#F59E0B",
+          background: "#FAF5FF",
+        },
+        parts: {
+          skinTone: "#FDE047",
+          animalType: "explorer_tiger",
+          hairType: "hip_beanie",
+          hairColor: "#4C1D95",
+          eyeType: "curious_round",
+          mouthType: "smile",
+          outfitType: "explorer_casual",
+          propType: "camera_map",
+          backgroundType: "chamsali_adventure",
+          effectType: "adventure_stars",
+        },
+        stats: {
+          passion: 85,
+          sociability: 95,
+          intellect: 75,
+          creativity: 96,
+          chill: 80,
+        },
+      };
+
+    case "07": // 조용한 카리스마 서재의 은둔자
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId,
+        title: "조용한 카리스마 서재의 은둔자",
+        subtitle: "#학술 #인문 #철학 (전문성 高, 사교성 低)",
+        description: "화려한 무대보다 조용한 서재와 깊이 있는 사유를 즐기는 철학자! 캠퍼스에서 가장 깊고 날카로운 통찰을 품고 있습니다.",
+        speechQuote: "깊이 있는 사고와 성찰을 즐기는 너, 화려하지 않아도 너의 생각은 캠퍼스에서 가장 깊어.",
+        geminiToneExample: "깊이 있는 사고와 성찰을 즐기는 너, 화려하지 않아도 너의 생각은 캠퍼스에서 가장 깊어.",
+        colorTheme: {
+          primary: "#44403C",
+          secondary: "#92400E",
+          accent: "#D97706",
+          background: "#F5F5F4",
+        },
+        parts: {
+          skinTone: "#FEF08A",
+          animalType: "hermit_tiger",
+          hairType: "classic_part",
+          hairColor: "#292524",
+          eyeType: "deep_calm",
+          mouthType: "cool",
+          outfitType: "hermit_knit",
+          propType: "vintage_book_pen",
+          backgroundType: "quiet_library_study",
+          effectType: "coffee_aroma",
+        },
+        stats: {
+          passion: 70,
+          sociability: 30,
+          intellect: 99,
+          creativity: 88,
+          chill: 92,
+        },
+      };
+
+    case "08": // 과잠 입은 새내기 (무소속의 야망)
+    default:
+      return {
+        id: `avatar_${archetypeId}_${Date.now()}`,
+        archetypeId: "08",
+        title: "과잠 입은 새내기 (무소속의 야망)",
+        subtitle: "#새내기 #탐색 중 #무소속 (무한한 가능성)",
+        description: "아직 어디에도 속하지 않았다는 건, 곧 어디든 갈 수 있다는 뜻! 새빨간 크림슨 과잠을 입고 캠퍼스를 탐색하는 슈퍼 루키.",
+        speechQuote: "아직 어디에도 속하지 않은 너, 그건 곧 어디든 갈 수 있다는 뜻! 무한한 가능성의 새내기!",
+        geminiToneExample: "아직 어디에도 속하지 않은 너, 그건 곧 어디든 갈 수 있다는 뜻! 무한한 가능성의 새내기!",
+        colorTheme: {
+          primary: "#862633",
+          secondary: "#54131D",
+          accent: "#FDE047",
+          background: "#FFF5F5",
+        },
+        parts: {
+          skinTone: "#FDE047",
+          animalType: "freshman_tiger",
+          hairType: "ku_varsity_cap",
+          hairColor: "#1F2937",
+          eyeType: "freshman_sparkle",
+          mouthType: "smile",
+          outfitType: "ku_crimson_varsity",
+          propType: "campus_guide_map",
+          backgroundType: "ku_main_hall_front",
+          effectType: "freshman_twinkle",
+        },
+        stats: {
+          passion: 88,
+          sociability: 75,
+          intellect: 75,
+          creativity: 80,
+          chill: 85,
+        },
+      };
   }
-
-  // 3. Hair Selection
-  let hairType: AvatarConfiguration["parts"]["hairType"] = "short_dandy";
-  if (traits.activity >= 4.5) {
-    hairType = "red_headband"; // 승리의 빨간 머리띠
-  } else if (primaryCat === "예술/공연") {
-    hairType = "street_beanie";
-  } else if (traits.creativity >= 4.5) {
-    hairType = "wavy_perm";
-  } else if (traits.sociability >= 4.5) {
-    hairType = "ku_cap";
-  } else {
-    hairType = "short_dandy";
-  }
-
-  // 4. Eyes & Expressions based on Traits
-  let eyeType: AvatarConfiguration["parts"]["eyeType"] = "energetic";
-  let mouthType: AvatarConfiguration["parts"]["mouthType"] = "smile";
-  if (traits.sociability >= 4.5) {
-    eyeType = "friendly";
-    mouthType = "laugh";
-  } else if (traits.expertise >= 4.5) {
-    eyeType = "focused";
-    mouthType = "cool";
-  } else if (traits.creativity >= 4.5) {
-    eyeType = "winking";
-    mouthType = "smile";
-  } else {
-    eyeType = "energetic";
-    mouthType = "smile";
-  }
-
-  // 5. Background selection
-  let backgroundType: AvatarConfiguration["parts"]["backgroundType"] = "central_plaza";
-  if (primaryCat === "IT/개발") {
-    backgroundType = "hana_square";
-  } else if (primaryCat === "예술/공연") {
-    backgroundType = "festival_stage";
-  } else if (primaryCat === "학술" || primaryCat === "사회과학") {
-    backgroundType = "library";
-  } else if (primaryCat === "취미/친목" || traits.sociability >= 4.5) {
-    backgroundType = "anam_street";
-  } else {
-    backgroundType = "club_room";
-  }
-
-  // 6. Effect Type
-  let effectType: AvatarConfiguration["parts"]["effectType"] = "sparkles";
-  if (primaryCat === "IT/개발") effectType = "code_binary";
-  else if (primaryCat === "예술/공연") effectType = "music_notes";
-  else if (traits.activity >= 4.5) effectType = "fire_passion";
-  else if (traits.sociability >= 4.5) effectType = "heart_vibe";
-
-  // 7. Dynamic Title and Subtitle Generation
-  let title = "자유로운 안암골 호랑이";
-  let subtitle = "열정과 지성을 겸비한 다재다능형";
-  let description = "어떤 동아리에 가도 금세 적응해 팀의 활력소가 되는 올라운더 타입!";
-  let speechQuote = "어흥! 나와 함께 이번 2학기 고려대 캠퍼스를 불태워볼 준비 됐어?";
-
-  if (primaryCat === "IT/개발") {
-    title = "새벽 코딩하는 하나스퀘어 호랑이";
-    subtitle = "밤샘 해커톤과 빌딩에 진심인 개발 꿈나무";
-    description = "에러 로그도 두렵지 않다! 코드로 세상을 바꾸고 아이디어를 현실로 구현하는 테크 호랑이.";
-    speechQuote = "버그는 잡고 커밋은 쌓인다! 이번 학기엔 내 손으로 멋진 서비스 런칭해볼래!";
-  } else if (primaryCat === "예술/공연") {
-    title = "민주광장 버스킹의 절대지배자";
-    subtitle = "무대 위에서 가장 뜨겁게 빛나는 아티스트";
-    description = "관객의 환호와 멜로디에 심장이 뛰는 타고난 무대 체질! 캠퍼스 축제의 주인공.";
-    speechQuote = "소리 질러~! 내 안의 넘치는 필과 리듬을 이번 정기 공연에서 전부 보여줄게!";
-  } else if (primaryCat === "스포츠") {
-    title = "녹지운동장을 달리는 붉은 엔진";
-    subtitle = "체력과 근성으로 한계를 뛰어넘는 스포츠맨";
-    description = "경기의 승패보다 중요한 건 끝까지 함께 뛰는 동료들과의 전우애! 지치지 않는 체력의 소유자.";
-    speechQuote = "패스는 정확하게, 슛은 과감하게! 오늘 운동 끝나고 다 같이 고기 먹으러 가자!";
-  } else if (primaryCat === "학술" || primaryCat === "사회과학") {
-    title = "백주년기념관의 지적 탐구자";
-    subtitle = "날카로운 논리와 통찰로 시대를 읽는 브레인";
-    description = "깊이 있는 리서치와 토론을 통해 복잡한 문제의 해답을 찾아내는 고려대의 차세대 리더.";
-    speechQuote = "논리적인 근거와 날카로운 인사이트가 있다면, 어떤 문제도 명쾌하게 해결할 수 있어!";
-  } else if (primaryCat === "봉사") {
-    title = "안암골을 따뜻하게 밝히는 선한 영향력";
-    subtitle = "나눔과 연대로 더 나은 세상을 만드는 엔젤";
-    description = "혼자만의 성공보다 함께하는 행복의 가치를 아는 따뜻한 마음씨의 소유자.";
-    speechQuote = "우리의 작은 관심과 행동이 모이면 세상을 조금 더 따뜻하게 바꿀 수 있어!";
-  } else if (primaryCat === "미디어/방송") {
-    title = "캠퍼스 트렌드를 리드하는 크리에이터";
-    subtitle = "카메라 렌즈로 시대를 포착하고 기록하는 미디어인";
-    description = "콘텐츠 감각과 연출력으로 고려대의 모든 순간을 생생하게 담아내는 스토리텔러.";
-    speechQuote = "레디, 액션! 호랑이들의 가슴 뛰는 이야기, 지금 바로 송출합니다!";
-  } else if (primaryCat === "취미/친목") {
-    title = "참살이길 핵인싸 분위기 메이커";
-    subtitle = "어디서나 웃음꽃을 피우는 긍정 에너지 호랑이";
-    description = "특유의 친화력과 배려심으로 사람들을 끌어모으는 동아리의 소중한 활력소.";
-    speechQuote = "인생은 즐기는 거야! 새로운 친구들과 함께라면 매일매일이 축제지!";
-  } else if (primaryCat === "창업") {
-    title = "세상을 뒤흔들 미래 유니콘 빌더";
-    subtitle = "시장의 문제를 날카롭게 파고드는 혁신가";
-    description = "실패를 두려워하지 않고 빠른 실행력으로 비즈니스 기회를 창출하는 파운더 마인드.";
-    speechQuote = "아이디어에 머무르지 않고 시장에서 증명한다! 우리 팀과 함께 세상을 바꿔볼래?";
-  }
-
-  return {
-    id: `avatar_${Date.now()}`,
-    title,
-    subtitle,
-    description,
-    speechQuote,
-    colorTheme: {
-      primary: "#862633", // KU Crimson
-      secondary: "#1E293B",
-      accent: "#F59E0B",
-      background: "#FFF5F5",
-    },
-    parts: {
-      skinTone: "#FDE047", // Cute golden tiger tone / warm anime skin
-      hairType,
-      hairColor: "#1F2937",
-      eyeType,
-      mouthType,
-      outfitType,
-      propType,
-      backgroundType,
-      effectType,
-      tigerEars: true,
-      kuBadge: true,
-    },
-    stats: {
-      passion: Math.min(100, Math.round(traits.activity * 18 + 10)),
-      sociability: Math.min(100, Math.round(traits.sociability * 18 + 10)),
-      intellect: Math.min(100, Math.round(traits.expertise * 18 + 10)),
-      creativity: Math.min(100, Math.round(traits.creativity * 18 + 10)),
-      chill: Math.min(100, Math.round((6 - traits.leadership) * 16 + 15)),
-    },
-  };
 }

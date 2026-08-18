@@ -7,27 +7,48 @@ import { Sparkles, ArrowRight, Compass, Users, Zap, ShieldCheck, CheckCircle2, C
 import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
 
-// Sample avatars for live preview showcase
+// Sample avatars for live preview showcase (8 Core Archetypes)
 const SAMPLE_PREVIEWS = [
   {
-    categories: ["IT/개발"],
-    interests: "코딩 웹개발 해커톤 파이썬",
-    college: "정보대학",
-  },
-  {
     categories: ["예술/공연"],
-    interests: "락밴드 일렉기타 보컬 버스킹",
+    interests: "무대 보컬 밴드 댄스 스포트라이트",
     college: "문과대학",
   },
   {
-    categories: ["스포츠"],
-    interests: "축구 농구 녹지운동장 땀방울",
-    college: "공과대학",
+    categories: ["IT/개발"],
+    interests: "코딩 밤샘 해커톤 알고리즘 파이썬",
+    college: "정보대학",
+  },
+  {
+    categories: ["봉사"],
+    interests: "환경 텀블러 멘토링 평화 나눔",
+    college: "정경대학",
   },
   {
     categories: ["학술"],
-    interests: "경영전략 케이스스터디 컨설팅",
+    interests: "토론 전략 스피치 슬라이드 리더십",
     college: "경영대학",
+  },
+  {
+    categories: ["스포츠"],
+    interests: "러닝 헬스 근손실 축구 농구",
+    college: "사범대학",
+  },
+  {
+    categories: ["취미/친목"],
+    interests: "갓생 탐험 보드게임 여행 맛집",
+    college: "자유전공학부",
+  },
+  {
+    categories: ["학술"],
+    interests: "철학 인문 독서 서재 사유",
+    college: "문과대학",
+  },
+  {
+    categories: [],
+    interests: "",
+    currentClub: "새내기 (탐색 중)",
+    college: "고려대학교",
   },
 ];
 
