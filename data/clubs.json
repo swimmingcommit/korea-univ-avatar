@@ -1,0 +1,650 @@
+[
+  {
+    "id": "club_it_01",
+    "name": "DevKor (데브코어)",
+    "category": ["IT/개발"],
+    "college": "정보대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": ["웹개발", "앱개발", "프로젝트", "해커톤", "풀스택", "코딩"],
+    "description_short": "고려대학교 소프트웨어 개발 및 IT 프로젝트 중심의 학술 개발 동아리",
+    "external_link": "https://klub.kr/club/devkor",
+    "recruit_period": "9월 초 신입 부원 모집"
+  },
+  {
+    "id": "club_it_02",
+    "name": "KUDT (고려대 데이터사이언스)",
+    "category": ["IT/개발", "학술"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 2,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": ["데이터분석", "머신러닝", "인공지능", "AI", "파이썬", "캐글"],
+    "description_short": "데이터 분석, 머신러닝 모델링 및 AI 솔루션 스터디/공모전 동아리",
+    "external_link": "https://klub.kr/club/kudt",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_it_03",
+    "name": "고려대 멋쟁이사자처럼 (LIKELION KU)",
+    "category": ["IT/개발", "창업"],
+    "college": "전체",
+    "type": "연합/중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["웹서비스", "스타트업", "해커톤", "비전공자코딩", "아이디어구현"],
+    "description_short": "내 아이디어를 직접 웹 서비스로 런칭하고 빌딩하는 프로그래밍/창업 동아리",
+    "external_link": "https://klub.kr/club/likelion-ku",
+    "recruit_period": "학기별 정기 모집"
+  },
+  {
+    "id": "club_it_04",
+    "name": "고파스 (Koreapas Labs)",
+    "category": ["IT/개발", "미디어/방송"],
+    "college": "전체",
+    "type": "자치동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": ["커뮤니티", "캠퍼스웹", "서버운영", "고파스", "서비스개발"],
+    "description_short": "고려대 최대 커뮤니티 고파스 서비스 개선 및 캠퍼스 데이터 프로젝트",
+    "external_link": "https://klub.kr/club/koreapas",
+    "recruit_period": "상시 및 9월 초"
+  },
+  {
+    "id": "club_it_05",
+    "name": "KAI (고려대학교 인공지능학회)",
+    "category": ["IT/개발", "학술"],
+    "college": "정보대학",
+    "type": "학술소모임",
+    "traits": {
+      "sociability": 2,
+      "activity": 1,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": ["딥러닝", "LLM", "컴퓨터비전", "논문리딩", "AI연구"],
+    "description_short": "최신 생성형 AI 및 딥러닝 논문 연구와 산학 프로젝트를 진행하는 학회",
+    "external_link": "https://klub.kr/club/kai",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_art_01",
+    "name": "고대극예술연구회 (고극)",
+    "category": ["예술/공연"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": ["연극", "배우", "무대연출", "음향조명", "연기", "정기공연"],
+    "description_short": "1950년대부터 이어진 고려대 유서 깊은 중앙 연극 동아리",
+    "external_link": "https://klub.kr/club/gogeuk",
+    "recruit_period": "개강 첫 주 모집"
+  },
+  {
+    "id": "club_art_02",
+    "name": "고려대학교 중앙 락밴드 1905 (일맥)",
+    "category": ["예술/공연"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": ["밴드", "기타", "드럼", "보컬", "베이스", "대동제버스킹", "합주"],
+    "description_short": "열정적인 합주와 축제 무대를 함께 만드는 고려대 대표 락밴드",
+    "external_link": "https://klub.kr/club/ilmaek",
+    "recruit_period": "9월 초 모집"
+  },
+  {
+    "id": "club_art_03",
+    "name": "KULC (고려대학교 스트릿댄스 동아리)",
+    "category": ["예술/공연", "스포츠"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["스트릿댄스", "힙합", "팝핀", "걸스힙합", "안무", "버스킹", "배틀"],
+    "description_short": "다양한 스트릿댄스 장르를 배우고 캠퍼스 공연을 펼치는 댄스 동아리",
+    "external_link": "https://klub.kr/club/kulc",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_art_04",
+    "name": "고려대학교 관악부 (KU Wind Orchestra)",
+    "category": ["예술/공연"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": ["관악기", "오케스트라", "플루트", "클라리넷", "트럼펫", "정기연주회"],
+    "description_short": "금관·목관·타악기가 어우러져 웅장한 하모니를 만드는 오케스트라",
+    "external_link": "https://klub.kr/club/kuwind",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_art_05",
+    "name": "노래마당 (통기타 & 어쿠스틱)",
+    "category": ["예술/공연", "취미/친목"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 2,
+      "expertise": 3
+    },
+    "keywords": ["통기타", "어쿠스틱", "보컬", "자작곡", "민주광장버스킹", "감성"],
+    "description_short": "통기타 선율과 따뜻한 목소리로 민주광장을 채우는 어쿠스틱 음악 동아리",
+    "external_link": "https://klub.kr/club/songmadang",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_art_06",
+    "name": "크림슨 스트링스 (KU Crimson Strings)",
+    "category": ["예술/공연"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": ["현악", "바이올린", "첼로", "비올라", "클래식", "실내악"],
+    "description_short": "현악 4중주 및 챔버 오케스트라로 클래식 음악을 연주하는 동아리",
+    "external_link": "https://klub.kr/club/crimsonstrings",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_art_07",
+    "name": "호랑이화폭 (미술 & 일러스트레이션)",
+    "category": ["예술/공연", "취미/친목"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 2,
+      "expertise": 3
+    },
+    "keywords": ["드로잉", "유화", "수채화", "디지털드로잉", "전시회", "굿즈제작"],
+    "description_short": "그림을 사랑하는 호랑이들이 모여 정기 전시회와 창작을 하는 미술 동아리",
+    "external_link": "https://klub.kr/club/tigerart",
+    "recruit_period": "상시 및 9월 초"
+  },
+  {
+    "id": "club_academic_01",
+    "name": "피그말리온 (경영전략학회)",
+    "category": ["학술", "창업"],
+    "college": "경영대학",
+    "type": "단과대학회",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 5,
+      "expertise": 5
+    },
+    "keywords": ["경영전략", "컨설팅", "케이스스터디", "전략기획", "PT", "비즈니스"],
+    "description_short": "기업 문제 해결 케이스 스터디 및 비즈니스 전략을 연구하는 명문 학회",
+    "external_link": "https://klub.kr/club/pygmalion",
+    "recruit_period": "8월 말 리크루팅"
+  },
+  {
+    "id": "club_academic_02",
+    "name": "고려대학교 토론학회 (KUDC)",
+    "category": ["학술"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 5,
+      "expertise": 4
+    },
+    "keywords": ["의회식토론", "디베이트", "시사이슈", "스피치", "전국대회", "논리"],
+    "description_short": "국내외 시사 이슈를 바탕으로 의회식 토론과 논리적 스피치를 훈련하는 학회",
+    "external_link": "https://klub.kr/club/kudc",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_academic_03",
+    "name": "고려대 모의유엔총회 (KUMUN)",
+    "category": ["학술"],
+    "college": "정경대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 5,
+      "expertise": 5
+    },
+    "keywords": ["국제정치", "외교", "모의유엔", "영어토론", "글로벌이슈", "대사단"],
+    "description_short": "국제 사회의 현안을 외교관의 시각으로 모의 회의 및 협상하는 학술 단체",
+    "external_link": "https://klub.kr/club/kumun",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_academic_04",
+    "name": "KUIC (고려대학교 가치투자동아리)",
+    "category": ["학술"],
+    "college": "경영대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": ["주식투자", "재무제표", "기업분석", "가치투자", "금융공학", "리서치"],
+    "description_short": "철저한 기업 가치 분석과 산업 리서치를 바탕으로 실전 투자를 연구하는 동아리",
+    "external_link": "https://klub.kr/club/kuic",
+    "recruit_period": "9월 초 정기선발"
+  },
+  {
+    "id": "club_academic_05",
+    "name": "고려대 천문연구회 (KUAA)",
+    "category": ["학술", "취미/친목"],
+    "college": "이과대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 2,
+      "expertise": 4
+    },
+    "keywords": ["천체관측", "망원경", "별자리", "은하수", "야간관측회", "우주과학"],
+    "description_short": "망원경으로 밤하늘을 관측하고 별자리 캠프를 떠나는 천문 연구 동아리",
+    "external_link": "https://klub.kr/club/kuaa",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_sport_01",
+    "name": "고려대학교 국궁회/활쏘기회",
+    "category": ["스포츠"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 4,
+      "creativity": 2,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": ["국궁", "활쏘기", "전통무예", "집중력", "정궁", "심신수련"],
+    "description_short": "전통 국궁을 연마하며 고요한 집중과 명중의 쾌감을 느끼는 동아리",
+    "external_link": "https://klub.kr/club/kugung",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_sport_02",
+    "name": "고려대 중앙 축구동아리 FC KU",
+    "category": ["스포츠"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["축구", "풋살", "총장배", "고연전응원", "정기운동", "체력단련"],
+    "description_short": "녹지운동장에서 함께 땀 흘리며 대학 축구리그 우승을 노리는 축구 동아리",
+    "external_link": "https://klub.kr/club/fcku",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_sport_03",
+    "name": "고려대학교 중앙 농구부 (KUBBA)",
+    "category": ["스포츠"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 3,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["농구", "3on3", "화정체육관", "대학농구리그", "팀플레이"],
+    "description_short": "화정체육관에서 농구를 즐기고 아마추어 대학 리그에 출전하는 중앙 농구부",
+    "external_link": "https://klub.kr/club/kubba",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_sport_04",
+    "name": "고려대 스노우보드 & 서핑 동아리 (KUSAC)",
+    "category": ["스포츠", "취미/친목"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 3
+    },
+    "keywords": ["스노우보드", "서핑", "웨이크보드", "익스트림스포츠", "시즌방", "여행"],
+    "description_short": "여름엔 양양 서핑, 겨울엔 슬로프 스노우보드를 즐기는 익스트림 레포츠 동아리",
+    "external_link": "https://klub.kr/club/kusac",
+    "recruit_period": "학기 초"
+  },
+  {
+    "id": "club_sport_05",
+    "name": "고려대학교 산악부 (KUMC)",
+    "category": ["스포츠"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": ["등산", "암벽등반", "백패킹", "히말라야", "트레킹", "자연"],
+    "description_short": "북한산 암벽부터 지리산 종주, 해외 고산 원정까지 도전하는 역사 깊은 산악부",
+    "external_link": "https://klub.kr/club/kumc",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_volunteer_01",
+    "name": "고려대학교 로타랙트 (KU Rotaract)",
+    "category": ["봉사"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 2
+    },
+    "keywords": ["지역봉사", "멘토링", "환경캠페인", "기획봉사", "친목", "사회공헌"],
+    "description_short": "청소년 멘토링 및 창의적인 사회봉사 프로젝트를 기획하고 실행하는 동아리",
+    "external_link": "https://klub.kr/club/rotaract",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_volunteer_02",
+    "name": "햇살 (고려대 야학 봉사단)",
+    "category": ["봉사", "학술"],
+    "college": "사범대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": ["교육봉사", "야학", "검정고시", "배움나눔", "선생님", "사회연대"],
+    "description_short": "배움의 기회를 놓친 성인 학습자분들께 검정고시 수업을 지원하는 야학 동아리",
+    "external_link": "https://klub.kr/club/haetsal",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_volunteer_03",
+    "name": "고려대학교 유니세프 (KUNICEF)",
+    "category": ["봉사", "미디어/방송"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": ["아동인권", "캠페인기획", "모금행사", "카드뉴스제작", "글로벌나눔"],
+    "description_short": "어린이 권리 옹호 캠페인과 창의적인 펀드레이징 행사를 기획하는 동아리",
+    "external_link": "https://klub.kr/club/kunicef",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_media_01",
+    "name": "KUBS (고려대학교 교육방송국)",
+    "category": ["미디어/방송"],
+    "college": "미디어학부",
+    "type": "언론사/중앙기구",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["방송제작", "아나운서", "영상PD", "기술엔지니어", "고연전중계", "석탑방송제"],
+    "description_short": "교내 정규 오디오/영상 방송 및 고연전 생중계를 제작하는 고려대 대표 방송국",
+    "external_link": "https://klub.kr/club/kubs",
+    "recruit_period": "8월 말 수습기자 모집"
+  },
+  {
+    "id": "club_media_02",
+    "name": "고대신문사 (The Korea University News)",
+    "category": ["미디어/방송", "학술"],
+    "college": "전체",
+    "type": "언론사/중앙기구",
+    "traits": {
+      "sociability": 3,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 5
+    },
+    "keywords": ["신문기자", "취재기사", "칼럼", "대학언론", "사진기자", "시사보도"],
+    "description_short": "1947년 창간되어 대학 사회와 시대를 기록하는 고려대학교 정론 신문사",
+    "external_link": "https://klub.kr/club/kudanews",
+    "recruit_period": "학기 초 수습기자 모집"
+  },
+  {
+    "id": "club_media_03",
+    "name": "KUTV (고려대학교 텔레비전방송국)",
+    "category": ["미디어/방송"],
+    "college": "미디어학부",
+    "type": "언론사/중앙기구",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["영상제작", "유튜브콘텐츠", "웹드라마", "다큐멘터리", "영상편집", "카메라"],
+    "description_short": "트렌디한 웹 콘텐츠, 대학 뉴스, 예능 및 다큐멘터리를 제작하는 영상 방송국",
+    "external_link": "https://klub.kr/club/kutv",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_hobby_01",
+    "name": "CATUS (고려대학교 보드게임 동아리)",
+    "category": ["취미/친목"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 2,
+      "expertise": 3
+    },
+    "keywords": ["보드게임", "전략게임", "파티게임", "마피아", "친목도모", "방탈출"],
+    "description_short": "수백 종의 보드게임을 함께 즐기며 두뇌 싸움과 즐거운 친목을 다지는 동아리",
+    "external_link": "https://klub.kr/club/catus",
+    "recruit_period": "상시 및 9월 초"
+  },
+  {
+    "id": "club_hobby_02",
+    "name": "고려대 여행동아리 (KU Travel Club)",
+    "category": ["취미/친목"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": ["국내여행", "맛집탐방", "글램핑", "내일로", "감성여행", "추억만들기"],
+    "description_short": "주말마다 전국 방방곡곡 숨은 명소와 맛집을 찾아 떠나는 힐링 여행 동아리",
+    "external_link": "https://klub.kr/club/kutravel",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_hobby_03",
+    "name": "KULCUS (고려대 와인 & 미식 소사이어티)",
+    "category": ["취미/친목"],
+    "college": "전체",
+    "type": "학술/소모임",
+    "traits": {
+      "sociability": 5,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": ["와인테이스팅", "페어링", "미식탐방", "소믈리에", "파인다이닝", "네트워킹"],
+    "description_short": "다양한 와인과 음식 페어링을 배우며 고급스러운 미식을 즐기는 동아리",
+    "external_link": "https://klub.kr/club/wineku",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "club_startup_01",
+    "name": "인사이더스 (Insiders - 고려대 창업학회)",
+    "category": ["창업", "학술"],
+    "college": "경영대학",
+    "type": "연합/중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 5,
+      "expertise": 4
+    },
+    "keywords": ["스타트업창업", "린스타트업", "IR피칭", "VC투자", "비즈니스모델", "빌더"],
+    "description_short": "실제 사업 아이템을 런칭하고 초기 투자를 유치하는 실전 스타트업 창업 학회",
+    "external_link": "https://klub.kr/club/insiders",
+    "recruit_period": "8월 말 리크루팅"
+  },
+  {
+    "id": "club_religion_01",
+    "name": "고려대학교 가톨릭학생회 (KUC)",
+    "category": ["종교", "봉사"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": ["미사", "신앙나눔", "피정", "친목", "봉사", "안암학사"],
+    "description_short": "캠퍼스 안에서 신앙과 따뜻한 공동체를 나누며 함께 성장하는 가톨릭 모임",
+    "external_link": "https://klub.kr/club/kucatholic",
+    "recruit_period": "상시 모집"
+  },
+  {
+    "id": "club_religion_02",
+    "name": "고려대 기독학생회 (IVF / CCC)",
+    "category": ["종교"],
+    "college": "전체",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": ["성경스터디", "찬양", "공동체", "캠퍼스전도", "소그룹모임"],
+    "description_short": "캠퍼스 속에서 기독교 가치관을 탐구하고 서로를 응원하는 신앙 동아리",
+    "external_link": "https://klub.kr/club/kuchristian",
+    "recruit_period": "상시 모집"
+  },
+  {
+    "id": "club_social_01",
+    "name": "사회과학연구회 (사연)",
+    "category": ["사회과학", "학술"],
+    "college": "정경대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 3,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": ["사회학", "정치비평", "학술세미나", "사회연대", "학술제", "독서토론"],
+    "description_short": "한국 사회의 구조적 문제와 현대 사상을 비판적으로 성찰하는 학술 세미나 동아리",
+    "external_link": "https://klub.kr/club/sayeon",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "club_social_02",
+    "name": "고려대학교 모의국회 (KUP)",
+    "category": ["사회과학", "학술"],
+    "college": "정경대학",
+    "type": "중앙동아리",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 5,
+      "expertise": 4
+    },
+    "keywords": ["법안발의", "의회민주주의", "정치외교", "입법정책", "국회본회의시뮬레이션"],
+    "description_short": "대한민국 국회의 의사결정과 법안 심사를 직접 시뮬레이션하는 정책 학술 동아리",
+    "external_link": "https://klub.kr/club/kup",
+    "recruit_period": "8월 말 ~ 9월 초"
+  }
+]
