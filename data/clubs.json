@@ -2294,5 +2294,590 @@
     "description_short": "카메라 렌즈에 낭만과 일상을 담아내는 유서 깊은 중앙 사진 동아리",
     "external_link": "https://app.club.ku.ster.ws/club-intro?division=3",
     "recruit_period": "2026-2학기 가두모집 (9월 초)"
+  },
+  {
+    "id": "ku_aegi_01",
+    "name": "데드라인즈",
+    "category": [
+      "예술/공연",
+      "취미/친목"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "만화",
+      "애니메이션",
+      "일러스트",
+      "서브컬처",
+      "이공계동아리",
+      "드로잉",
+      "회지"
+    ],
+    "description_short": "애기능 만화·애니메이션·일러스트 창작 및 서브컬처 탐구 동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.1",
+    "recruit_period": "9월 초 신입 모집"
+  },
+  {
+    "id": "ku_aegi_02",
+    "name": "열그림",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 2,
+      "expertise": 4
+    },
+    "keywords": [
+      "미술",
+      "회화",
+      "수채화",
+      "유화",
+      "드로잉",
+      "이공계미술",
+      "전시회"
+    ],
+    "description_short": "그림을 사랑하는 이공계 학우들이 모여 회화와 드로잉을 창작하는 미술동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.2",
+    "recruit_period": "9월 초 모집"
+  },
+  {
+    "id": "ku_aegi_03",
+    "name": "플립 (FLIP)",
+    "category": [
+      "스포츠"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 4,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 3,
+      "expertise": 4
+    },
+    "keywords": [
+      "탁구",
+      "탁구대회",
+      "스매시",
+      "라켓",
+      "이공계스포츠",
+      "운동"
+    ],
+    "description_short": "신나는 랠리와 강력한 드라이브로 스트레스를 날리는 애기능 탁구동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.3",
+    "recruit_period": "상시 및 개강 초"
+  },
+  {
+    "id": "ku_aegi_04",
+    "name": "일상다반사",
+    "category": [
+      "취미/친목"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 2,
+      "expertise": 3
+    },
+    "keywords": [
+      "다도",
+      "전통차",
+      "홍차",
+      "티타임",
+      "힐링",
+      "친목",
+      "디저트",
+      "소모임"
+    ],
+    "description_short": "따뜻한 차 한 잔과 함께 담소를 나누며 힐링하는 애기능 다도·티타임 동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.4",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_05",
+    "name": "호농회",
+    "category": [
+      "스포츠"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "농구",
+      "농구코트",
+      "3on3",
+      "애기능농구",
+      "체육대회",
+      "이공계"
+    ],
+    "description_short": "애기능 농구 코트를 뜨겁게 달구는 이공계 대표 농구동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.5",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "ku_aegi_06",
+    "name": "Deluxe (디럭스)",
+    "category": [
+      "스포츠"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "야구",
+      "사회인야구",
+      "캐치볼",
+      "홈런",
+      "이공계야구",
+      "녹지운동장"
+    ],
+    "description_short": "짜릿한 타격과 승리를 향해 함께 달리는 이공계 애기능 야구동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.6",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_07",
+    "name": "Tigris (티그리스)",
+    "category": [
+      "스포츠"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (문예체육)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 2,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "축구",
+      "풋살",
+      "총장배",
+      "이공계축구",
+      "녹지운동장",
+      "팀워크"
+    ],
+    "description_short": "녹지운동장을 누비며 전우애를 다지는 이공계 애기능 축구동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-1.7",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_08",
+    "name": "복음자리",
+    "category": [
+      "종교"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (사회종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 2,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "가톨릭",
+      "미사",
+      "신앙",
+      "애기능",
+      "친목",
+      "피정"
+    ],
+    "description_short": "이공계 캠퍼스에서 신앙과 따뜻한 나눔을 함께하는 가톨릭 동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-2.1",
+    "recruit_period": "상시 모집"
+  },
+  {
+    "id": "ku_aegi_09",
+    "name": "햇빛촌",
+    "category": [
+      "봉사"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (사회종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "야학",
+      "교육봉사",
+      "검정고시",
+      "사회공헌",
+      "선생님",
+      "나눔"
+    ],
+    "description_short": "사랑과 헌신으로 교육 기회를 나누는 애기능 야학 교육봉사동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-2.2",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_10",
+    "name": "ICCUS",
+    "category": [
+      "종교"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (사회종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 3,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "기독교",
+      "선교",
+      "성경공부",
+      "기도모임",
+      "이공계기독교"
+    ],
+    "description_short": "이공계 학우들이 모여 성경을 연구하고 교제하는 기독교 학생회",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-2.3",
+    "recruit_period": "상시 모집"
+  },
+  {
+    "id": "ku_aegi_11",
+    "name": "KU-HOPE",
+    "category": [
+      "봉사"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (사회종교)",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 3
+    },
+    "keywords": [
+      "희망브리지",
+      "재난구호",
+      "집수리봉사",
+      "벽화봉사",
+      "사회공헌",
+      "멘토링"
+    ],
+    "description_short": "재난 구호 및 취약계층 주거·생활 지원을 실천하는 희망브리지 봉사동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-2.4",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_12",
+    "name": "네비게이토 (애기능)",
+    "category": [
+      "종교"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (사회종교)",
+    "traits": {
+      "sociability": 4,
+      "activity": 2,
+      "creativity": 2,
+      "leadership": 3,
+      "expertise": 2
+    },
+    "keywords": [
+      "기독교",
+      "제자훈련",
+      "성경암송",
+      "캠퍼스선교",
+      "말씀묵상"
+    ],
+    "description_short": "말씀 묵상과 1:1 제자 훈련을 통해 신앙을 다지는 기독교 동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-2.5",
+    "recruit_period": "상시 모집"
+  },
+  {
+    "id": "ku_aegi_13",
+    "name": "1905 (이공계 밴드)",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "락밴드",
+      "일렉기타",
+      "드럼",
+      "보컬",
+      "베이스",
+      "합주",
+      "애기능밴드",
+      "정기공연"
+    ],
+    "description_short": "고려대 이공계를 대표하는 열정 넘치는 정통 락밴드 1905",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-3.1",
+    "recruit_period": "9월 초 정기 모집"
+  },
+  {
+    "id": "ku_aegi_14",
+    "name": "고대풍물패",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 4,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "풍물",
+      "사물놀이",
+      "전통음악",
+      "꽹과리",
+      "장구",
+      "대동제",
+      "애기능벌"
+    ],
+    "description_short": "신명나는 가락과 꽹과리·장구로 애기능벌을 울리는 이공계 풍물패",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-3.2",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_15",
+    "name": "하날다래",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 4,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "연극",
+      "배우",
+      "무대연출",
+      "연기",
+      "정기공연",
+      "대본리딩",
+      "애기능연극"
+    ],
+    "description_short": "무대 위에서 살아 숨쉬는 감동의 드라마를 만드는 애기능 연극동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-3.4",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_16",
+    "name": "OnVoicing (온보이싱)",
+    "category": [
+      "예술/공연",
+      "미디어/방송"
+    ],
+    "college": "전체",
+    "type": "애기능동아리 (연행예술)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "성우",
+      "더빙",
+      "보이스액팅",
+      "오디오드라마",
+      "라디오",
+      "목소리연기",
+      "애니더빙"
+    ],
+    "description_short": "목소리로 캐릭터에 생명을 불어넣는 고려대학교 중앙 성우·더빙 동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-3.5",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_17",
+    "name": "TRUSS (트러스)",
+    "category": [
+      "예술/공연"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "하드락",
+      "헤비메탈",
+      "일렉기타",
+      "드럼",
+      "메탈밴드",
+      "애기능밴드",
+      "라이브합주"
+    ],
+    "description_short": "강렬한 하드락과 헤비메탈 사운드로 심장을 뛰게 하는 이공계 메탈 밴드",
+    "external_link": "https://namu.wiki/w/TRUSS(%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90%20%EB%8F%99%EC%95%84%EB%A6%AC)",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_18",
+    "name": "0Kcal (오칼)",
+    "category": [
+      "예술/공연",
+      "스포츠"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (연행예술)",
+    "traits": {
+      "sociability": 5,
+      "activity": 5,
+      "creativity": 5,
+      "leadership": 4,
+      "expertise": 4
+    },
+    "keywords": [
+      "댄스",
+      "케이팝댄스",
+      "스트릿댄스",
+      "커버댄스",
+      "칼군무",
+      "공연",
+      "애기능댄스"
+    ],
+    "description_short": "폭발적인 에너지와 완벽한 칼군무를 선보이는 애기능 대표 댄스 크루",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-3.8",
+    "recruit_period": "8월 말 ~ 9월 초"
+  },
+  {
+    "id": "ku_aegi_19",
+    "name": "KUAAA (애기능 천문연구회)",
+    "category": [
+      "학술",
+      "취미/친목"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (학술학문)",
+    "traits": {
+      "sociability": 4,
+      "activity": 3,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "천문학",
+      "천체관측",
+      "망원경",
+      "별자리",
+      "은하수",
+      "우주과학",
+      "관측회",
+      "애기능천문대"
+    ],
+    "description_short": "애기능 천문대 망원경으로 밤하늘의 별과 은하를 관측하는 고려대 천문연구회",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-4.1",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_20",
+    "name": "코기토 (Cogito)",
+    "category": [
+      "학술",
+      "사회과학"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (학술학문)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 4,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "철학",
+      "인문학",
+      "사회비평",
+      "토론",
+      "고전강독",
+      "과학철학",
+      "이공계인문학"
+    ],
+    "description_short": "기술과 과학 시대에 인간과 사회, 철학을 사유하는 이공계 철학학술동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-4.2",
+    "recruit_period": "9월 초"
+  },
+  {
+    "id": "ku_aegi_21",
+    "name": "PAINS (파인스)",
+    "category": [
+      "학술"
+    ],
+    "college": "이과대/공과대/정보대",
+    "type": "애기능동아리 (학술학문)",
+    "traits": {
+      "sociability": 3,
+      "activity": 2,
+      "creativity": 5,
+      "leadership": 3,
+      "expertise": 5
+    },
+    "keywords": [
+      "물리학",
+      "순수과학",
+      "자연과학",
+      "학술세미나",
+      "이과대학",
+      "공과대학",
+      "연구"
+    ],
+    "description_short": "순수 과학과 물리·수학의 원리를 탐구하고 세미나를 여는 이공계 학술동아리",
+    "external_link": "https://namu.wiki/w/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EC%95%84%EB%A6%AC/%EC%95%A0%EA%B8%B0%EB%8A%A5%EB%8F%99%EC%95%84%EB%A6%AC%EC%97%B0%ED%95%A9%ED%9A%8C%20%EC%86%8C%EC%86%8D%20%EB%8F%99%EC%95%84%EB%A6%AC#s-4.3",
+    "recruit_period": "8월 말 ~ 9월 초"
   }
 ]
