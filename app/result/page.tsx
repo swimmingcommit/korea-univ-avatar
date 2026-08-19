@@ -99,7 +99,7 @@ export default function ResultPage() {
           당신의 동아리 자아는 <span className="text-ku-crimson">&apos;{avatar.title}&apos;</span>!
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
-          아바타를 클릭하면 음성과 함께 왁뿌 모션으로 대사를 읽어줍니다 🐯
+          아바타를 클릭하거나 당기면 말랑말랑 쫀득하게 꾹꾹 눌러집니다 🐾
         </p>
       </div>
 
