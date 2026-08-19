@@ -28,6 +28,7 @@ export interface AvatarConfiguration {
     backgroundType: "stage_spotlight" | "night_coding_room" | "peace_nature" | "presentation_hall" | "central_plaza_track" | "chamsali_adventure" | "quiet_library_study" | "ku_main_hall_front";
     effectType: "stage_lights" | "green_matrix" | "sprout_leaves" | "presentation_chart" | "fire_stamina" | "adventure_stars" | "coffee_aroma" | "freshman_twinkle";
   };
+  plushImageUrl: string;
   stats: {
     passion: number;
     sociability: number;
@@ -158,6 +159,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "stage_spotlight",
           effectType: "stage_lights",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 98,
           sociability: 85,
@@ -194,6 +196,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "night_coding_room",
           effectType: "green_matrix",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 88,
           sociability: 35,
@@ -230,6 +233,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "peace_nature",
           effectType: "sprout_leaves",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 85,
           sociability: 96,
@@ -266,6 +270,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "presentation_hall",
           effectType: "presentation_chart",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 92,
           sociability: 90,
@@ -302,6 +307,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "central_plaza_track",
           effectType: "fire_stamina",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 99,
           sociability: 82,
@@ -338,6 +344,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "chamsali_adventure",
           effectType: "adventure_stars",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 85,
           sociability: 95,
@@ -374,6 +381,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "quiet_library_study",
           effectType: "coffee_aroma",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 70,
           sociability: 30,
@@ -411,6 +419,7 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           backgroundType: "ku_main_hall_front",
           effectType: "freshman_twinkle",
         },
+        plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
           passion: 88,
           sociability: 75,

@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Volume2, VolumeX, Sparkles, MessageSquareQuote, RefreshCw } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Volume2, VolumeX, Sparkles, RefreshCw, Layers, Sparkle } from "lucide-react";
 import { AvatarConfiguration } from "@/lib/avatarEngine";
 import {
   BackgroundLayer,
@@ -22,6 +23,7 @@ interface AvatarCanvasProps {
   interactive?: boolean;
   onRefresh?: () => void;
   showTitle?: boolean;
+  defaultMode?: "plush" | "svg";
 }
 
 export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
@@ -30,7 +32,9 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
   interactive = true,
   onRefresh,
   showTitle = true,
+  defaultMode = "plush",
 }) => {
+  const [viewMode, setViewMode] = useState<"plush" | "svg">(defaultMode);
   const [isBlinking, setIsBlinking] = useState(false);
   const [isTalking, setIsTalking] = useState(false);
   const [mouthFrame, setMouthFrame] = useState(0); // 0, 1, 2
@@ -38,7 +42,7 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
   const [showSpeechBubble, setShowSpeechBubble] = useState(true);
   const speechIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 1. Idle Blinking Loop
+  // 1. Idle Blinking Loop (SVG mode)
   useEffect(() => {
     const blinkInterval = setInterval(() => {
       setIsBlinking(true);
@@ -100,7 +104,6 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
 
       window.speechSynthesis.speak(utterance);
     } else {
-      // Fallback timer if speech synthesis is not supported
       setTimeout(() => {
         setIsTalking(false);
         setIsTtsPlaying(false);
@@ -136,11 +139,11 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
             isTalking
               ? {
                   y: [0, -6, 0, -4, 0],
-                  scale: [1, 1.02, 1, 1.015, 1],
-                  rotate: [0, -1, 1, -1, 0],
+                  scale: [1, 1.025, 1, 1.018, 1],
+                  rotate: [0, -1.2, 1.2, -1, 0],
                 }
               : {
-                  y: [0, -4, 0],
+                  y: [0, -5, 0],
                 }
           }
           transition={
@@ -149,7 +152,7 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
               : { repeat: Infinity, duration: 3.5, ease: "easeInOut" }
           }
           onClick={handleAvatarClick}
-          className={`relative rounded-3xl overflow-hidden shadow-2xl transition-transform cursor-pointer border-4 border-white/80 hover:shadow-ku-crimson/25 ${
+          className={`relative rounded-3xl overflow-hidden shadow-2xl transition-transform cursor-pointer border-4 border-white/90 hover:shadow-ku-crimson/30 bg-slate-900 ${
             interactive ? "hover:scale-[1.02] active:scale-[0.98]" : ""
           }`}
           style={{
@@ -160,43 +163,64 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
           }}
           title={interactive ? "클릭해서 호랑이 목소리 듣기 (왁뿌 모드)" : undefined}
         >
-          {/* SVG Composition */}
-          <svg
-            viewBox="0 0 400 400"
-            className="w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Layer 0: Background */}
-            <BackgroundLayer config={config} />
+          {viewMode === "plush" ? (
+            /* 3D Plush Doll Keychain View */
+            <div className="relative w-full h-full">
+              <Image
+                src={config.plushImageUrl || `/avatars/plush_${config.archetypeId}.png`}
+                alt={config.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover transition-transform duration-500 hover:scale-105"
+              />
+              {/* Soft Ambient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            </div>
+          ) : (
+            /* Vector SVG View */
+            <svg
+              viewBox="0 0 400 400"
+              className="w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <BackgroundLayer config={config} />
+              <EffectsLayer config={config} />
+              <TigerEarsLayer config={config} />
+              <HeadAndFaceLayer config={config} />
+              <EyesLayer config={config} isBlinking={isBlinking} />
+              <MouthLayer config={config} isTalking={isTalking} mouthFrame={mouthFrame} />
+              <HairAndHeadwearLayer config={config} />
+              <OutfitLayer config={config} />
+              <PropsLayer config={config} />
+            </svg>
+          )}
 
-            {/* Layer 1: Ambient Effects */}
-            <EffectsLayer config={config} />
-
-            {/* Layer 2: Tiger Ears */}
-            <TigerEarsLayer config={config} />
-
-            {/* Layer 3: Head & Cheeks */}
-            <HeadAndFaceLayer config={config} />
-
-            {/* Layer 4: Eyes (with Blinking) */}
-            <EyesLayer config={config} isBlinking={isBlinking} />
-
-            {/* Layer 5: Mouth (with Talking Lip Sync) */}
-            <MouthLayer config={config} isTalking={isTalking} mouthFrame={mouthFrame} />
-
-            {/* Layer 6: Hair & Headwear */}
-            <HairAndHeadwearLayer config={config} />
-
-            {/* Layer 7: Outfit */}
-            <OutfitLayer config={config} />
-
-            {/* Layer 8: Prop / Accessories */}
-            <PropsLayer config={config} />
-          </svg>
+          {/* Mode Switcher Button on Top Left */}
+          {interactive && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setViewMode((prev) => (prev === "plush" ? "svg" : "plush"));
+              }}
+              className="absolute top-3 left-3 bg-black/65 hover:bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-white flex items-center gap-1.5 shadow-md transition-all hover:scale-105"
+              title="털인형 키링 모드 / 일러스트 모드 전환"
+            >
+              {viewMode === "plush" ? (
+                <>
+                  <span>🧸 털인형 키링</span>
+                </>
+              ) : (
+                <>
+                  <span>🎨 일러스트</span>
+                </>
+              )}
+            </button>
+          )}
 
           {/* Interactive Wakppu Badge overlay */}
           {interactive && (
-            <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] text-white flex items-center gap-1.5 shadow-md">
+            <div className="absolute bottom-3 left-3 bg-black/65 backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-white flex items-center gap-1.5 shadow-md">
               {isTtsPlaying ? (
                 <>
                   <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
@@ -205,15 +229,15 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
               ) : (
                 <>
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>터치하여 말하기</span>
+                  <span className="font-medium">터치하여 말하기</span>
                 </>
               )}
             </div>
           )}
 
           {/* Category Pill on top right */}
-          <div className="absolute top-3 right-3 bg-ku-crimson/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white shadow-md flex items-center gap-1">
-            <span>🐯 KU</span>
+          <div className="absolute top-3 right-3 bg-ku-crimson/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-white shadow-md flex items-center gap-1">
+            <span>🐯 KU 2026</span>
           </div>
         </motion.div>
 
