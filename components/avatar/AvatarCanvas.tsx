@@ -232,6 +232,43 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
               />
               {/* Soft Ambient Shadow Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+
+              {/* Dynamic 3D Plush Custom Accessories based on user college & interests */}
+              <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+                {/* College specific accessory pin on chest */}
+                {config.customOverlay?.collegeName?.includes("의과") && (
+                  <div className="absolute top-[52%] left-[28%] bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full shadow-lg border border-red-200 text-xs font-black animate-pulse flex items-center gap-1">
+                    <span>🩺</span>
+                    <span className="text-[10px] text-red-700 font-bold">MED</span>
+                  </div>
+                )}
+                {config.customOverlay?.collegeName?.includes("경영") && (
+                  <div className="absolute top-[52%] left-[28%] bg-amber-50/90 backdrop-blur-sm px-2 py-1 rounded-full shadow-lg border border-amber-300 text-xs font-black flex items-center gap-1">
+                    <span>💼</span>
+                    <span className="text-[10px] text-amber-900 font-bold">KUBS</span>
+                  </div>
+                )}
+                {config.customOverlay?.collegeName?.includes("정보") && (
+                  <div className="absolute top-[52%] left-[28%] bg-emerald-50/90 backdrop-blur-sm px-2 py-1 rounded-full shadow-lg border border-emerald-300 text-xs font-black flex items-center gap-1">
+                    <span>💻</span>
+                    <span className="text-[10px] text-emerald-900 font-bold">DEV</span>
+                  </div>
+                )}
+
+                {/* Interest specific floating props */}
+                {config.customOverlay?.interestKeywords?.some((k) => k.includes("춤") || k.includes("댄스")) && (
+                  <div className="absolute bottom-[22%] right-[18%] bg-rose-500 text-white px-2 py-1 rounded-xl shadow-xl text-xs font-black flex items-center gap-1 animate-bounce">
+                    <span>💃</span>
+                    <span className="text-[10px]">DANCE</span>
+                  </div>
+                )}
+                {config.customOverlay?.interestKeywords?.some((k) => k.includes("연애") || k.includes("소개팅") || k.includes("사랑")) && (
+                  <div className="absolute top-[28%] right-[22%] bg-pink-500 text-white px-2 py-1 rounded-full shadow-xl text-xs font-black flex items-center gap-1 animate-pulse">
+                    <span>💖</span>
+                    <span className="text-[10px]">LOVE</span>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             /* Vector SVG View */
