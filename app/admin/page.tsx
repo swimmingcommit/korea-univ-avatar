@@ -44,6 +44,7 @@ export default function AdminClubsPage() {
 
   // Editing state
   const [editingClub, setEditingClub] = useState<Club | null>(null);
+  const [keywordsInput, setKeywordsInput] = useState("");
   const [isAddingNew, setIsAddingNew] = useState(false);
   const [showJsonModal, setShowJsonModal] = useState(false);
   const [jsonInputText, setJsonInputText] = useState("");
@@ -103,6 +104,7 @@ export default function AdminClubsPage() {
 
   const handleOpenEdit = (club: Club) => {
     setEditingClub({ ...club });
+    setKeywordsInput(club.keywords ? club.keywords.join(", ") : "");
     setIsAddingNew(false);
   };
 
@@ -126,6 +128,7 @@ export default function AdminClubsPage() {
       recruit_period: "9월 초",
     };
     setEditingClub(newClub);
+    setKeywordsInput("");
     setIsAddingNew(true);
   };
 
@@ -136,15 +139,26 @@ export default function AdminClubsPage() {
       return;
     }
 
+    const parsedKeywords = keywordsInput
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    const clubToSave: Club = {
+      ...editingClub,
+      keywords: parsedKeywords,
+    };
+
     let updatedList: Club[];
     if (isAddingNew) {
-      updatedList = [editingClub, ...clubs];
+      updatedList = [clubToSave, ...clubs];
     } else {
-      updatedList = clubs.map((c) => (c.id === editingClub.id ? editingClub : c));
+      updatedList = clubs.map((c) => (c.id === clubToSave.id ? clubToSave : c));
     }
 
     setClubs(updatedList);
     setEditingClub(null);
+    setKeywordsInput("");
     handleSaveToDisk(updatedList);
   };
 
@@ -662,13 +676,8 @@ export default function AdminClubsPage() {
                 </label>
                 <input
                   type="text"
-                  value={editingClub.keywords.join(", ")}
-                  onChange={(e) =>
-                    setEditingClub({
-                      ...editingClub,
-                      keywords: e.target.value.split(",").map((s) => s.trim()).filter(Boolean),
-                    })
-                  }
+                  value={keywordsInput}
+                  onChange={(e) => setKeywordsInput(e.target.value)}
                   placeholder="예: 웹개발, 해커톤, 풀스택, 코딩"
                   className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs"
                 />
