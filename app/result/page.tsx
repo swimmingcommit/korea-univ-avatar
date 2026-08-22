@@ -24,6 +24,7 @@ import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
 import { ClubCard } from "@/components/club/ClubCard";
 import { GeminiCard } from "@/components/gemini/GeminiCard";
 import { ShareModal } from "@/components/share/ShareModal";
+import { GeminiProCtaBanner } from "@/components/cta/GeminiProCtaBanner";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
 import { recommendClubs, RecommendationResult, UserPreferences } from "@/lib/recommendEngine";
 
@@ -253,7 +254,16 @@ export default function ResultPage() {
         </div>
       </div>
 
-      {/* 5. Bottom Share CTA Banner */}
+      {/* 5. Grand Finale: High-Converting Gemini Pro CTA Banner */}
+      <div>
+        <GeminiProCtaBanner
+          avatar={avatar}
+          topClub={recommendations[0]?.club}
+          randomInitial={true}
+        />
+      </div>
+
+      {/* 6. Bottom Share CTA Banner */}
       <div className="bg-slate-900 text-white rounded-3xl p-6 text-center space-y-3 shadow-lg">
         <p className="text-sm font-bold">
           친구나 동기에게도 어울리는 호랑이 동아리 아바타를 알려주세요! 🐯

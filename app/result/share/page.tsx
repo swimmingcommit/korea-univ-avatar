@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Sparkles, ArrowRight, Compass, ShieldCheck } from "lucide-react";
 import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
+import { GeminiProCtaBanner } from "@/components/cta/GeminiProCtaBanner";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
 import { UserPreferences } from "@/lib/recommendEngine";
 
@@ -39,6 +40,11 @@ export default function ShareViewPage() {
           <AvatarCanvas config={avatar} size={300} interactive={true} showTitle={true} />
         </div>
       )}
+
+      {/* Gemini Pro CTA Banner */}
+      <div>
+        <GeminiProCtaBanner avatar={avatar || undefined} randomInitial={true} />
+      </div>
 
       {/* CTA to make own avatar */}
       <div className="p-6 bg-slate-900 text-white rounded-3xl space-y-4 shadow-xl">
