@@ -56,6 +56,10 @@ export default function ResultPage() {
 
       setPrefs(userPrefs);
       const generated = generateAvatar(userPrefs);
+      const customAiImg = localStorage.getItem("ku_generated_avatar_image");
+      if (customAiImg) {
+        generated.plushImageUrl = customAiImg;
+      }
       setAvatar(generated);
 
       const recs = recommendClubs(userPrefs, 5);

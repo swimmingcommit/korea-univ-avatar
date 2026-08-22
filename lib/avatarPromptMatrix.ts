@@ -5,6 +5,20 @@ import { AvatarArchetypeId } from "./avatarEngine";
 export const BASE_TIGER_ANCHOR =
   "A 3D high-detail macro plush toy keychain of Korea University round yellow tiger mascot with open happy fanged smile (:D), cute round black nose, three stripes on cheeks, soft felt fuzzy fur texture, silver carabiner keyring ring attached on top head.";
 
+// College-specific touches
+const COLLEGE_TOUCHES: Record<string, string> = {
+  "의과대학/간호대학": "wearing a white medical coat over crimson shirt with mini stethoscope badge",
+  "경영대학": "wearing a smart crimson tie and gold Korea University business badge",
+  "정보대학": "wearing tech developer glasses with mini matrix code patch",
+  "공과대학/공학": "wearing engineer work jacket with tech pins",
+  "문과대학": "wearing a vintage knit scarf with antique literature pin",
+  "정경대학": "wearing an official leadership blazer with policy badge",
+  "사범대학": "wearing a friendly tutor cardigan with chalk pencil badge",
+  "디자인조형학부": "wearing an artist beret with paint palette badge",
+  "미디어학부": "wearing a film director vest with camera badge",
+  "자유전공학부": "wearing an explorer jacket with multifaceted compass badge",
+};
+
 // 2. Combinatorial Outfit Matrix by Archetype (30+ variations)
 export const OUTFIT_MATRIX: Record<AvatarArchetypeId, string[]> = {
   "01": [
@@ -133,7 +147,7 @@ export function generateDynamicPlushPrompt(
   prefs: UserPreferences,
   archetypeId: AvatarArchetypeId,
   customKeywords?: string
-): { prompt: string; outfit: string; prop: string; background: string } {
+): { prompt: string; outfit: string; prop: string; background: string; customTouch?: string } {
   const outfits = OUTFIT_MATRIX[archetypeId] || OUTFIT_MATRIX["08"];
   const props = PROP_MATRIX[archetypeId] || PROP_MATRIX["08"];
 
@@ -141,19 +155,26 @@ export function generateDynamicPlushPrompt(
   const selectedProp = getRandomItem(props);
   const selectedBg = getRandomItem(KU_BACKGROUND_MATRIX);
 
+  const collegeTouch = (prefs.college && COLLEGE_TOUCHES[prefs.college]) || "";
+
   let extraInterestStr = "";
   if (customKeywords) {
-    extraInterestStr = ` Incorporating theme elements of: ${customKeywords}.`;
+    extraInterestStr = ` Incorporating specific elements of: ${customKeywords}.`;
   } else if (prefs.interests) {
-    extraInterestStr = ` Incorporating subtle elements of: ${prefs.interests}.`;
+    extraInterestStr = ` Incorporating specific personalized hobbies and themes of: ${prefs.interests}.`;
   }
 
-  const fullPrompt = `${BASE_TIGER_ANCHOR} Wearing ${selectedOutfit}, ${selectedProp}. Background: ${selectedBg}.${extraInterestStr} Soft tactile felt texture, macro toy figurine photography, shallow depth of field, warm volumetric cinematic studio lighting, 8k resolution masterpiece.`;
+  const outfitDescription = collegeTouch
+    ? `${selectedOutfit} combined with ${collegeTouch}`
+    : selectedOutfit;
+
+  const fullPrompt = `${BASE_TIGER_ANCHOR} Wearing ${outfitDescription}, ${selectedProp}. Background: ${selectedBg}.${extraInterestStr} Soft tactile felt texture, macro toy figurine photography, shallow depth of field, warm volumetric cinematic studio lighting, 8k resolution masterpiece.`;
 
   return {
     prompt: fullPrompt,
-    outfit: selectedOutfit,
+    outfit: outfitDescription,
     prop: selectedProp,
     background: selectedBg,
+    customTouch: collegeTouch || extraInterestStr,
   };
 }

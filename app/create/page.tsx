@@ -7,6 +7,7 @@ import { Sparkles, Search, Compass, Check, ArrowRight, Tag, BookOpen, Graduation
 import clubsData from "@/data/clubs.json";
 import { KU_COLLEGES } from "@/lib/colleges";
 import { UserPreferences } from "@/lib/recommendEngine";
+import { generateAvatar } from "@/lib/avatarEngine";
 
 const AVAILABLE_CATEGORIES = [
   { id: "IT/개발", label: "💻 IT/개발", desc: "코딩, AI, 웹/앱, 해커톤" },
@@ -71,7 +72,7 @@ export default function CreatePage() {
     }
   };
 
-  const handleGenerate = (withQuiz = false) => {
+  const handleGenerate = async (withQuiz = false) => {
     if (selectedCategories.length === 0) {
       alert("관심 카테고리를 최소 1개 이상 선택해주세요!");
       return;
@@ -91,13 +92,44 @@ export default function CreatePage() {
       return;
     }
 
-    // Playful loading animation then route to result
+    // Playful live AI generation loading animation then route to result
     setIsGenerating(true);
-    setTimeout(() => setLoadingStep(1), 700);
-    setTimeout(() => setLoadingStep(2), 1400);
-    setTimeout(() => {
+    setLoadingStep(0);
+
+    const stepInterval = setInterval(() => {
+      setLoadingStep((prev) => (prev < 2 ? prev + 1 : prev));
+    }, 900);
+
+    try {
+      // 1. Generate Archetype
+      const avatarConfig = generateAvatar(prefs);
+
+      // 2. Call backend /api/avatar/generate with user profile & college & custom keywords
+      const res = await fetch("/api/avatar/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prefs,
+          archetypeId: avatarConfig.archetypeId,
+          customKeywords: interests,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.imageUrl) {
+          localStorage.setItem("ku_generated_avatar_image", data.imageUrl);
+          if (data.prompt) {
+            localStorage.setItem("ku_generated_avatar_prompt", data.prompt);
+          }
+        }
+      }
+    } catch (e) {
+      console.error("Live AI Generation error:", e);
+    } finally {
+      clearInterval(stepInterval);
       router.push("/result");
-    }, 2200);
+    }
   };
 
   if (isGenerating) {
@@ -106,28 +138,31 @@ export default function CreatePage() {
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="text-center space-y-5 max-w-sm"
+          className="text-center space-y-6 max-w-md"
         >
-          <div className="w-20 h-20 rounded-3xl bg-ku-soft flex items-center justify-center mx-auto text-4xl shadow-xl border-2 border-ku-crimson/30 animate-bounce">
+          <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-amber-400 via-rose-500 to-ku-crimson flex items-center justify-center mx-auto text-5xl shadow-2xl border-4 border-white/80 animate-bounce">
             🐯
           </div>
-          <div>
-            <h3 className="text-xl font-black text-slate-900">
-              {loadingStep === 0 && "호랑이 파츠를 조립하고 있습니다..."}
-              {loadingStep === 1 && "고려대 동아리 DB와 코사인 유사도 매칭 중..."}
-              {loadingStep === 2 && "나만의 2학기 캐릭터 완성이 코앞입니다!"}
+          <div className="space-y-2">
+            <span className="inline-block px-3 py-1 bg-amber-100 text-amber-900 text-xs font-black rounded-full border border-amber-200">
+              ✨ Nano Banana AI 실시간 키링 렌더링 중
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+              {loadingStep === 0 && `[${college}] 맞춤 털인형 솜 채우는 중... 🧸`}
+              {loadingStep === 1 && `[${selectedCategories.join(", ")}] 전용 의상 & 소품 스타일링 중... 👔`}
+              {loadingStep === 2 && "캠퍼스 조명 비추며 3D 키링 완성하는 중! 📸"}
             </h3>
-            <p className="text-xs text-slate-500 mt-1.5">
-              잠시만 기다려주세요! 2학기 최고의 동아리 자아가 탄생합니다.
+            <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
+              입력하신 {interests ? `'${interests}'` : "관심사"}를 반영한 단 하나의 나만의 고려대 호랑이 키링을 빚어내고 있습니다.
             </p>
           </div>
 
-          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
             <motion.div
-              className="bg-ku-crimson h-full rounded-full"
-              initial={{ width: "10%" }}
-              animate={{ width: loadingStep === 0 ? "40%" : loadingStep === 1 ? "80%" : "100%" }}
-              transition={{ duration: 0.6 }}
+              className="bg-gradient-to-r from-amber-400 via-rose-500 to-ku-crimson h-full rounded-full"
+              initial={{ width: "15%" }}
+              animate={{ width: loadingStep === 0 ? "45%" : loadingStep === 1 ? "80%" : "100%" }}
+              transition={{ duration: 0.8 }}
             />
           </div>
         </motion.div>

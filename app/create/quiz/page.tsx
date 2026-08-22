@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowLeft, ArrowRight, CheckCircle2, Trophy } from "lucide-react";
 import { QUIZ_QUESTIONS, QuizOption } from "@/lib/quizData";
 import { Traits, UserPreferences } from "@/lib/recommendEngine";
+import { generateAvatar } from "@/lib/avatarEngine";
 
 export default function QuizPage() {
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function QuizPage() {
     }
   };
 
-  const finishQuiz = (answers: number[]) => {
+  const finishQuiz = async (answers: number[]) => {
     setIsFinishing(true);
 
     // Compute averaged traits from quiz
@@ -79,13 +80,32 @@ export default function QuizPage() {
 
       currentPrefs.quizTraits = computedTraits;
       localStorage.setItem("ku_avatar_prefs", JSON.stringify(currentPrefs));
+
+      const avatarConfig = generateAvatar(currentPrefs);
+      const res = await fetch("/api/avatar/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prefs: currentPrefs,
+          archetypeId: avatarConfig.archetypeId,
+          customKeywords: currentPrefs.interests,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.imageUrl) {
+          localStorage.setItem("ku_generated_avatar_image", data.imageUrl);
+          if (data.prompt) {
+            localStorage.setItem("ku_generated_avatar_prompt", data.prompt);
+          }
+        }
+      }
     } catch (e) {
-      console.error("Failed saving quiz results", e);
+      console.error("Failed saving quiz results & AI generation", e);
     }
 
-    setTimeout(() => {
-      router.push("/result");
-    }, 2000);
+    router.push("/result");
   };
 
   if (isFinishing) {
