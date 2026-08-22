@@ -284,10 +284,24 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
             </div>
           )}
 
-          {/* Category Pill on top right */}
+          {/* Dynamic College / KU Badge on top right */}
           <div className="absolute top-3 right-3 bg-ku-crimson/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-white shadow-md flex items-center gap-1 pointer-events-none">
-            <span>🐯 KU 2026</span>
+            <span>{config.customOverlay?.collegeBadge || "🐯 KU 2026"}</span>
           </div>
+
+          {/* Dynamic Interest Tags Overlay on bottom right */}
+          {config.customOverlay?.interestKeywords && config.customOverlay.interestKeywords.length > 0 && (
+            <div className="absolute bottom-3 right-3 flex flex-wrap justify-end gap-1 max-w-[180px] pointer-events-none">
+              {config.customOverlay.interestKeywords.map((kw, idx) => (
+                <span
+                  key={idx}
+                  className="bg-amber-400/90 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-black text-slate-950 shadow-sm"
+                >
+                  #{kw}
+                </span>
+              ))}
+            </div>
+          )}
         </motion.div>
 
         {/* Action button beside avatar */}

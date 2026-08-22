@@ -29,6 +29,12 @@ export interface AvatarConfiguration {
     effectType: "stage_lights" | "green_matrix" | "sprout_leaves" | "presentation_chart" | "fire_stamina" | "adventure_stars" | "coffee_aroma" | "freshman_twinkle";
   };
   plushImageUrl: string;
+  customOverlay?: {
+    collegeName?: string;
+    collegeBadge?: string;
+    interestKeywords?: string[];
+    clubName?: string;
+  };
   stats: {
     passion: number;
     sociability: number;
@@ -145,9 +151,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
   }
 
   // 2. Archetype Definitions (Matching User Specifications Exactly)
+  let baseConfig: AvatarConfiguration;
   switch (archetypeId) {
     case "01": // 무대 위의 야망 흑표범
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "무대 위의 야망 흑표범",
@@ -182,9 +189,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 50,
         },
       };
+      break;
 
     case "02": // 밤샘 코딩 잉크 부족 올빼미
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "밤샘 코딩 잉크 부족 올빼미",
@@ -219,9 +227,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 30,
         },
       };
+      break;
 
     case "03": // 캠퍼스 평화주의 텀블러 요정
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "캠퍼스 평화주의 텀블러 요정",
@@ -256,9 +265,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 90,
         },
       };
+      break;
 
     case "04": // 전략적 투머치토커 학회장
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "전략적 투머치토커 학회장",
@@ -293,9 +303,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 45,
         },
       };
+      break;
 
     case "05": // 근손실 걱정하는 중앙광장 러너
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "근손실 걱정하는 중앙광장 러너",
@@ -330,9 +341,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 70,
         },
       };
+      break;
 
     case "06": // 미지의 취미 탐험가 #갓생살기
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "미지의 취미 탐험가 #갓생살기",
@@ -367,9 +379,10 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 80,
         },
       };
+      break;
 
     case "07": // 안암골 감성 필름 크리에이터
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
         title: "안암골 감성 필름 크리에이터",
@@ -404,10 +417,11 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 85,
         },
       };
+      break;
 
-    case "08": // 과잠 입은 새내기 (무소속의 야망)
+        case "08": // 과잠 입은 새내기 (무소속의 야망)
     default:
-      return {
+      baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId: "08",
         title: "과잠 입은 새내기 (무소속의 야망)",
@@ -442,5 +456,42 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
           chill: 85,
         },
       };
+      break;
   }
+
+  // 3. Dynamic Personalization Overlays & Custom Badges
+  const collegeBadges: Record<string, string> = {
+    "의과대학/간호대학": "🩺 의과대학",
+    "경영대학": "💼 경영대학",
+    "정보대학": "💻 정보대학",
+    "공과대학/공학": "⚙️ 공과대학",
+    "문과대학": "📖 문과대학",
+    "정경대학": "🏛️ 정경대학",
+    "사범대학": "🎓 사범대학",
+    "디자인조형학부": "🎨 디자인조형",
+    "미디어학부": "📹 미디어학부",
+    "자유전공학부": "🧭 자유전공",
+  };
+
+  const cBadge = (prefs.college && collegeBadges[prefs.college]) || (prefs.college ? `🐯 ${prefs.college}` : "🐯 고려대학교");
+  const words = prefs.interests
+    ? prefs.interests.split(/[, ]+/).filter(Boolean).slice(0, 3)
+    : [];
+
+  baseConfig.customOverlay = {
+    collegeName: prefs.college,
+    collegeBadge: cBadge,
+    interestKeywords: words,
+    clubName: prefs.currentClub?.includes("없음") || !prefs.currentClub ? undefined : prefs.currentClub,
+  };
+
+  // If specific college and interests are selected, personalize subtitle and title
+  if (prefs.college && prefs.college !== "전체" && prefs.college !== "고려대학교") {
+    const colShort = prefs.college.replace("대학", "").replace("/간호", "");
+    if (words.length > 0) {
+      baseConfig.subtitle = `#${colShort} #${words[0]} #${baseConfig.title.split(" ")[0]}`;
+    }
+  }
+
+  return baseConfig;
 }
