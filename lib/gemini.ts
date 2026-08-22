@@ -153,12 +153,12 @@ export function generateSmartFallbackComment(
         generatedByAi: false,
       };
 
-    case "07": // 조용한 카리스마 서재의 은둔자
+    case "07": // 안암골 감성 필름 크리에이터
       return {
-        characterAnalysis: `깊이 있는 사고와 성찰을 즐기는 너, 화려하지 않아도 너의 생각은 캠퍼스에서 가장 깊어. 고요함 속에서 빛나는 통찰의 지성인입니다.`,
-        clubSynergy: `'${topClub?.name || "학술연구 동아리"}'에서 깊이 있는 텍스트를 함께 강독하고 사유를 교류하며 영혼의 메이트를 만나게 됩니다.`,
-        campusTips: `중앙도서관 대학원열람실과 서재의 아늑한 조명 아래서 즐기는 묵직한 고전 한 권의 여유를 만끽해보세요.`,
-        cheeringMessage: `🐯 고요하지만 깊고 단단한 너의 사유와 배움을 응원해!`,
+        characterAnalysis: `캠퍼스의 모든 찰나가 너의 뷰파인더 속에선 영화가 돼! 낭만을 기록하는 안암골 최고의 감성 크리에이터입니다.`,
+        clubSynergy: `'${topClub?.name || "미디어/영상 동아리"}'에서 당신의 시각적 감각과 스토리텔링이 빛을 발해 캠퍼스를 사로잡는 명작을 완성할 거예요.`,
+        campusTips: `노을 지는 인촌기념관 계단과 다람쥐길에서 필름 카메라 들고 출사 나가기 딱 좋은 가을입니다!`,
+        cheeringMessage: `🐯 렌즈 너머로 청춘의 모든 순간을 찬란하게 담아낼 너를 응원해!`,
         generatedByAi: false,
       };
 

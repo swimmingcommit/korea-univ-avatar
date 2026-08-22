@@ -116,12 +116,14 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
   ) {
     archetypeId = "06";
   } else if (
-    primaryCat === "학술" ||
-    primaryCat === "사회과학" ||
-    interests.includes("철학") ||
-    interests.includes("인문") ||
-    interests.includes("독서") ||
-    traits.sociability <= 2.5
+    primaryCat === "미디어/방송" ||
+    interests.includes("사진") ||
+    interests.includes("영상") ||
+    interests.includes("유튜브") ||
+    interests.includes("콘텐츠") ||
+    interests.includes("필름") ||
+    interests.includes("카메라") ||
+    interests.includes("디자인")
   ) {
     archetypeId = "07";
   } else if (isNoClub) {
@@ -354,40 +356,40 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
         },
       };
 
-    case "07": // 조용한 카리스마 서재의 은둔자
+    case "07": // 안암골 감성 필름 크리에이터
       return {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "조용한 카리스마 서재의 은둔자",
-        subtitle: "#학술 #인문 #철학 (전문성 高, 사교성 低)",
-        description: "화려한 무대보다 조용한 서재와 깊이 있는 사유를 즐기는 철학자! 캠퍼스에서 가장 깊고 날카로운 통찰을 품고 있습니다.",
-        speechQuote: "깊이 있는 사고와 성찰을 즐기는 너, 화려하지 않아도 너의 생각은 캠퍼스에서 가장 깊어.",
-        geminiToneExample: "깊이 있는 사고와 성찰을 즐기는 너, 화려하지 않아도 너의 생각은 캠퍼스에서 가장 깊어.",
+        title: "안암골 감성 필름 크리에이터",
+        subtitle: "#미디어 #콘텐츠 #사진·영상 (창작성·감성 高)",
+        description: "캠퍼스의 모든 찰나를 영화처럼 담아내는 감성 아티스트! 렌즈와 뷰파인더 너머로 안암골의 낭만과 청춘을 기록합니다.",
+        speechQuote: "캠퍼스의 모든 찰나가 너의 뷰파인더 속에선 영화가 돼! 낭만을 기록하는 안암골 최고의 크리에이터!",
+        geminiToneExample: "캠퍼스의 모든 찰나가 너의 뷰파인더 속에선 영화가 돼! 낭만을 기록하는 안암골 최고의 크리에이터!",
         colorTheme: {
-          primary: "#44403C",
-          secondary: "#92400E",
-          accent: "#D97706",
-          background: "#F5F5F4",
+          primary: "#0F766E",
+          secondary: "#D97706",
+          accent: "#F59E0B",
+          background: "#F0FDFA",
         },
         parts: {
           skinTone: "#FEF08A",
           animalType: "hermit_tiger",
           hairType: "classic_part",
           hairColor: "#292524",
-          eyeType: "deep_calm",
-          mouthType: "cool",
-          outfitType: "hermit_knit",
-          propType: "vintage_book_pen",
-          backgroundType: "quiet_library_study",
-          effectType: "coffee_aroma",
+          eyeType: "curious_round",
+          mouthType: "smile",
+          outfitType: "explorer_casual",
+          propType: "camera_map",
+          backgroundType: "chamsali_adventure",
+          effectType: "adventure_stars",
         },
         plushImageUrl: `/avatars/plush_${archetypeId}.png`,
         stats: {
-          passion: 70,
-          sociability: 30,
-          intellect: 99,
-          creativity: 88,
-          chill: 92,
+          passion: 88,
+          sociability: 75,
+          intellect: 80,
+          creativity: 98,
+          chill: 85,
         },
       };
 

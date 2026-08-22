@@ -40,9 +40,9 @@ const SAMPLE_PREVIEWS = [
     college: "자유전공학부",
   },
   {
-    categories: ["학술"],
-    interests: "철학 인문 독서 서재 사유",
-    college: "문과대학",
+    categories: ["미디어/방송"],
+    interests: "사진 영상 필름 카메라 유튜브 콘텐츠",
+    college: "미디어학부",
   },
   {
     categories: [],
