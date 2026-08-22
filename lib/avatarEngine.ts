@@ -61,62 +61,26 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
 
   let archetypeId: AvatarArchetypeId = "08";
 
-  if (isNoClub && allCats.length === 0 && !interests) {
-    archetypeId = "08";
-  } else if (
-    primaryCat === "예술/공연" ||
-    interests.includes("밴드") ||
-    interests.includes("공연") ||
-    interests.includes("무대") ||
-    interests.includes("댄스") ||
-    interests.includes("음악") ||
-    interests.includes("보컬")
-  ) {
+  // 1. Direct Primary Category Matching (Highest Precedence)
+  if (primaryCat === "미디어/방송") {
+    archetypeId = "07";
+  } else if (primaryCat === "예술/공연") {
     archetypeId = "01";
-  } else if (
-    primaryCat === "IT/개발" ||
-    interests.includes("코딩") ||
-    interests.includes("개발") ||
-    interests.includes("해커톤") ||
-    interests.includes("파이썬") ||
-    interests.includes("웹") ||
-    interests.includes("알고리즘")
-  ) {
+  } else if (primaryCat === "IT/개발") {
     archetypeId = "02";
-  } else if (
-    primaryCat === "봉사" ||
-    interests.includes("봉사") ||
-    interests.includes("환경") ||
-    interests.includes("멘토링") ||
-    interests.includes("나눔")
-  ) {
+  } else if (primaryCat === "봉사") {
     archetypeId = "03";
-  } else if (
-    (primaryCat === "학술" || primaryCat === "사회과학" || primaryCat === "창업") &&
-    (traits.leadership >= 3.5 || traits.sociability >= 3.5 || interests.includes("토론") || interests.includes("전략") || interests.includes("발표"))
-  ) {
+  } else if (primaryCat === "학술" || primaryCat === "사회과학" || primaryCat === "창업") {
     archetypeId = "04";
-  } else if (
-    primaryCat === "스포츠" ||
-    interests.includes("운동") ||
-    interests.includes("축구") ||
-    interests.includes("농구") ||
-    interests.includes("러닝") ||
-    interests.includes("헬스") ||
-    traits.activity >= 4.0
-  ) {
+  } else if (primaryCat === "스포츠") {
     archetypeId = "05";
-  } else if (
-    primaryCat === "취미/친목" ||
-    interests.includes("여행") ||
-    interests.includes("보드게임") ||
-    interests.includes("맛집") ||
-    interests.includes("다양") ||
-    interests.includes("갓생")
-  ) {
+  } else if (primaryCat === "취미/친목") {
     archetypeId = "06";
-  } else if (
-    primaryCat === "미디어/방송" ||
+  } else if (isNoClub && allCats.length === 0 && !interests) {
+    archetypeId = "08";
+  }
+  // 2. Keyword & Interest Fallbacks (When no single primary category is selected)
+  else if (
     interests.includes("사진") ||
     interests.includes("영상") ||
     interests.includes("유튜브") ||
@@ -126,6 +90,54 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
     interests.includes("디자인")
   ) {
     archetypeId = "07";
+  } else if (
+    interests.includes("밴드") ||
+    interests.includes("공연") ||
+    interests.includes("무대") ||
+    interests.includes("댄스") ||
+    interests.includes("음악") ||
+    interests.includes("보컬")
+  ) {
+    archetypeId = "01";
+  } else if (
+    interests.includes("코딩") ||
+    interests.includes("개발") ||
+    interests.includes("해커톤") ||
+    interests.includes("파이썬") ||
+    interests.includes("웹") ||
+    interests.includes("알고리즘")
+  ) {
+    archetypeId = "02";
+  } else if (
+    interests.includes("봉사") ||
+    interests.includes("환경") ||
+    interests.includes("멘토링") ||
+    interests.includes("나눔")
+  ) {
+    archetypeId = "03";
+  } else if (
+    interests.includes("토론") ||
+    interests.includes("전략") ||
+    interests.includes("발표") ||
+    traits.leadership >= 4.0
+  ) {
+    archetypeId = "04";
+  } else if (
+    interests.includes("운동") ||
+    interests.includes("축구") ||
+    interests.includes("농구") ||
+    interests.includes("러닝") ||
+    interests.includes("헬스") ||
+    traits.activity >= 4.5
+  ) {
+    archetypeId = "05";
+  } else if (
+    interests.includes("여행") ||
+    interests.includes("보드게임") ||
+    interests.includes("맛집") ||
+    interests.includes("갓생")
+  ) {
+    archetypeId = "06";
   } else if (isNoClub) {
     archetypeId = "08";
   } else {
