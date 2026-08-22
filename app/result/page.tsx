@@ -25,6 +25,7 @@ import { ClubCard } from "@/components/club/ClubCard";
 import { GeminiCard } from "@/components/gemini/GeminiCard";
 import { ShareModal } from "@/components/share/ShareModal";
 import { GeminiProCtaBanner } from "@/components/cta/GeminiProCtaBanner";
+import { AiAvatarGenerator } from "@/components/avatar/AiAvatarGenerator";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
 import { recommendClubs, RecommendationResult, UserPreferences } from "@/lib/recommendEngine";
 
@@ -219,7 +220,18 @@ export default function ResultPage() {
         </div>
       </div>
 
-      {/* 3. Gemini AI Insights Gate Card */}
+      {/* 3. Nano Banana AI Live Combinatorial Studio */}
+      <div>
+        <AiAvatarGenerator
+          avatar={avatar}
+          prefs={prefs}
+          onAvatarUpdated={(newImageUrl) => {
+            setAvatar((prev) => (prev ? { ...prev, plushImageUrl: newImageUrl } : null));
+          }}
+        />
+      </div>
+
+      {/* 4. Gemini AI Insights Gate Card */}
       <div>
         <GeminiCard prefs={prefs} avatar={avatar} recommendations={recommendations} />
       </div>
