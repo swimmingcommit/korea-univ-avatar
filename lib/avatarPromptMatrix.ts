@@ -1,9 +1,9 @@
 import { UserPreferences } from "./recommendEngine";
 import { AvatarArchetypeId } from "./avatarEngine";
 
-// 1. Immutable Base Tiger Anchor (Character Consistency)
+// 1. Immutable Base Tiger Anchor (Character Consistency aligned with ground truth reference)
 export const BASE_TIGER_ANCHOR =
-  "A 3D high-detail macro plush toy keychain of Korea University round yellow tiger mascot with open happy fanged smile (:D), cute round black nose, three stripes on cheeks, soft felt fuzzy fur texture, silver carabiner keyring ring attached on top head.";
+  "A 3D macro toy figurine photo of a round yellow fuzzy felt tiger plush keychain character, with wide open happy mouth smile and two sharp white fangs, round glossy black button nose, black bead eyes, black felt forehead and cheek stripes, soft felt fur texture, felt paw pads, and silver metal carabiner keyring ring attached on top head.";
 
 // College-specific touches
 const COLLEGE_TOUCHES: Record<string, string> = {
