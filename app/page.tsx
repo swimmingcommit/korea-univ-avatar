@@ -93,24 +93,22 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]"
+              className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.2]"
             >
-              너의 동아리 자아,{" "}
-              <span className="text-ku-crimson underline decoration-amber-400 decoration-wavy decoration-2">
-                호랑이 아바타
+              2학기 동아리,{" "}
+              <span className="text-ku-crimson underline decoration-amber-400 decoration-wavy decoration-2 block sm:inline">
+                어디 들어갈까?
               </span>
-              로 찾아봐! 🐯
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-lg mx-auto md:mx-0"
+              className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-lg mx-auto md:mx-0 whitespace-pre-line"
             >
-              취향 키워드 몇 개만 입력하면 <strong className="text-slate-900">살아 숨 쉬는 아바타</strong>와{" "}
-              <strong className="text-slate-900">찰떡 고려대 동아리</strong>를 즉시 추천해 드려요.
-              Google Gemini AI의 심층 케미스트리 분석까지!
+              취향 몇 개만 고르면{"\n"}
+              나랑 닮은 호랑이와 <strong className="text-slate-900">찰떡 동아리</strong>를 찾아드려요. 🐯
             </motion.p>
 
             {/* CTA Group */}
@@ -124,7 +122,7 @@ export default function LandingPage() {
                 href="/create"
                 className="w-full sm:w-auto px-8 py-4 bg-ku-crimson hover:bg-ku-dark text-white font-black text-base rounded-2xl shadow-xl hover:shadow-ku-crimson/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 group"
               >
-                <span>내 아바타 만들기 (무료)</span>
+                <span>내 호랑이 뽑기</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
