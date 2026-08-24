@@ -46,7 +46,7 @@ export interface AvatarConfiguration {
 
 export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
   const traits = calculateUserTraits(prefs);
-  const primaryCat = prefs.categories[0] || "IT/개발";
+  const primaryCat = prefs.categories?.[0] || "";
   const allCats = prefs.categories || [];
   const interests = (prefs.interests || "").toLowerCase();
   const isNoClub =
@@ -56,14 +56,14 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
     !prefs.currentClub;
 
   // 1. Archetype Decision Tree based on User Request 8 Archetypes:
-  // 01: 무대 위의 야망 흑표범 (공연/예술, 활동성/창작성 高)
-  // 02: 밤샘 코딩 잉크 부족 올빼미 (IT/개발, 전문성/창작성 高, 사교성 低)
+  // 01: 무대 위의 야망 아티스트 (공연/예술, 활동성/창작성 高)
+  // 02: 밤샘 코딩 백호 (IT/개발, 전문성/창작성 高, 사교성 低)
   // 03: 캠퍼스 평화주의 텀블러 요정 (봉사/환경/사회과학, 사교성/리더십 高)
   // 04: 전략적 투머치토커 학회장 (학술/토론/리더십, 전문성/리더십/사교성 高)
   // 05: 근손실 걱정하는 중앙광장 러너 (스포츠/체육, 활동성 高)
   // 06: 미지의 취미 탐험가 #갓생살기 (취미/친목, 창작성/사교성 高)
-  // 07: 조용한 카리스마 서재의 은둔자 (학술/인문/철학, 전문성 高, 사교성 低)
-  // 08: 과잠 입은 새내기 (무소속의 야망) (새내기/탐색/무소속, 밸런스)
+  // 07: 안암골 감성 필름 크리에이터 (미디어/방송/콘텐츠, 전문성·창작성 高)
+  // 08: 과잠 입은 새내기 (새내기/탐색/무소속, 밸런스)
 
   let archetypeId: AvatarArchetypeId = "08";
 
@@ -74,6 +74,8 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
     archetypeId = "01";
   } else if (primaryCat === "IT/개발") {
     archetypeId = "02";
+  } else if (primaryCat === "새내기" || (isNoClub && allCats.length === 0 && !interests)) {
+    archetypeId = "08";
   } else if (primaryCat === "봉사") {
     archetypeId = "03";
   } else if (primaryCat === "학술" || primaryCat === "사회과학" || primaryCat === "창업") {
@@ -82,8 +84,6 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
     archetypeId = "05";
   } else if (primaryCat === "취미/친목") {
     archetypeId = "06";
-  } else if (isNoClub && allCats.length === 0 && !interests) {
-    archetypeId = "08";
   }
   // 2. Keyword & Interest Fallbacks (When no single primary category is selected)
   else if (

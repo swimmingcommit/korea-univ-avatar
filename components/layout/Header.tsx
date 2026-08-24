@@ -40,10 +40,10 @@ export const Header: React.FC = () => {
 
           <Link
             href="/admin"
-            className="p-2 rounded-full text-slate-600 hover:text-ku-crimson hover:bg-slate-50 transition-colors"
-            title="동아리 데이터 관리 스튜디오"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 transition-colors text-xs font-bold"
+            title="우리 동아리 등록 및 관리 스튜디오"
           >
-            <Sliders className="w-4 h-4" />
+            <span>📢 동아리 등록</span>
           </Link>
 
           <Link

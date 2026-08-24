@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import initialClubs from "@/data/clubs.json";
+import { validateClubSubmission } from "@/lib/filter";
 
 const CLUBS_FILE_PATH = path.join(process.cwd(), "data", "clubs.json");
 
@@ -31,11 +32,28 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Validate that each club has required fields
+    // Validate that each club has required fields and passes profanity filter
     for (const club of updatedClubs) {
       if (!club.id || !club.name || !club.category || !club.traits) {
         return NextResponse.json(
           { error: `Invalid club item: ${JSON.stringify(club)}` },
+          { status: 400 }
+        );
+      }
+
+      const validation = validateClubSubmission({
+        name: club.name,
+        summary: club.description_short,
+        description: club.description_short,
+        keywords: club.keywords,
+        instagram: club.external_link,
+        website: club.external_link,
+        contact: club.external_link,
+      });
+
+      if (!validation.isValid) {
+        return NextResponse.json(
+          { error: validation.error },
           { status: 400 }
         );
       }

@@ -19,10 +19,15 @@ import {
   Copy,
   Check,
   X,
+  AlertTriangle,
+  ShieldCheck,
+  ShieldAlert,
+  HelpCircle,
 } from "lucide-react";
 import initialClubs from "@/data/clubs.json";
 import { Club } from "@/lib/recommendEngine";
 import { KU_COLLEGES } from "@/lib/colleges";
+import { containsProfanity, validateClubSubmission } from "@/lib/filter";
 
 const CATEGORIES = [
   "IT/개발",
@@ -49,6 +54,9 @@ export default function AdminClubsPage() {
   const [showJsonModal, setShowJsonModal] = useState(false);
   const [jsonInputText, setJsonInputText] = useState("");
   const [jsonError, setJsonError] = useState("");
+
+  // Filter Live Test state
+  const [filterTestText, setFilterTestText] = useState("");
 
   const [saveStatus, setSaveStatus] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -86,7 +94,9 @@ export default function AdminClubsPage() {
         setSaveStatus("✅ 저장 완료!");
         setTimeout(() => setSaveStatus(null), 3000);
       } else {
-        setSaveStatus("❌ 저장 실패");
+        const errData = await res.json();
+        setSaveStatus(`❌ 저장 실패: ${errData.error || "알 수 없는 오류"}`);
+        setTimeout(() => setSaveStatus(null), 4000);
       }
     } catch (e) {
       console.error(e);
@@ -104,15 +114,15 @@ export default function AdminClubsPage() {
 
   const handleOpenEdit = (club: Club) => {
     setEditingClub({ ...club });
-    setKeywordsInput(club.keywords ? club.keywords.join(", ") : "");
+    setKeywordsInput(club.keywords.join(", "));
     setIsAddingNew(false);
   };
 
   const handleOpenAdd = () => {
     const newClub: Club = {
-      id: `club_${Date.now()}`,
+      id: `club-custom-${Date.now()}`,
       name: "",
-      category: ["IT/개발"],
+      category: ["취미/친목"],
       college: "전체",
       type: "중앙동아리",
       traits: {
@@ -124,8 +134,8 @@ export default function AdminClubsPage() {
       },
       keywords: [],
       description_short: "",
-      external_link: "https://klub.kr",
-      recruit_period: "9월 초",
+      external_link: "",
+      recruit_period: "2026.09.01 ~ 09.12",
     };
     setEditingClub(newClub);
     setKeywordsInput("");
@@ -143,6 +153,22 @@ export default function AdminClubsPage() {
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
+
+    // 1. Troll & Profanity & Link Validation Check
+    const validation = validateClubSubmission({
+      name: editingClub.name,
+      summary: editingClub.description_short,
+      description: editingClub.description_short,
+      keywords: parsedKeywords,
+      instagram: editingClub.external_link,
+      website: editingClub.external_link,
+      contact: editingClub.external_link,
+    });
+
+    if (!validation.isValid) {
+      alert(`⚠️ 등록 불가: ${validation.error}`);
+      return;
+    }
 
     const clubToSave: Club = {
       ...editingClub,
@@ -206,6 +232,22 @@ export default function AdminClubsPage() {
     return matchesSearch && matchesCategory;
   });
 
+  // Real-time live validation state for modal
+  const liveValidation = editingClub
+    ? validateClubSubmission({
+        name: editingClub.name,
+        summary: editingClub.description_short,
+        description: editingClub.description_short,
+        keywords: keywordsInput.split(",").map((s) => s.trim()).filter(Boolean),
+        instagram: editingClub.external_link,
+        website: editingClub.external_link,
+        contact: editingClub.external_link,
+      })
+    : { isValid: true };
+
+  // Live filter test inspection
+  const testProfanityResult = containsProfanity(filterTestText);
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 space-y-8">
       {/* Top Header */}
@@ -220,14 +262,14 @@ export default function AdminClubsPage() {
           </Link>
           <div className="flex items-center gap-2.5">
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
-              고려대 동아리 데이터 관리 스튜디오 🐯
+              고려대 동아리 등록 & 관리 스튜디오 🐯
             </h1>
             <span className="px-3 py-1 bg-ku-soft text-ku-crimson font-black text-xs rounded-full">
               총 {clubs.length}개 동아리
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            동아리명, 카테고리, 5축 성향 점수(사교성/활동성/창작성/리더십/전문성), 키워드를 직접 수정 및 일괄 가져오기할 수 있습니다.
+            2학기 신입 부원을 모집하는 임원진 및 학생회를 위한 실시간 동아리 등록/관리 시스템입니다.
           </p>
         </div>
 
@@ -265,10 +307,66 @@ export default function AdminClubsPage() {
             className="px-4 py-2 rounded-xl bg-ku-crimson hover:bg-ku-dark text-white font-black text-xs flex items-center gap-1.5 shadow-md transition-all active:scale-95"
           >
             <Plus className="w-4 h-4" />
-            <span>새 동아리 추가</span>
+            <span>📢 새 동아리 등록하기</span>
           </button>
         </div>
       </div>
+
+      {/* Security & Troll Shield Information + Live Tester */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Left: Security Info Box */}
+        <div className="md:col-span-2 p-4 rounded-2xl bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-200/80 flex items-start gap-3">
+          <div className="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+            <ShieldCheck className="w-5 h-5" />
+          </div>
+          <div className="space-y-1 text-xs">
+            <div className="font-black text-slate-900 flex items-center gap-1.5">
+              <span>🛡️ 트롤 방지 및 허위 정보 차단 안전 시스템 가동 중</span>
+              <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-extrabold rounded-full">
+                실시간 작동
+              </span>
+            </div>
+            <p className="text-slate-600 leading-relaxed">
+              * 비속어/욕설/도배 단어 입력 시 실시간 차단되며, 허위 등록 방지를 위해 **공식 인스타그램(@아이디) 또는 웹사이트 링크**가 필수로 검증됩니다.
+            </p>
+          </div>
+        </div>
+
+        {/* Right: Live Profanity Tester Box */}
+        <div className="p-4 rounded-2xl bg-slate-900 text-white flex flex-col justify-between space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-bold text-amber-400 flex items-center gap-1">
+              <ShieldAlert className="w-3.5 h-3.5" />
+              <span>금지어 필터 실시간 테스트</span>
+            </span>
+            {filterTestText && (
+              <span
+                className={`text-[10px] font-black px-2 py-0.5 rounded-full ${
+                  testProfanityResult.isBlocked
+                    ? "bg-rose-500 text-white animate-pulse"
+                    : "bg-emerald-500 text-white"
+                }`}
+              >
+                {testProfanityResult.isBlocked ? `차단 ('${testProfanityResult.matchedWord}')` : "통과 (안전)"}
+              </span>
+            )}
+          </div>
+          <input
+            type="text"
+            placeholder="단어를 입력하여 필터 테스트..."
+            value={filterTestText}
+            onChange={(e) => setFilterTestText(e.target.value)}
+            className="w-full px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 outline-none focus:border-amber-400"
+          />
+        </div>
+      </div>
+
+      {/* Save Notification status */}
+      {saveStatus && (
+        <div className="p-3 bg-slate-900 text-white text-xs font-bold rounded-xl text-center shadow-lg animate-bounce">
+          {saveStatus}
+        </div>
+      )}
 
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -285,57 +383,54 @@ export default function AdminClubsPage() {
         </div>
 
         {/* Category Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1">
+        <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
           <button
             onClick={() => setSelectedCat("전체")}
             className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
               selectedCat === "전체"
                 ? "bg-slate-900 text-white"
-                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
             전체 ({clubs.length})
           </button>
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCat(cat)}
-              className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
-                selectedCat === cat
-                  ? "bg-ku-crimson text-white"
-                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const count = clubs.filter((c) => c.category.includes(cat)).length;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCat(cat)}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+                  selectedCat === cat
+                    ? "bg-ku-crimson text-white"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                {cat} ({count})
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {saveStatus && (
-        <div className="p-3 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-bold text-center">
-          {saveStatus}
-        </div>
-      )}
-
-      {/* Clubs Table / List */}
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+      {/* Clubs Table List */}
+      <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 font-extrabold uppercase">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 font-bold uppercase text-[10px] tracking-wider">
               <tr>
-                <th className="px-4 py-3.5">동아리명</th>
-                <th className="px-4 py-3.5">카테고리</th>
-                <th className="px-4 py-3.5">단과대 / 구분</th>
-                <th className="px-4 py-3.5">5축 성향 (사/활/창/리/전)</th>
-                <th className="px-4 py-3.5">소개 & 링크</th>
-                <th className="px-4 py-3.5 text-right">관리</th>
+                <th className="px-4 py-3">동아리명 (ID)</th>
+                <th className="px-4 py-3">분과/카테고리</th>
+                <th className="px-4 py-3">구분 / 단과대</th>
+                <th className="px-4 py-3">5축 벡터 (사/활/창/리/전)</th>
+                <th className="px-4 py-3">소개 & 링크</th>
+                <th className="px-4 py-3 text-right">관리</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {filteredClubs.map((club) => (
                 <tr key={club.id} className="hover:bg-slate-50/80 transition-colors">
-                  {/* Name */}
+                  {/* Name & ID */}
                   <td className="px-4 py-3.5 font-bold text-slate-900">
                     <div>{club.name}</div>
                     <div className="text-[10px] text-slate-400 font-mono mt-0.5">
@@ -387,15 +482,21 @@ export default function AdminClubsPage() {
                   {/* Description & Link */}
                   <td className="px-4 py-3.5 max-w-xs">
                     <p className="line-clamp-1 text-slate-600">{club.description_short}</p>
-                    <a
-                      href={club.external_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[10px] text-ku-crimson hover:underline mt-0.5"
-                    >
-                      <span>링크 열기</span>
-                      <ExternalLink className="w-2.5 h-2.5" />
-                    </a>
+                    {club.external_link && (
+                      <a
+                        href={
+                          club.external_link.startsWith("http")
+                            ? club.external_link
+                            : `https://instagram.com/${club.external_link.replace("@", "")}`
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[10px] text-ku-crimson hover:underline mt-0.5 font-bold"
+                      >
+                        <span>{club.external_link}</span>
+                        <ExternalLink className="w-2.5 h-2.5" />
+                      </a>
+                    )}
                   </td>
 
                   {/* Actions */}
@@ -435,9 +536,27 @@ export default function AdminClubsPage() {
               <X className="w-5 h-5" />
             </button>
 
-            <h2 className="text-xl font-black text-slate-900 mb-5">
-              {isAddingNew ? "새 동아리 등록" : `동아리 수정: ${editingClub.name}`}
+            <h2 className="text-xl font-black text-slate-900 mb-3">
+              {isAddingNew ? "📢 새 동아리 등록" : `동아리 수정: ${editingClub.name}`}
             </h2>
+
+            {/* Real-time Security Validation Status Banner inside Modal */}
+            <div className="mb-4">
+              {!liveValidation.isValid ? (
+                <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-2xl flex items-start gap-2.5 text-rose-800 text-xs font-bold animate-pulse">
+                  <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-black text-rose-900">⚠️ 등록 불가 (실시간 검증 차단)</div>
+                    <div className="text-[11px] text-rose-700 mt-0.5">{liveValidation.error}</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-2.5 bg-emerald-50 border border-emerald-200/80 rounded-xl flex items-center gap-2 text-emerald-800 text-xs font-bold">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>🛡️ 금지어/비속어 검사 완료 (등록 가능한 상태입니다)</span>
+                </div>
+              )}
+            </div>
 
             <form onSubmit={handleSaveClubForm} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -458,7 +577,7 @@ export default function AdminClubsPage() {
                 {/* Name */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
-                    동아리명 *
+                    동아리명 <span className="text-ku-crimson">*</span>
                   </label>
                   <input
                     type="text"
@@ -466,8 +585,17 @@ export default function AdminClubsPage() {
                     onChange={(e) => setEditingClub({ ...editingClub, name: e.target.value })}
                     required
                     placeholder="예: DevKor (데브코어)"
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold"
+                    className={`w-full px-3.5 py-2.5 bg-slate-50 border rounded-xl text-xs font-bold transition-colors ${
+                      containsProfanity(editingClub.name).isBlocked
+                        ? "border-rose-500 bg-rose-50/50 text-rose-900 focus:ring-rose-500"
+                        : "border-slate-200 focus:border-ku-crimson"
+                    }`}
                   />
+                  {containsProfanity(editingClub.name).isBlocked && (
+                    <p className="text-[10px] text-rose-600 font-bold mt-1">
+                      🚫 동아리명에 부적절한 단어가 포함되어 있습니다.
+                    </p>
+                  )}
                 </div>
 
                 {/* College */}
@@ -501,10 +629,8 @@ export default function AdminClubsPage() {
                   >
                     <option value="중앙동아리">중앙동아리</option>
                     <option value="단과대동아리">단과대동아리</option>
-                    <option value="연합/중앙동아리">연합/중앙동아리</option>
-                    <option value="학술소모임">학술소모임</option>
-                    <option value="언론사/중앙기구">언론사/중앙기구</option>
-                    <option value="자치동아리">자치동아리</option>
+                    <option value="학회">학회</option>
+                    <option value="소모임">소모임</option>
                   </select>
                 </div>
               </div>
@@ -604,7 +730,7 @@ export default function AdminClubsPage() {
                   {/* Creativity */}
                   <div>
                     <div className="flex justify-between font-bold text-purple-900 mb-1">
-                      <span>창작성 (독창/예술)</span>
+                      <span>창작성 (예술/콘텐츠)</span>
                       <span>{editingClub.traits.creativity}</span>
                     </div>
                     <input
@@ -694,33 +820,54 @@ export default function AdminClubsPage() {
                     setEditingClub({ ...editingClub, description_short: e.target.value })
                   }
                   rows={2}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs"
+                  className={`w-full px-3.5 py-2.5 bg-slate-50 border rounded-xl text-xs ${
+                    containsProfanity(editingClub.description_short).isBlocked
+                      ? "border-rose-500 bg-rose-50/50 text-rose-900"
+                      : "border-slate-200"
+                  }`}
                 />
+                {containsProfanity(editingClub.description_short).isBlocked && (
+                  <p className="text-[10px] text-rose-600 font-bold mt-1">
+                    🚫 소개글에 부적절한 단어가 포함되어 있습니다.
+                  </p>
+                )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* External Link */}
+              <div className="space-y-4">
+                {/* External Link (Mandatory Verification) */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    공식 링크 (klub.kr 또는 SNS)
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold text-slate-800">
+                      공식 인스타그램 또는 웹사이트 링크 <span className="text-ku-crimson font-black">* (필수)</span>
+                    </label>
+                    <span className="text-[10px] bg-rose-50 text-rose-700 font-bold px-2 py-0.5 rounded-full border border-rose-200">
+                      신원 확인용 필수
+                    </span>
+                  </div>
                   <input
-                    type="url"
+                    type="text"
+                    required
+                    placeholder="예: https://instagram.com/ku_0kcal 또는 @ku_0kcal 또는 동아리 웹사이트 URL"
                     value={editingClub.external_link}
                     onChange={(e) =>
                       setEditingClub({ ...editingClub, external_link: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 focus:border-ku-crimson focus:bg-white rounded-xl text-xs transition-colors"
                   />
+                  {/* Red Required Caption */}
+                  <p className="text-[11px] text-rose-600 font-bold mt-1.5 flex items-center gap-1 leading-snug">
+                    <span>* 허위 정보 등록 방지를 위해 동아리 공식 인스타그램(@아이디) 또는 웹사이트 링크를 반드시 기입해 주세요. (미기입 시 등록 불가)</span>
+                  </p>
                 </div>
 
                 {/* Recruit Period */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
-                    모집 기간
+                    2학기 부원 모집 기간
                   </label>
                   <input
                     type="text"
+                    placeholder="예: 2026.09.01 ~ 09.12 또는 상시 모집"
                     value={editingClub.recruit_period}
                     onChange={(e) =>
                       setEditingClub({ ...editingClub, recruit_period: e.target.value })
@@ -735,15 +882,20 @@ export default function AdminClubsPage() {
                 <button
                   type="button"
                   onClick={() => setEditingClub(null)}
-                  className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 text-xs font-bold"
+                  className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 text-xs font-bold hover:bg-slate-200 transition-colors"
                 >
                   취소
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-ku-crimson text-white text-xs font-black shadow-md hover:bg-ku-dark"
+                  disabled={!liveValidation.isValid}
+                  className={`px-6 py-2.5 rounded-xl text-xs font-black shadow-md transition-all ${
+                    liveValidation.isValid
+                      ? "bg-ku-crimson text-white hover:bg-ku-dark cursor-pointer active:scale-95"
+                      : "bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300"
+                  }`}
                 >
-                  저장하기
+                  {liveValidation.isValid ? "✅ 동아리 저장하기" : "🚫 입력 정보 확인 필요"}
                 </button>
               </div>
             </form>
@@ -769,23 +921,22 @@ export default function AdminClubsPage() {
               정제된 동아리 JSON 배열 데이터를 아래에 붙여넣으시면 전체 데이터베이스가 즉시 교체됩니다.
             </p>
 
-            {jsonError && (
-              <div className="p-3 bg-rose-50 text-rose-800 border border-rose-200 rounded-xl text-xs font-bold mb-3">
-                {jsonError}
-              </div>
-            )}
-
             <textarea
               value={jsonInputText}
               onChange={(e) => setJsonInputText(e.target.value)}
-              rows={14}
-              className="w-full p-4 bg-slate-900 text-emerald-400 font-mono text-xs rounded-2xl border border-slate-800 outline-none"
+              rows={12}
+              className="w-full p-4 font-mono text-xs bg-slate-900 text-emerald-400 rounded-2xl border border-slate-800 outline-none focus:border-ku-crimson"
+              placeholder="[{ ... }]"
             />
+
+            {jsonError && (
+              <p className="text-xs font-bold text-rose-600 mt-2">{jsonError}</p>
+            )}
 
             <div className="flex items-center justify-end gap-2.5 mt-4">
               <button
                 onClick={() => setShowJsonModal(false)}
-                className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 text-xs font-bold"
+                className="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 text-xs font-bold hover:bg-slate-200"
               >
                 취소
               </button>
@@ -793,7 +944,7 @@ export default function AdminClubsPage() {
                 onClick={handleImportJson}
                 className="px-6 py-2.5 rounded-xl bg-ku-crimson text-white text-xs font-black shadow-md hover:bg-ku-dark"
               >
-                데이터 일괄 적용하기
+                데이터 전체 반영하기
               </button>
             </div>
           </div>

@@ -7,7 +7,7 @@ import { Sparkles, ArrowRight, Compass, Users, Zap, ShieldCheck, CheckCircle2, C
 import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
 
-// Sample avatars for live preview showcase (8 Core Archetypes)
+// Sample avatars for live preview showcase (7 Core Archetypes)
 const SAMPLE_PREVIEWS = [
   {
     categories: ["예술/공연"],
@@ -15,9 +15,10 @@ const SAMPLE_PREVIEWS = [
     college: "문과대학",
   },
   {
-    categories: ["IT/개발"],
-    interests: "코딩 밤샘 해커톤 알고리즘 파이썬",
-    college: "정보대학",
+    categories: ["새내기"],
+    interests: "새내기 과잠 본관 붉은깃발 캠퍼스투어",
+    currentClub: "새내기 (탐색 중)",
+    college: "고려대학교",
   },
   {
     categories: ["봉사"],
@@ -43,12 +44,6 @@ const SAMPLE_PREVIEWS = [
     categories: ["미디어/방송"],
     interests: "사진 영상 필름 카메라 유튜브 콘텐츠",
     college: "미디어학부",
-  },
-  {
-    categories: [],
-    interests: "",
-    currentClub: "새내기 (탐색 중)",
-    college: "고려대학교",
   },
 ];
 
@@ -184,6 +179,57 @@ export default function LandingPage() {
               </div>
             )}
           </motion.div>
+        </div>
+      </section>
+
+      {/* 1.5. Two-Track Audience Selection (동아리 찾는 사람 vs 동아리원 구하는 임원진) */}
+      <section className="py-4 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Track 1: For Students seeking Clubs */}
+            <div className="p-6 rounded-3xl bg-white border border-rose-100/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 text-ku-crimson text-xs font-black">
+                  <span>🎓 동아리를 찾는 고대 학우</span>
+                </div>
+                <h3 className="text-lg font-black text-slate-900">
+                  나랑 찰떡인 동아리 & 호랑이 찾기
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  취향 몇 개 또는 1분 성향 퀴즈로 나만의 3D 털인형 키링 호랑이와 2학기 추천 동아리를 확인하세요.
+                </p>
+              </div>
+              <Link
+                href="/create"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ku-crimson hover:bg-ku-crimson/90 text-white text-xs font-bold rounded-xl transition-all shadow-sm"
+              >
+                <span>호랑이 아바타 만들기</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Track 2: For Club Executives Recruiting Members */}
+            <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-md hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-black border border-amber-400/30">
+                  <span>📢 2학기 신입 부원 모집 임원진</span>
+                </div>
+                <h3 className="text-lg font-black text-white">
+                  우리 동아리 등록 & 2학기 홍보하기
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  동아리 공식 인스타그램/웹사이트를 연동하여 신입생과 재학생들에게 우리 동아리를 매칭 추천하세요!
+                </p>
+              </div>
+              <Link
+                href="/admin"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black rounded-xl transition-all shadow-sm"
+              >
+                <span>우리 동아리 등록/관리하기</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
