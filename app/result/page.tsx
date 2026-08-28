@@ -205,22 +205,93 @@ export default function ResultPage() {
         </div>
 
         {/* Quick Action Bar under card */}
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-slate-100">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 pt-4 border-t border-slate-100">
+          <button
+            onClick={() => {
+              if (typeof navigator !== "undefined" && navigator.share) {
+                navigator.share({
+                  title: `[고려대 동아리 아바타] ${avatar.title}`,
+                  text: `나만의 고대 호랑이 아바타와 2학기 찰떡 동아리 찾았다! 🐯 "${avatar.speechQuote}"`,
+                  url: window.location.href,
+                }).catch(() => {});
+              } else {
+                setIsShareModalOpen(true);
+              }
+            }}
+            className="w-full sm:w-auto px-5 py-3 bg-[#FEE500] hover:bg-[#FADA0A] active:scale-98 text-[#191919] rounded-2xl font-black text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+          >
+            <span className="text-sm">💬</span>
+            <span>카카오톡 / 친구에게 공유</span>
+          </button>
+
           <button
             onClick={() => setIsShareModalOpen(true)}
-            className="px-5 py-2.5 bg-ku-crimson hover:bg-ku-dark text-white rounded-2xl font-bold text-xs flex items-center gap-2 shadow-md transition-all active:scale-95"
+            className="w-full sm:w-auto px-5 py-3 bg-ku-crimson hover:bg-ku-dark text-white rounded-2xl font-black text-xs flex items-center justify-center gap-2 shadow-md transition-all active:scale-98"
           >
             <Share2 className="w-3.5 h-3.5" />
-            <span>결과 공유 & 이미지 저장</span>
+            <span>📸 인스타 스토리 & 이미지 저장</span>
           </button>
 
           <Link
             href="/create"
-            className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-bold text-xs flex items-center gap-2 transition-all"
+            className="w-full sm:w-auto px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>다시 만들기</span>
           </Link>
+        </div>
+      </div>
+
+      {/* Hidden 9:16 Instagram Story Canvas for 1-Tap Export */}
+      <div className="fixed -left-[9999px] top-0 pointer-events-none">
+        <div
+          id="insta-story-export"
+          className="w-[450px] h-[800px] bg-gradient-to-b from-[#8A1538] via-[#5c0d24] to-[#1e030b] text-white p-8 flex flex-col justify-between items-center relative overflow-hidden"
+        >
+          {/* Top Header */}
+          <div className="text-center space-y-1 z-10">
+            <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-black text-amber-300 border border-white/20">
+              🔴 2026-2학기 고려대 동아리 매칭
+            </span>
+            <h2 className="text-2xl font-black tracking-tight text-white mt-1">
+              나의 호랑이 자아는? 🐯
+            </h2>
+          </div>
+
+          {/* Central Plush Avatar */}
+          <div className="relative z-10 w-[300px] h-[300px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-slate-900">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={avatar.plushImageUrl || `/avatars/plush_${avatar.archetypeId}.png`}
+              alt={avatar.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Avatar Information & Quote */}
+          <div className="text-center space-y-3 z-10 max-w-sm">
+            <div className="inline-block px-4 py-1 bg-amber-400 text-slate-950 font-black text-xs rounded-full shadow-md">
+              {avatar.subtitle}
+            </div>
+            <h3 className="text-3xl font-black tracking-tight text-white">
+              {avatar.title}
+            </h3>
+            <p className="text-sm text-slate-200 leading-relaxed font-semibold italic bg-black/30 p-3 rounded-2xl border border-white/10">
+              &quot;{avatar.speechQuote}&quot;
+            </p>
+          </div>
+
+          {/* Bottom Branding & Tags */}
+          <div className="text-center space-y-1.5 z-10 border-t border-white/20 pt-4 w-full">
+            <div className="flex items-center justify-center gap-2 text-xs font-bold text-amber-300">
+              <span>#고려대학교</span>
+              <span>#동아리아바타</span>
+              <span>#2학기신입부원</span>
+            </div>
+            <p className="text-[10px] text-slate-300 font-mono">
+              korea-univ-avatar.netlify.app
+            </p>
+          </div>
         </div>
       </div>
 

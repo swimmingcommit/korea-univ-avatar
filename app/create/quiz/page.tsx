@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ArrowLeft, ArrowRight, CheckCircle2, Trophy } from "lucide-react";
+import { Sparkles, ArrowLeft, ArrowRight, CheckCircle2, Trophy, HelpCircle } from "lucide-react";
 import { QUIZ_QUESTIONS, QuizOption } from "@/lib/quizData";
 import { Traits, UserPreferences } from "@/lib/recommendEngine";
 import { generateAvatar } from "@/lib/avatarEngine";
@@ -13,30 +13,41 @@ export default function QuizPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [isFinishing, setIsFinishing] = useState(false);
+  const [direction, setDirection] = useState(1);
 
   const question = QUIZ_QUESTIONS[currentStep];
-  const progressPercent = Math.round(((currentStep + 1) / QUIZ_QUESTIONS.length) * 100);
 
   const handleSelectOption = (optionIndex: number) => {
+    // Haptic vibration feedback on mobile
+    if (typeof navigator !== "undefined" && navigator.vibrate) {
+      try {
+        navigator.vibrate(15);
+      } catch (e) {
+        // Ignore if unsupported
+      }
+    }
+
     const updatedAnswers = [...selectedAnswers];
     updatedAnswers[currentStep] = optionIndex;
     setSelectedAnswers(updatedAnswers);
 
     if (currentStep < QUIZ_QUESTIONS.length - 1) {
+      setDirection(1);
       setTimeout(() => {
-        setCurrentStep(currentStep + 1);
-      }, 250);
+        setCurrentStep((prev) => prev + 1);
+      }, 180);
     } else {
-      // Completed all 5 questions! Calculate trait vector and finish
+      // Completed all questions! Finish quiz
       finishQuiz(updatedAnswers);
     }
   };
 
   const handlePrev = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setDirection(-1);
+      setCurrentStep((prev) => prev - 1);
     } else {
-      router.push("/create");
+      router.push("/");
     }
   };
 
@@ -71,7 +82,6 @@ export default function QuizPage() {
       expertise: Number((totalExpertise / len).toFixed(2)),
     };
 
-    // Load existing prefs and inject quizTraits
     try {
       const saved = localStorage.getItem("ku_avatar_prefs");
       const currentPrefs: UserPreferences = saved
@@ -110,9 +120,9 @@ export default function QuizPage() {
 
   if (isFinishing) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center p-4">
+      <div className="min-h-[75vh] flex flex-col items-center justify-center p-4">
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           className="text-center space-y-5 max-w-sm"
         >
@@ -120,20 +130,23 @@ export default function QuizPage() {
             🐯
           </div>
           <div>
-            <h3 className="text-xl font-black text-slate-900">
-              5축 성향 벡터 계산 완료!
+            <span className="inline-block px-3 py-1 bg-amber-100 text-amber-900 text-xs font-black rounded-full mb-2">
+              ✨ 3초 고속 AI 분석 중
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+              5축 성향 분석 & 호랑이 매칭
             </h3>
-            <p className="text-xs text-slate-500 mt-1.5">
-              사교성·활동성·창작성·리더십·전문성을 종합하여 당신만의 아바타와 찰떡 동아리를 불러옵니다.
+            <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              사교성·활동성·창작성·리더십·전문성을 종합하여 찰떡 동아리와 3D 털인형 아바타를 소환합니다.
             </p>
           </div>
 
-          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden shadow-inner">
             <motion.div
               className="bg-ku-crimson h-full rounded-full"
-              initial={{ width: "20%" }}
+              initial={{ width: "15%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 1.8 }}
+              transition={{ duration: 1.6, ease: "easeInOut" }}
             />
           </div>
         </motion.div>
@@ -142,83 +155,119 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-10">
-      {/* Top Navigation & Progress */}
-      <div className="flex items-center justify-between gap-4 mb-6">
-        <button
-          onClick={handlePrev}
-          className="p-2.5 rounded-2xl bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 shadow-sm transition-all"
-        >
-          <ArrowLeft className="w-4 h-4" />
-        </button>
-
-        <div className="flex-1 max-w-xs">
-          <div className="flex items-center justify-between text-xs font-black text-slate-500 mb-1.5">
-            <span>QUESTION {currentStep + 1} OF {QUIZ_QUESTIONS.length}</span>
-            <span className="text-ku-crimson">{progressPercent}%</span>
-          </div>
-          <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-            <motion.div
-              className="bg-ku-crimson h-full rounded-full"
-              animate={{ width: `${progressPercent}%` }}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
+    <div className="max-w-md mx-auto px-4 py-4 sm:py-8 flex flex-col justify-between min-h-[82vh]">
+      {/* 1. Instagram Story-style Top Segmented Progress Bar */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-1.5">
+          {QUIZ_QUESTIONS.map((_, idx) => (
+            <div
+              key={idx}
+              className="flex-1 h-1.5 rounded-full bg-slate-200 overflow-hidden transition-all"
+            >
+              <div
+                className={`h-full transition-all duration-300 ${
+                  idx < currentStep
+                    ? "bg-ku-crimson w-full"
+                    : idx === currentStep
+                    ? "bg-ku-crimson w-full animate-pulse"
+                    : "w-0"
+                }`}
+              />
+            </div>
+          ))}
         </div>
 
-        <div className="w-9 h-9" /> {/* placeholder to balance */}
+        {/* Header Bar */}
+        <div className="flex items-center justify-between">
+          <button
+            onClick={handlePrev}
+            className="p-2 -ml-2 rounded-full text-slate-500 hover:text-slate-900 active:scale-90 transition-transform"
+            aria-label="이전 질문"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <span className="text-xs font-black text-slate-400">
+            {currentStep + 1} / {QUIZ_QUESTIONS.length}
+          </span>
+          <span className="text-xs font-black text-ku-crimson bg-rose-50 px-2.5 py-0.5 rounded-full">
+            1-Tap 성향 퀴즈
+          </span>
+        </div>
       </div>
 
-      {/* Quiz Card */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentStep}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.3 }}
-          className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100 space-y-6"
-        >
-          {/* Category Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-800 text-xs font-black rounded-full border border-amber-200/80">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>{question.categoryTitle}</span>
-          </div>
+      {/* 2. Main Question & Big 1-Tap Option Cards */}
+      <div className="my-auto py-4">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={currentStep}
+            initial={{ opacity: 0, x: direction * 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -40 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            {/* Question Title */}
+            <div className="text-center space-y-2">
+              <span className="inline-block text-3xl sm:text-4xl animate-bounce">
+                {currentStep === 0 ? "🏃" : currentStep === 1 ? "💡" : currentStep === 2 ? "🎤" : currentStep === 3 ? "💻" : "🎉"}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
+                {question.title}
+              </h2>
+              <p className="text-xs text-slate-500">
+                더 끌리는 선택지를 터치하면 즉시 다음 질문으로 넘어갑니다.
+              </p>
+            </div>
 
-          <div>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
-              {question.question}
-            </h2>
-            <p className="text-xs text-slate-500 mt-1">{question.description}</p>
-          </div>
+            {/* Option Cards (Big Thumb-friendly Touch Targets) */}
+            <div className="space-y-3">
+              {question.options.map((opt: QuizOption, optIdx: number) => {
+                const isSelected = selectedAnswers[currentStep] === optIdx;
+                return (
+                  <motion.button
+                    key={optIdx}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => handleSelectOption(optIdx)}
+                    className={`w-full p-5 sm:p-6 rounded-3xl text-left border-2 transition-all flex items-start gap-4 shadow-sm active:shadow-none ${
+                      isSelected
+                        ? "border-ku-crimson bg-rose-50/80 shadow-md ring-2 ring-ku-crimson/20"
+                        : "border-slate-200/90 bg-white hover:border-ku-crimson/50 hover:bg-slate-50/70"
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-2xl flex items-center justify-center text-lg font-black shrink-0 transition-colors ${
+                        isSelected
+                          ? "bg-ku-crimson text-white shadow-sm"
+                          : "bg-slate-100 text-slate-700"
+                      }`}
+                    >
+                      {optIdx === 0 ? "A" : "B"}
+                    </div>
 
-          {/* Options */}
-          <div className="space-y-3 pt-2">
-            {question.options.map((opt: QuizOption, idx: number) => {
-              const isSelected = selectedAnswers[currentStep] === idx;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => handleSelectOption(idx)}
-                  className={`w-full p-5 rounded-2xl text-left border-2 transition-all flex items-start gap-4 ${
-                    isSelected
-                      ? "bg-rose-50/90 border-ku-crimson shadow-md scale-[1.01]"
-                      : "bg-slate-50 border-slate-200/80 hover:bg-slate-100 hover:border-slate-300 active:scale-[0.99]"
-                  }`}
-                >
-                  <span className="text-3xl shrink-0 mt-0.5">{opt.emoji}</span>
-                  <div className="space-y-1">
-                    <p className="text-sm font-extrabold text-slate-900 leading-snug">
-                      {opt.text}
-                    </p>
-                    <p className="text-xs text-slate-500">{opt.subtext}</p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
-      </AnimatePresence>
+                    <div className="flex-1 space-y-1">
+                      <div className="text-base font-black text-slate-900 leading-snug">
+                        {opt.text}
+                      </div>
+                      {opt.description && (
+                        <div className="text-xs text-slate-500 font-medium leading-relaxed">
+                          {opt.description}
+                        </div>
+                      )}
+                    </div>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* 3. Bottom Minimalist Helper */}
+      <div className="text-center pt-2">
+        <p className="text-[11px] text-slate-400 font-medium">
+          💡 별도의 확인 버튼 없이 선택 시 0.2초 만에 자동 전환됩니다.
+        </p>
+      </div>
     </div>
   );
 }

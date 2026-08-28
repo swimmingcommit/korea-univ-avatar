@@ -315,6 +315,25 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* 4. Mobile Sticky Bottom Action Bar (Thumb-zone 1-Tap CTA) */}
+      <div className="fixed bottom-0 left-0 right-0 p-3 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] sm:hidden flex items-center gap-2">
+        <Link
+          href="/create/quiz"
+          className="p-3 bg-slate-100 active:bg-slate-200 text-slate-700 rounded-2xl flex flex-col items-center justify-center shrink-0"
+          title="성향 퀴즈"
+        >
+          <Compass className="w-4 h-4 text-amber-600" />
+          <span className="text-[9px] font-black mt-0.5">1분 퀴즈</span>
+        </Link>
+        <Link
+          href="/create"
+          className="flex-1 py-3 px-4 bg-ku-crimson active:bg-ku-dark text-white rounded-2xl font-black text-sm flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform"
+        >
+          <span>🐯 내 호랑이 뽑기</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
     </div>
   );
 }
