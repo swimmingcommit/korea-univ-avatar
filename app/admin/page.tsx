@@ -347,7 +347,7 @@ export default function AdminClubsPage() {
                     : "bg-emerald-500 text-white"
                 }`}
               >
-                {testProfanityResult.isBlocked ? `차단 ('${testProfanityResult.matchedWord}')` : "통과 (안전)"}
+                {testProfanityResult.isBlocked ? "차단 (등록 불가)" : "통과 (안전)"}
               </span>
             )}
           </div>

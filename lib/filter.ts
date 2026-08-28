@@ -1,7 +1,8 @@
 // Comprehensive blacklist for Korean & English profanities, slurs, adult content, and troll terms
 const BANNED_KEYWORDS = [
-  // Korean profanity & vulgarities
-  "시발", "씨발", "시바", "씨바", "병신", "ㅄ", "ㅂㅅ", "ㅅㅂ", "존나", "졸라", "개새끼", "개새", "미친놈", "미친년",
+  // Korean profanity & vulgarities (including abbreviations)
+  "시발", "씨발", "시바", "씨바", "병신", "ㅄ", "ㅂㅅ", "ㅅㅂ", "ㅈㄹ", "ㄹㅇㅋㅋ", "ㄲㅈ", "껒",
+  "존나", "졸라", "개새끼", "개새", "미친놈", "미친년",
   "지랄", "닥쳐", "느금마", "니애미", "느개비", "엠창", "애자", "장애인", "틀딱", "한남", "한녀", "바보", "멍청이",
   "일베", "메갈", "워마드", "야스", "섹스", "자지", "보지", "자살", "살인", "폭행", "강간", "성폭행",
   "사기꾼", "보이스피싱", "토토", "바카라", "카지노", "조건만남", "출장안마", "성매매", "마약", "대마초", "필로폰",
@@ -46,7 +47,8 @@ export function containsProfanity(text: string): { isBlocked: boolean; matchedWo
 }
 
 /**
- * Validates a club submission for mandatory fields, required links, and profanities
+ * Validates a club submission for mandatory fields, required links, and profanities.
+ * Privacy rule: Does not expose the detected vulgar words on UI.
  */
 export function validateClubSubmission(club: {
   name?: string;
@@ -56,7 +58,7 @@ export function validateClubSubmission(club: {
   contact?: string;
   instagram?: string;
   website?: string;
-}): { isValid: boolean; error?: string; matchedWord?: string } {
+}): { isValid: boolean; error?: string } {
   if (!club.name || club.name.trim().length < 2) {
     return { isValid: false, error: "동아리 이름을 최소 2자 이상 입력해주세요." };
   }
@@ -89,8 +91,7 @@ export function validateClubSubmission(club: {
     if (check.isBlocked) {
       return {
         isValid: false,
-        error: `[${field.label}] 항목에 부적절한 단어가 포함되어 있습니다. (감지: '${check.matchedWord}')`,
-        matchedWord: check.matchedWord,
+        error: `[${field.label}] 항목에 등록할 수 없는 부적절한 단어가 포함되어 있습니다.`,
       };
     }
   }
