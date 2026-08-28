@@ -211,11 +211,14 @@ export default function QuizPage() {
               <span className="inline-block text-3xl sm:text-4xl animate-bounce">
                 {currentStep === 0 ? "🏃" : currentStep === 1 ? "💡" : currentStep === 2 ? "🎤" : currentStep === 3 ? "💻" : "🎉"}
               </span>
+              <div className="inline-block px-2.5 py-0.5 bg-rose-50 text-ku-crimson text-xs font-bold rounded-full">
+                {question.categoryTitle}
+              </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
-                {question.title}
+                {question.question}
               </h2>
               <p className="text-xs text-slate-500">
-                더 끌리는 선택지를 터치하면 즉시 다음 질문으로 넘어갑니다.
+                {question.description || "더 끌리는 선택지를 터치하면 즉시 다음 질문으로 넘어갑니다."}
               </p>
             </div>
 
@@ -241,16 +244,16 @@ export default function QuizPage() {
                           : "bg-slate-100 text-slate-700"
                       }`}
                     >
-                      {optIdx === 0 ? "A" : "B"}
+                      {opt.emoji || (optIdx === 0 ? "A" : "B")}
                     </div>
 
                     <div className="flex-1 space-y-1">
                       <div className="text-base font-black text-slate-900 leading-snug">
                         {opt.text}
                       </div>
-                      {opt.description && (
+                      {opt.subtext && (
                         <div className="text-xs text-slate-500 font-medium leading-relaxed">
-                          {opt.description}
+                          {opt.subtext}
                         </div>
                       )}
                     </div>
