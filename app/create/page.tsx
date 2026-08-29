@@ -355,8 +355,52 @@ export default function CreatePage() {
             placeholder="예: 파이썬 해커톤, 락밴드 일렉기타 합주, 축제 무대 기획, 보드게임 번개 등"
             className="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:bg-white focus:border-ku-crimson focus:ring-2 focus:ring-ku-crimson/20 transition-all outline-none"
           />
-          <p className="text-[11px] text-slate-400">
-            입력된 단어를 기반으로 동아리 추천 정확도와 아바타 소품이 정밀해집니다.
+
+          {/* Quick 1-Tap Keyword Chips for Mobile Ease */}
+          <div className="flex flex-wrap items-center gap-1.5 pt-1">
+            <span className="text-[10px] font-bold text-slate-400">인기 키워드:</span>
+            {[
+              "코딩/해커톤",
+              "밴드/합주",
+              "댄스/무대",
+              "러닝/헬스",
+              "여행/맛집",
+              "토론/스피치",
+              "스타트업",
+              "사진/영상",
+              "봉사/나눔",
+            ].map((kw) => {
+              const isIncluded = interests.includes(kw);
+              return (
+                <button
+                  type="button"
+                  key={kw}
+                  onClick={() => {
+                    if (isIncluded) {
+                      setInterests(
+                        interests
+                          .replace(kw, "")
+                          .replace(/,\s*,/g, ",")
+                          .trim()
+                      );
+                    } else {
+                      setInterests(interests ? `${interests}, ${kw}` : kw);
+                    }
+                  }}
+                  className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all active:scale-95 ${
+                    isIncluded
+                      ? "bg-ku-crimson text-white shadow-sm"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200/60"
+                  }`}
+                >
+                  {isIncluded ? `✓ ${kw}` : `+ ${kw}`}
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="text-[10px] sm:text-[11px] text-slate-400">
+            직접 입력하거나 위 칩을 탭하면 호랑이 아바타 소품과 추천 동아리가 더욱 정밀해집니다.
           </p>
         </div>
 

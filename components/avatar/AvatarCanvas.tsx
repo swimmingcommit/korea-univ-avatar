@@ -212,9 +212,8 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
             interactive ? "touch-none" : ""
           }`}
           style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            maxWidth: "100%",
+            width: "100%",
+            maxWidth: `${size}px`,
             aspectRatio: "1/1",
           }}
           title={interactive ? "마우스로 누르거나 당겨보세요! (말랑 쫀득 왁뿌 모션)" : undefined}
