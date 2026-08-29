@@ -1,6 +1,154 @@
-import { Traits, UserPreferences, calculateUserTraits } from "./recommendEngine";
+import { Traits, computeTraitSimilarity } from "./traitSimilarity";
+import { UserPreferences, calculateUserTraits } from "./recommendEngine";
 
+export type UserTraits = Traits;
 export type AvatarArchetypeId = "01" | "02" | "03" | "04" | "05" | "06" | "07" | "08";
+
+export interface ArchetypeRule {
+  id: AvatarArchetypeId;
+  name: string;
+  categories: string[];
+  keywords: string[];
+  traitKey?: keyof Traits;
+}
+
+export const ARCHETYPE_RULES: Record<AvatarArchetypeId, ArchetypeRule> = {
+  "01": {
+    id: "01",
+    name: "무대 위의 야망 흑표범",
+    categories: ["예술/공연"],
+    keywords: ["밴드", "공연", "무대", "댄스", "음악", "보컬", "악기", "연극", "뮤지컬", "버스킹", "노래", "합주", "안무"],
+    traitKey: "creativity",
+  },
+  "02": {
+    id: "02",
+    name: "밤샘 코딩 잉크 부족 올빼미",
+    categories: ["IT/개발"],
+    keywords: ["코딩", "개발", "해커톤", "파이썬", "웹", "알고리즘", "인공지능", "ai", "프로그래밍", "앱", "백엔드", "프론트엔드", "소프트웨어"],
+    traitKey: "expertise",
+  },
+  "03": {
+    id: "03",
+    name: "캠퍼스 평화주의 텀블러 요정",
+    categories: ["봉사"],
+    keywords: ["봉사", "환경", "멘토링", "나눔", "기여", "사회공헌", "친환경", "텀블러", "에코", "서포터즈"],
+    traitKey: "sociability",
+  },
+  "04": {
+    id: "04",
+    name: "전략적 투머치토커 학회장",
+    categories: ["학술", "사회과학", "창업"],
+    keywords: ["토론", "전략", "발표", "학회", "세미나", "기획", "경영", "스타트업", "학술", "피치", "논문", "리서치", "피칭", "아이디어"],
+    traitKey: "leadership",
+  },
+  "05": {
+    id: "05",
+    name: "근손실 걱정하는 중앙광장 러너",
+    categories: ["스포츠"],
+    keywords: ["운동", "축구", "농구", "러닝", "헬스", "야구", "피트니스", "배드민턴", "테니스", "클라이밍", "수영", "체육", "근력", "헬창", "마라톤"],
+    traitKey: "activity",
+  },
+  "06": {
+    id: "06",
+    name: "미지의 취미 탐험가 #갓생살기",
+    categories: ["취미/친목"],
+    keywords: ["여행", "보드게임", "맛집", "갓생", "요리", "게임", "친목", "취미", "공예", "베이킹", "카페", "원데이클래스", "탐방"],
+    traitKey: "sociability",
+  },
+  "07": {
+    id: "07",
+    name: "안암골 감성 필름 크리에이터",
+    categories: ["미디어/방송"],
+    keywords: ["사진", "영상", "유튜브", "콘텐츠", "필름", "카메라", "디자인", "편집", "촬영", "방송", "미디어", "포토", "쇼츠", "릴스", "브이로그"],
+    traitKey: "creativity",
+  },
+  "08": {
+    id: "08",
+    name: "과잠 입은 새내기 (무소속의 야망)",
+    categories: ["새내기"],
+    keywords: ["새내기", "신입생", "탐색", "과잠", "루키", "모름", "자유"],
+    traitKey: undefined,
+  },
+};
+
+export function calculateArchetypeScores(prefs: UserPreferences): Record<AvatarArchetypeId, number> {
+  const traits = calculateUserTraits(prefs);
+  const userCategories = prefs.categories || [];
+  const userInterests = (prefs.interests || "").toLowerCase();
+  const isNoClub =
+    prefs.currentClub?.includes("없음") ||
+    prefs.currentClub?.includes("새내기") ||
+    prefs.currentClub?.includes("탐색") ||
+    !prefs.currentClub;
+
+  const scores: Record<AvatarArchetypeId, number> = {
+    "01": 0,
+    "02": 0,
+    "03": 0,
+    "04": 0,
+    "05": 0,
+    "06": 0,
+    "07": 0,
+    "08": 0,
+  };
+
+  const archetypeIds = Object.keys(ARCHETYPE_RULES) as AvatarArchetypeId[];
+
+  // 1. 카테고리 매칭: 1순위 40점, 2순위 이하 20점
+  userCategories.forEach((cat, index) => {
+    const points = index === 0 ? 40 : 20;
+    archetypeIds.forEach((archId) => {
+      const rule = ARCHETYPE_RULES[archId];
+      if (rule.categories.includes(cat)) {
+        scores[archId] += points;
+      }
+    });
+  });
+
+  // 2. 키워드 매칭: prefs.interests 텍스트에 포함된 키워드 개수 * 15점
+  if (userInterests.trim().length > 0) {
+    archetypeIds.forEach((archId) => {
+      const rule = ARCHETYPE_RULES[archId];
+      let matchedCount = 0;
+      rule.keywords.forEach((kw) => {
+        if (userInterests.includes(kw.toLowerCase())) {
+          matchedCount++;
+        }
+      });
+      scores[archId] += matchedCount * 15;
+    });
+  }
+
+  // 3. 퀴즈 성향(traits) 반영: (trait값 - 3) * 10 만큼 가감
+  archetypeIds.forEach((archId) => {
+    const rule = ARCHETYPE_RULES[archId];
+    if (rule.traitKey && traits[rule.traitKey] !== undefined) {
+      const traitVal = traits[rule.traitKey];
+      scores[archId] += (traitVal - 3) * 10;
+    }
+  });
+
+  // 4. 무소속/탐색 중이고 카테고리·키워드·퀴즈 성향이 전혀 없는 경우에만 08번에 +50 보너스
+  const hasNoCategories = userCategories.length === 0;
+  const hasNoInterests = !userInterests || userInterests.trim().length === 0;
+  const hasNoQuizTraits = !prefs.quizTraits;
+  if (isNoClub && hasNoCategories && hasNoInterests && hasNoQuizTraits) {
+    scores["08"] += 50;
+  }
+
+  return scores;
+}
+
+export function selectTopArchetype(scores: Record<AvatarArchetypeId, number>): AvatarArchetypeId {
+  const archetypeIds = Object.keys(scores) as AvatarArchetypeId[];
+  archetypeIds.sort((a, b) => {
+    if (scores[b] !== scores[a]) {
+      return scores[b] - scores[a];
+    }
+    return a.localeCompare(b);
+  });
+  return archetypeIds[0];
+}
 
 export interface AvatarConfiguration {
   id: string;
@@ -45,112 +193,9 @@ export interface AvatarConfiguration {
 }
 
 export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
-  const traits = calculateUserTraits(prefs);
-  const primaryCat = prefs.categories?.[0] || "";
-  const allCats = prefs.categories || [];
-  const interests = (prefs.interests || "").toLowerCase();
-  const isNoClub =
-    prefs.currentClub?.includes("없음") ||
-    prefs.currentClub?.includes("새내기") ||
-    prefs.currentClub?.includes("탐색") ||
-    !prefs.currentClub;
+  const scores = calculateArchetypeScores(prefs);
+  const archetypeId = selectTopArchetype(scores);
 
-  // 1. Archetype Decision Tree based on User Request 8 Archetypes:
-  // 01: 무대 위의 야망 아티스트 (공연/예술, 활동성/창작성 高)
-  // 02: 밤샘 코딩 백호 (IT/개발, 전문성/창작성 高, 사교성 低)
-  // 03: 캠퍼스 평화주의 텀블러 요정 (봉사/환경/사회과학, 사교성/리더십 高)
-  // 04: 전략적 투머치토커 학회장 (학술/토론/리더십, 전문성/리더십/사교성 高)
-  // 05: 근손실 걱정하는 중앙광장 러너 (스포츠/체육, 활동성 高)
-  // 06: 미지의 취미 탐험가 #갓생살기 (취미/친목, 창작성/사교성 高)
-  // 07: 안암골 감성 필름 크리에이터 (미디어/방송/콘텐츠, 전문성·창작성 高)
-  // 08: 과잠 입은 새내기 (새내기/탐색/무소속, 밸런스)
-
-  let archetypeId: AvatarArchetypeId = "08";
-
-  // 1. Direct Primary Category Matching (Highest Precedence)
-  if (primaryCat === "미디어/방송") {
-    archetypeId = "07";
-  } else if (primaryCat === "예술/공연") {
-    archetypeId = "01";
-  } else if (primaryCat === "IT/개발") {
-    archetypeId = "02";
-  } else if (primaryCat === "새내기" || (isNoClub && allCats.length === 0 && !interests)) {
-    archetypeId = "08";
-  } else if (primaryCat === "봉사") {
-    archetypeId = "03";
-  } else if (primaryCat === "학술" || primaryCat === "사회과학" || primaryCat === "창업") {
-    archetypeId = "04";
-  } else if (primaryCat === "스포츠") {
-    archetypeId = "05";
-  } else if (primaryCat === "취미/친목") {
-    archetypeId = "06";
-  }
-  // 2. Keyword & Interest Fallbacks (When no single primary category is selected)
-  else if (
-    interests.includes("사진") ||
-    interests.includes("영상") ||
-    interests.includes("유튜브") ||
-    interests.includes("콘텐츠") ||
-    interests.includes("필름") ||
-    interests.includes("카메라") ||
-    interests.includes("디자인")
-  ) {
-    archetypeId = "07";
-  } else if (
-    interests.includes("밴드") ||
-    interests.includes("공연") ||
-    interests.includes("무대") ||
-    interests.includes("댄스") ||
-    interests.includes("음악") ||
-    interests.includes("보컬")
-  ) {
-    archetypeId = "01";
-  } else if (
-    interests.includes("코딩") ||
-    interests.includes("개발") ||
-    interests.includes("해커톤") ||
-    interests.includes("파이썬") ||
-    interests.includes("웹") ||
-    interests.includes("알고리즘")
-  ) {
-    archetypeId = "02";
-  } else if (
-    interests.includes("봉사") ||
-    interests.includes("환경") ||
-    interests.includes("멘토링") ||
-    interests.includes("나눔")
-  ) {
-    archetypeId = "03";
-  } else if (
-    interests.includes("토론") ||
-    interests.includes("전략") ||
-    interests.includes("발표") ||
-    traits.leadership >= 4.0
-  ) {
-    archetypeId = "04";
-  } else if (
-    interests.includes("운동") ||
-    interests.includes("축구") ||
-    interests.includes("농구") ||
-    interests.includes("러닝") ||
-    interests.includes("헬스") ||
-    traits.activity >= 4.5
-  ) {
-    archetypeId = "05";
-  } else if (
-    interests.includes("여행") ||
-    interests.includes("보드게임") ||
-    interests.includes("맛집") ||
-    interests.includes("갓생")
-  ) {
-    archetypeId = "06";
-  } else if (isNoClub) {
-    archetypeId = "08";
-  } else {
-    archetypeId = "06";
-  }
-
-  // 2. Archetype Definitions (Matching User Specifications Exactly)
   let baseConfig: AvatarConfiguration;
   switch (archetypeId) {
     case "01": // 무대 위의 야망 흑표범

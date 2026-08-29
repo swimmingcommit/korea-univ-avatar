@@ -9,8 +9,8 @@
     "type": "중앙동아리 (학술연구)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 1.8,
+      "creativity": 3.8,
       "leadership": 3,
       "expertise": 5
     },
@@ -90,7 +90,7 @@
     "traits": {
       "sociability": 5,
       "activity": 3,
-      "creativity": 4,
+      "creativity": 4.4,
       "leadership": 3,
       "expertise": 3
     },
@@ -114,7 +114,7 @@
     "type": "중앙동아리 (학술연구)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
+      "activity": 1.8,
       "creativity": 4,
       "leadership": 3,
       "expertise": 5
@@ -139,8 +139,8 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 3.2,
+      "creativity": 2.8,
       "leadership": 3,
       "expertise": 2
     },
@@ -164,8 +164,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.8,
+      "creativity": 2.4,
       "leadership": 4,
       "expertise": 4
     },
@@ -215,8 +215,8 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 2.8,
+      "creativity": 3.2,
       "leadership": 3,
       "expertise": 2
     },
@@ -268,8 +268,8 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 3.2,
+      "creativity": 3.2,
       "leadership": 3,
       "expertise": 2
     },
@@ -293,8 +293,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.8,
+      "creativity": 2.2,
       "leadership": 4,
       "expertise": 4
     },
@@ -320,7 +320,7 @@
     "traits": {
       "sociability": 5,
       "activity": 5,
-      "creativity": 2,
+      "creativity": 1.8,
       "leadership": 4,
       "expertise": 4
     },
@@ -344,8 +344,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.6,
+      "creativity": 2.3,
       "leadership": 4,
       "expertise": 4
     },
@@ -430,7 +430,7 @@
     "traits": {
       "sociability": 5,
       "activity": 5,
-      "creativity": 2,
+      "creativity": 2.2,
       "leadership": 4,
       "expertise": 4
     },
@@ -480,8 +480,8 @@
     "type": "중앙동아리 (사회)",
     "traits": {
       "sociability": 4,
-      "activity": 4,
-      "creativity": 4,
+      "activity": 3.8,
+      "creativity": 4.3,
       "leadership": 4,
       "expertise": 3
     },
@@ -506,8 +506,8 @@
     "type": "중앙동아리 (사회)",
     "traits": {
       "sociability": 4,
-      "activity": 4,
-      "creativity": 4,
+      "activity": 3.9,
+      "creativity": 4.4,
       "leadership": 4,
       "expertise": 3
     },
@@ -531,8 +531,8 @@
     "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 5,
-      "activity": 3,
-      "creativity": 4,
+      "activity": 2.7,
+      "creativity": 3.8,
       "leadership": 3,
       "expertise": 3
     },
@@ -556,8 +556,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.7,
+      "creativity": 2.4,
       "leadership": 4,
       "expertise": 4
     },
@@ -582,8 +582,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.8,
+      "creativity": 2.3,
       "leadership": 4,
       "expertise": 4
     },
@@ -636,7 +636,7 @@
     "type": "중앙동아리 (연행예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
+      "activity": 3.2,
       "creativity": 5,
       "leadership": 3,
       "expertise": 4
@@ -688,8 +688,8 @@
     "type": "중앙동아리 (전시창작)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 5,
+      "activity": 1.8,
+      "creativity": 4.8,
       "leadership": 3,
       "expertise": 4
     },
@@ -713,8 +713,8 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 2.7,
+      "creativity": 2.7,
       "leadership": 3,
       "expertise": 2
     },
@@ -765,7 +765,7 @@
     "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
+      "activity": 2.8,
       "creativity": 5,
       "leadership": 3,
       "expertise": 4
@@ -818,7 +818,7 @@
     "type": "중앙동아리 (전시창작)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
+      "activity": 2.4,
       "creativity": 5,
       "leadership": 3,
       "expertise": 4
@@ -843,8 +843,8 @@
     "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 3.4,
+      "creativity": 4.8,
       "leadership": 3,
       "expertise": 4
     },
@@ -868,7 +868,7 @@
     "type": "중앙동아리 (전시창작)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
+      "activity": 1.7,
       "creativity": 5,
       "leadership": 3,
       "expertise": 4
@@ -894,8 +894,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 1.7,
+      "creativity": 4.2,
       "leadership": 4,
       "expertise": 5
     },
@@ -947,8 +947,8 @@
     "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 2.6,
+      "creativity": 4.8,
       "leadership": 3,
       "expertise": 4
     },
@@ -1052,8 +1052,8 @@
     "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 2.7,
+      "creativity": 4.7,
       "leadership": 3,
       "expertise": 4
     },
@@ -1157,7 +1157,7 @@
     "type": "중앙동아리 (연행예술)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
+      "activity": 4.6,
       "creativity": 5,
       "leadership": 4,
       "expertise": 4
@@ -1184,8 +1184,8 @@
     "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 5,
-      "activity": 3,
-      "creativity": 4,
+      "activity": 2.6,
+      "creativity": 4.2,
       "leadership": 3,
       "expertise": 3
     },
@@ -1209,8 +1209,8 @@
     "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 3.2,
+      "creativity": 4.8,
       "leadership": 3,
       "expertise": 4
     },
@@ -1260,8 +1260,8 @@
     "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 2.6,
+      "creativity": 4.6,
       "leadership": 3,
       "expertise": 4
     },
@@ -1341,8 +1341,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 1.8,
+      "creativity": 4.2,
       "leadership": 4,
       "expertise": 5
     },
@@ -1367,8 +1367,8 @@
     "type": "중앙동아리 (연행예술)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 2.8,
+      "creativity": 4.8,
       "leadership": 3,
       "expertise": 4
     },
@@ -1393,7 +1393,7 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
+      "activity": 4.8,
       "creativity": 2,
       "leadership": 4,
       "expertise": 4
@@ -1445,8 +1445,8 @@
     "type": "중앙동아리 (연행예술)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 5,
+      "activity": 4.8,
+      "creativity": 4.8,
       "leadership": 4,
       "expertise": 4
     },
@@ -1471,8 +1471,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 2.3,
+      "creativity": 4.2,
       "leadership": 4,
       "expertise": 5
     },
@@ -1577,8 +1577,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 1.8,
+      "creativity": 3.8,
       "leadership": 4,
       "expertise": 5
     },
@@ -1630,7 +1630,7 @@
     "traits": {
       "sociability": 5,
       "activity": 5,
-      "creativity": 2,
+      "creativity": 1.6,
       "leadership": 4,
       "expertise": 4
     },
@@ -1656,8 +1656,8 @@
     "type": "중앙동아리 (학술연구)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 2.3,
+      "creativity": 4.3,
       "leadership": 3,
       "expertise": 5
     },
@@ -1681,8 +1681,8 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 3.4,
+      "creativity": 3.4,
       "leadership": 3,
       "expertise": 2
     },
@@ -1707,8 +1707,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 1.8,
+      "creativity": 4.4,
       "leadership": 4,
       "expertise": 5
     },
@@ -1732,8 +1732,8 @@
     "type": "중앙동아리 (사회)",
     "traits": {
       "sociability": 4,
-      "activity": 4,
-      "creativity": 4,
+      "activity": 4.2,
+      "creativity": 3.8,
       "leadership": 4,
       "expertise": 3
     },
@@ -1757,8 +1757,8 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 2.6,
+      "creativity": 3.2,
       "leadership": 3,
       "expertise": 2
     },
@@ -1808,8 +1808,8 @@
     "type": "중앙동아리 (사회)",
     "traits": {
       "sociability": 4,
-      "activity": 4,
-      "creativity": 4,
+      "activity": 4.4,
+      "creativity": 3.8,
       "leadership": 4,
       "expertise": 3
     },
@@ -1833,7 +1833,7 @@
     "type": "중앙동아리 (종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
+      "activity": 3.2,
       "creativity": 3,
       "leadership": 3,
       "expertise": 2
@@ -1860,8 +1860,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 1.7,
+      "creativity": 4.3,
       "leadership": 3,
       "expertise": 5
     },
@@ -1912,8 +1912,8 @@
     "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 5,
-      "activity": 3,
-      "creativity": 4,
+      "activity": 3.4,
+      "creativity": 4.2,
       "leadership": 3,
       "expertise": 3
     },
@@ -1964,7 +1964,7 @@
     "type": "중앙동아리 (기악예술)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
+      "activity": 4.8,
       "creativity": 5,
       "leadership": 4,
       "expertise": 4
@@ -1992,8 +1992,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.6,
+      "creativity": 2.2,
       "leadership": 4,
       "expertise": 4
     },
@@ -2017,8 +2017,8 @@
     "type": "중앙동아리 (체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.6,
+      "creativity": 2.4,
       "leadership": 4,
       "expertise": 4
     },
@@ -2069,8 +2069,8 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 4,
+      "activity": 2.3,
+      "creativity": 3.8,
       "leadership": 4,
       "expertise": 5
     },
@@ -2096,7 +2096,7 @@
     "traits": {
       "sociability": 3,
       "activity": 2,
-      "creativity": 4,
+      "creativity": 3.8,
       "leadership": 4,
       "expertise": 5
     },
@@ -2120,8 +2120,8 @@
     "type": "중앙동아리 (전시창작)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 5,
+      "activity": 1.8,
+      "creativity": 4.6,
       "leadership": 3,
       "expertise": 4
     },
@@ -2172,7 +2172,7 @@
     "type": "중앙동아리 (생활문화)",
     "traits": {
       "sociability": 5,
-      "activity": 3,
+      "activity": 2.8,
       "creativity": 4,
       "leadership": 3,
       "expertise": 3
@@ -2225,7 +2225,7 @@
     "type": "중앙동아리 (인문과학)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
+      "activity": 2.4,
       "creativity": 4,
       "leadership": 4,
       "expertise": 5
@@ -2251,8 +2251,8 @@
     "type": "중앙동아리 (전시창작)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 5,
+      "activity": 3.3,
+      "creativity": 4.7,
       "leadership": 3,
       "expertise": 4
     },
@@ -2306,8 +2306,8 @@
     "type": "애기능동아리 (문예체육)",
     "traits": {
       "sociability": 3,
-      "activity": 2,
-      "creativity": 5,
+      "activity": 2.2,
+      "creativity": 4.8,
       "leadership": 3,
       "expertise": 4
     },
@@ -2419,7 +2419,7 @@
     "traits": {
       "sociability": 5,
       "activity": 5,
-      "creativity": 2,
+      "creativity": 2.4,
       "leadership": 4,
       "expertise": 4
     },
@@ -2445,8 +2445,8 @@
     "type": "애기능동아리 (문예체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.7,
+      "creativity": 2.2,
       "leadership": 4,
       "expertise": 4
     },
@@ -2472,8 +2472,8 @@
     "type": "애기능동아리 (문예체육)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 2,
+      "activity": 4.8,
+      "creativity": 1.8,
       "leadership": 4,
       "expertise": 4
     },
@@ -2553,8 +2553,8 @@
     "type": "애기능동아리 (사회종교)",
     "traits": {
       "sociability": 4,
-      "activity": 3,
-      "creativity": 3,
+      "activity": 2.8,
+      "creativity": 2.8,
       "leadership": 3,
       "expertise": 2
     },
@@ -2632,8 +2632,8 @@
     "type": "애기능동아리 (연행예술)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 5,
+      "activity": 4.7,
+      "creativity": 4.8,
       "leadership": 4,
       "expertise": 4
     },
@@ -2746,8 +2746,8 @@
     "type": "애기능동아리 (연행예술)",
     "traits": {
       "sociability": 5,
-      "activity": 5,
-      "creativity": 5,
+      "activity": 4.8,
+      "creativity": 4.6,
       "leadership": 4,
       "expertise": 4
     },
@@ -2776,7 +2776,7 @@
     "traits": {
       "sociability": 5,
       "activity": 5,
-      "creativity": 5,
+      "creativity": 4.7,
       "leadership": 4,
       "expertise": 4
     },
@@ -2835,7 +2835,7 @@
     "traits": {
       "sociability": 3,
       "activity": 2,
-      "creativity": 4,
+      "creativity": 4.2,
       "leadership": 3,
       "expertise": 5
     },

@@ -22,6 +22,46 @@ const AVAILABLE_CATEGORIES = [
   { id: "종교", label: "🕊️ 종교/신앙", desc: "가톨릭, 기독교 학생회" },
 ];
 
+const CATEGORY_CHIP_MAP: Record<string, string[]> = {
+  "IT/개발": ["코딩", "웹/앱", "해커톤", "AI/데이터", "알고리즘"],
+  "학술": ["경영전략", "학회", "토론", "세미나", "논문"],
+  "예술/공연": ["밴드/합주", "보컬", "스트릿댄스", "연극/뮤지컬", "버스킹"],
+  "스포츠": ["축구/풋살", "농구", "러닝/마라톤", "헬스/웨이트", "배드민턴"],
+  "봉사": ["교육봉사", "멘토링", "환경보호", "사회공헌", "유기동물"],
+  "미디어/방송": ["영상제작", "사진촬영", "유튜브/쇼츠", "방송/아나운싱", "카드뉴스/디자인"],
+  "취미/친목": ["보드게임", "맛집탐방", "여행", "요리/베이킹", "방탈출"],
+  "창업": ["스타트업", "IR피칭", "서비스기획", "비즈니스모델", "해커톤"],
+  "사회과학": ["사회비평", "모의국회", "시사토론", "정책제안", "인권"],
+  "종교": ["성경공부", "찬양", "공동체", "기도", "나눔"],
+};
+
+function getDynamicPlaceholder(primaryCategory?: string): string {
+  switch (primaryCategory) {
+    case "스포츠":
+      return "예: 축구, 농구, 헬스, 러닝 중 끌리는 거 있어요?";
+    case "IT/개발":
+      return "예: 웹 개발, 앱, 데이터 분석, 해커톤 중 관심 있는 거?";
+    case "예술/공연":
+      return "예: 밴드, 댄스, 보컬, 연극 중 뭐가 더 끌려요?";
+    case "학술":
+      return "예: 경영전략, 학회 스터디, 토론, 세미나 중 해보고 싶은 건?";
+    case "봉사":
+      return "예: 교육봉사, 멘토링, 환경보호, 나눔 중 참여하고 싶은 활동은?";
+    case "미디어/방송":
+      return "예: 유튜브 영상제작, 사진촬영, 팟캐스트, 디자인 중 어떤 거?";
+    case "취미/친목":
+      return "예: 보드게임, 맛집탐방, 여행, 공예 중 하고 싶은 취미는?";
+    case "창업":
+      return "예: 스타트업 빌딩, 비즈니스 기획, 해커톤 중 관심 있는 건?";
+    case "사회과학":
+      return "예: 시사토론, 모의국회, 사회비평 중 탐구하고 싶은 주제는?";
+    case "종교":
+      return "예: 캠퍼스 공동체, 나눔, 성경모임 중 참여하고 싶은 것은?";
+    default:
+      return "예: 밴드 공연, 웹 개발, 농구, 사진 등 관심 있는 활동을 자유롭게 적어주세요";
+  }
+}
+
 export default function CreatePage() {
   const router = useRouter();
 
@@ -69,6 +109,34 @@ export default function CreatePage() {
       } else {
         setSelectedCategories([...selectedCategories, catId]);
       }
+    }
+  };
+
+  const primaryCategory = selectedCategories[0];
+  const dynamicPlaceholder = getDynamicPlaceholder(primaryCategory);
+
+  // Contextual suggestion chips based on selected categories
+  const activeChips: string[] = Array.from(
+    new Set(
+      selectedCategories.flatMap((cat) => CATEGORY_CHIP_MAP[cat] || []).slice(0, 8)
+    )
+  );
+  const defaultChips = ["코딩/해커톤", "밴드/합주", "댄스/무대", "러닝/헬스", "여행/맛집", "토론/스피치", "사진/영상", "봉사/나눔"];
+  const chipsToDisplay = activeChips.length > 0 ? activeChips : defaultChips;
+
+  const handleAddKeywordChip = (chip: string) => {
+    if (interests.includes(chip)) {
+      // Toggle off
+      const updated = interests
+        .replace(chip, "")
+        .replace(/,\s*,/g, ",")
+        .replace(/^[\s,]+|[\s,]+$/g, "")
+        .trim();
+      setInterests(updated);
+    } else {
+      // Append
+      const trimmed = interests.trim().replace(/,\s*$/, "");
+      setInterests(trimmed ? `${trimmed}, ${chip}` : chip);
     }
   };
 
@@ -340,7 +408,7 @@ export default function CreatePage() {
         </div>
 
         {/* Section 4: 자유 텍스트 관심사 */}
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <label className="block text-sm font-extrabold text-slate-900 flex items-center justify-between">
             <span className="flex items-center gap-1.5">
               <BookOpen className="w-4 h-4 text-ku-crimson" />
@@ -352,56 +420,52 @@ export default function CreatePage() {
             type="text"
             value={interests}
             onChange={(e) => setInterests(e.target.value)}
-            placeholder="예: 파이썬 해커톤, 락밴드 일렉기타 합주, 축제 무대 기획, 보드게임 번개 등"
+            placeholder={dynamicPlaceholder}
             className="w-full px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:bg-white focus:border-ku-crimson focus:ring-2 focus:ring-ku-crimson/20 transition-all outline-none"
           />
 
-          {/* Quick 1-Tap Keyword Chips for Mobile Ease */}
-          <div className="flex flex-wrap items-center gap-1.5 pt-1">
-            <span className="text-[10px] font-bold text-slate-400">인기 키워드:</span>
-            {[
-              "코딩/해커톤",
-              "밴드/합주",
-              "댄스/무대",
-              "러닝/헬스",
-              "여행/맛집",
-              "토론/스피치",
-              "스타트업",
-              "사진/영상",
-              "봉사/나눔",
-            ].map((kw) => {
-              const isIncluded = interests.includes(kw);
-              return (
-                <button
-                  type="button"
-                  key={kw}
-                  onClick={() => {
-                    if (isIncluded) {
-                      setInterests(
-                        interests
-                          .replace(kw, "")
-                          .replace(/,\s*,/g, ",")
-                          .trim()
-                      );
-                    } else {
-                      setInterests(interests ? `${interests}, ${kw}` : kw);
-                    }
-                  }}
-                  className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all active:scale-95 ${
-                    isIncluded
-                      ? "bg-ku-crimson text-white shadow-sm"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200/60"
-                  }`}
-                >
-                  {isIncluded ? `✓ ${kw}` : `+ ${kw}`}
-                </button>
-              );
-            })}
+          {/* Dynamic Suggestion Chips based on selected categories */}
+          <div className="space-y-1.5 pt-0.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold text-slate-500">
+                {primaryCategory ? `💡 ${primaryCategory} 추천 키워드:` : "💡 추천 키워드:"}
+              </span>
+              <span className="text-[10px] text-slate-400">클릭 시 자동 추가</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1.5">
+              {chipsToDisplay.map((kw) => {
+                const isIncluded = interests.includes(kw);
+                return (
+                  <button
+                    type="button"
+                    key={kw}
+                    onClick={() => handleAddKeywordChip(kw)}
+                    className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all active:scale-95 flex items-center gap-1 ${
+                      isIncluded
+                        ? "bg-ku-crimson text-white shadow-sm ring-1 ring-ku-crimson"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60"
+                    }`}
+                  >
+                    <span>{isIncluded ? "✓" : "+"}</span>
+                    <span>{kw}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <p className="text-[10px] sm:text-[11px] text-slate-400">
-            직접 입력하거나 위 칩을 탭하면 호랑이 아바타 소품과 추천 동아리가 더욱 정밀해집니다.
-          </p>
+          {/* Soft Nudge / Guidance message */}
+          {!interests.trim() ? (
+            <div className="flex items-center gap-1.5 text-[11px] text-amber-700 bg-amber-50/90 px-3 py-2 rounded-xl border border-amber-200/60 mt-1">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <span>구체적으로 적을수록 내 취향에 딱 맞는 동아리를 더 정확하게 추천받을 수 있어요!</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 text-[11px] text-emerald-700 bg-emerald-50/90 px-3 py-1.5 rounded-xl border border-emerald-200/60 mt-1">
+              <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+              <span>입력하신 키워드가 동아리 매칭 가산점 및 아바타 소품에 반영됩니다.</span>
+            </div>
+          )}
         </div>
 
         {/* Action Buttons */}

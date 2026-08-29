@@ -35,6 +35,10 @@ const config: Config = {
       fontFamily: {
         sans: ["Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "Roboto", "sans-serif"],
       },
+      lineHeight: {
+        title: "1.35",
+        body: "1.6",
+      },
       animation: {
         "float-slow": "float 4s ease-in-out infinite",
         "pulse-subtle": "pulseSubtle 2.5s ease-in-out infinite",

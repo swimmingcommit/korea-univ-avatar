@@ -8,9 +8,62 @@
     --foreground: 222.2 84% 4.9%;
   }
 
+  html {
+    /* Korean line breaking by default across entire HTML */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
   body {
     @apply bg-[#FAF8F8] text-slate-900 antialiased selection:bg-ku-soft selection:text-ku-crimson;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+  }
+
+  /* Headings: consistent 1.3 ~ 1.4 line-height and keep-all */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  /* Paragraphs and general text elements: default keep-all & 1.6 line-height */
+  p, span, label, button, li {
+    word-break: keep-all;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  /* Links & Long URL strings: prevent horizontal overflow */
+  a, .break-url, .url-link {
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+}
+
+@layer utilities {
+  /* Utility class to enforce Korean word-boundary breaking */
+  .keep-all, .break-keep-all {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  /* Utility class for long alphanumeric/URL strings */
+  .break-url, .break-all-words {
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+
+  /* Typography Line Heights */
+  .leading-title {
+    line-height: 1.35;
+  }
+
+  .leading-body {
+    line-height: 1.6;
   }
 }
 

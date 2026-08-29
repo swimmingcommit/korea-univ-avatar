@@ -25,17 +25,17 @@ export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
     <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md hover:border-ku-crimson/40 transition-all group">
       {/* Header: Rank + Club Name + Match Score */}
       <div className="flex items-start justify-between gap-3 mb-2.5">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 min-w-0">
           <span
             className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-black shrink-0 ${rankBadgeColor}`}
           >
             {rank}
           </span>
-          <div>
-            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-ku-crimson transition-colors flex items-center gap-1.5">
+          <div className="min-w-0">
+            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-ku-crimson transition-colors flex items-center gap-1.5 leading-[1.35] keep-all">
               {club.name}
             </h3>
-            <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-0.5">
+            <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-0.5 keep-all">
               <span className="font-semibold text-ku-crimson">{club.type}</span>
               <span>•</span>
               <span>{club.college}</span>
@@ -46,14 +46,14 @@ export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
         {/* Match Percentage Pill */}
         <div className="flex flex-col items-end shrink-0">
           <div className="inline-flex items-center gap-1 px-2.5 py-1 bg-rose-50 text-ku-crimson rounded-full font-black text-xs border border-rose-200/60 shadow-inner">
-            <Sparkles className="w-3 h-3 text-rose-500" />
-            <span>{matchScore}% 일치</span>
+            <Sparkles className="w-3 h-3 text-rose-500 shrink-0" />
+            <span className="keep-all whitespace-nowrap">{matchScore}% 일치</span>
           </div>
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-xs text-slate-600 leading-relaxed mb-3">
+      <p className="text-xs text-slate-600 leading-[1.6] mb-3 keep-all">
         {club.description_short}
       </p>
 
@@ -62,10 +62,10 @@ export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
         {matchedReasons.map((reason, idx) => (
           <span
             key={idx}
-            className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200"
+            className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 keep-all max-w-full leading-[1.35]"
           >
-            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-            {reason}
+            <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+            <span className="keep-all">{reason}</span>
           </span>
         ))}
       </div>
@@ -75,7 +75,7 @@ export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
         {highlightKeywords.map((kw, idx) => (
           <span
             key={idx}
-            className="text-[10px] text-slate-500 bg-slate-50 px-2 py-0.5 rounded font-medium"
+            className="text-[10px] text-slate-500 bg-slate-50 px-2 py-0.5 rounded font-medium keep-all"
           >
             #{kw}
           </span>
@@ -84,8 +84,8 @@ export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
 
       {/* Footer info & CTA */}
       <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
-        <div className="flex items-center gap-1 text-slate-500 text-[11px]">
-          <Calendar className="w-3.5 h-3.5 text-ku-crimson" />
+        <div className="flex items-center gap-1 text-slate-500 text-[11px] keep-all">
+          <Calendar className="w-3.5 h-3.5 text-ku-crimson shrink-0" />
           <span>모집: {club.recruit_period}</span>
         </div>
 
@@ -93,10 +93,10 @@ export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
           href={club.external_link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs font-bold text-ku-crimson hover:text-ku-dark transition-colors"
+          className="inline-flex items-center gap-1 text-xs font-bold text-ku-crimson hover:text-ku-dark transition-colors break-url"
         >
-          <span>공식 정보 보기</span>
-          <ExternalLink className="w-3.5 h-3.5" />
+          <span className="keep-all">공식 정보 보기</span>
+          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
         </a>
       </div>
     </div>

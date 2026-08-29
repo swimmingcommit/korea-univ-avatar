@@ -22,7 +22,6 @@ import {
 } from "lucide-react";
 import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
 import { ClubCard } from "@/components/club/ClubCard";
-import { GeminiCard } from "@/components/gemini/GeminiCard";
 import { ShareModal } from "@/components/share/ShareModal";
 import { GeminiProCtaBanner } from "@/components/cta/GeminiProCtaBanner";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
@@ -89,25 +88,7 @@ export default function ResultPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-10">
-      {/* 1. Header Banner */}
-      <div className="text-center space-y-2">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-amber-50 text-amber-800 text-xs font-black rounded-full border border-amber-200 shadow-sm"
-        >
-          <Trophy className="w-3.5 h-3.5 text-amber-500" />
-          <span>2026-2학기 고려대 동아리 매칭 완료</span>
-        </motion.div>
-        <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          당신의 동아리 자아는 <span className="text-ku-crimson">&apos;{avatar.title}&apos;</span>!
-        </h1>
-        <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
-          아바타를 클릭하거나 당기면 말랑말랑 쫀득하게 꾹꾹 눌러집니다 🐾
-        </p>
-      </div>
-
+    <div className="max-w-4xl mx-auto px-4 py-4 md:py-8 space-y-8">
       {/* 2. Avatar Presentation & Stats Card (Exportable Target) */}
       <div
         id="avatar-card-export"
@@ -116,20 +97,20 @@ export default function ResultPage() {
       >
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Avatar Canvas */}
-          <div className="shrink-0">
+          <div className="shrink-0 flex justify-center w-full md:w-auto">
             <AvatarCanvas config={avatar} size={300} interactive={true} showTitle={false} />
           </div>
 
           {/* Avatar Profile & Traits Stats */}
           <div className="flex-1 w-full space-y-5 text-center md:text-left">
             <div>
-              <span className="inline-block px-3 py-1 bg-ku-soft text-ku-crimson text-xs font-black rounded-full mb-1.5">
+              <span className="inline-block px-3 py-1 bg-ku-soft text-ku-crimson text-xs font-black rounded-full mb-1.5 keep-all">
                 {avatar.subtitle}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 leading-[1.3] keep-all max-w-lg">
                 {avatar.title}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-[1.6] keep-all max-w-lg">
                 {avatar.description}
               </p>
             </div>
@@ -296,19 +277,16 @@ export default function ResultPage() {
 
 
 
-      {/* 4. Gemini AI Insights Gate Card */}
-      <div>
-        <GeminiCard prefs={prefs} avatar={avatar} recommendations={recommendations} />
-      </div>
+
 
       {/* 4. Top Recommended Clubs Section */}
       <div className="space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-[1.35] keep-all flex items-center gap-2">
               <span>🎯 딱 맞는 고려대 동아리 TOP 5</span>
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5 leading-[1.6] keep-all">
               성향 벡터와 키워드 유사도 분석을 바탕으로 엄선된 추천 결과입니다.
             </p>
           </div>
@@ -317,10 +295,10 @@ export default function ResultPage() {
             href="https://klub.kr"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs font-bold text-slate-600 hover:text-ku-crimson transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-bold text-slate-600 hover:text-ku-crimson transition-colors break-url"
           >
-            <span>klub.kr 전체 동아리 보기</span>
-            <ExternalLink className="w-3 h-3" />
+            <span className="keep-all">klub.kr 전체 동아리 보기</span>
+            <ExternalLink className="w-3 h-3 shrink-0" />
           </a>
         </div>
 
@@ -340,19 +318,7 @@ export default function ResultPage() {
         />
       </div>
 
-      {/* 6. Bottom Share CTA Banner */}
-      <div className="bg-slate-900 text-white rounded-3xl p-6 text-center space-y-3 shadow-lg">
-        <p className="text-sm font-bold">
-          친구나 동기에게도 어울리는 호랑이 동아리 아바타를 알려주세요! 🐯
-        </p>
-        <button
-          onClick={() => setIsShareModalOpen(true)}
-          className="px-6 py-3 bg-gradient-to-r from-amber-400 to-ku-crimson text-white rounded-2xl font-black text-xs inline-flex items-center gap-2 shadow-md hover:scale-105 active:scale-95 transition-all"
-        >
-          <Share2 className="w-3.5 h-3.5" />
-          <span>아바타 공유하기</span>
-        </button>
-      </div>
+
 
       {/* Share Modal */}
       <ShareModal

@@ -1,12 +1,7 @@
 import clubsData from "@/data/clubs.json";
+import { Traits, computeTraitSimilarity } from "./traitSimilarity";
 
-export interface Traits {
-  sociability: number;
-  activity: number;
-  creativity: number;
-  leadership: number;
-  expertise: number;
-}
+export type { Traits };
 
 export interface Club {
   id: string;
@@ -37,7 +32,7 @@ export interface RecommendationResult {
 }
 
 // Default trait profiles for categories if quiz is not taken
-const CATEGORY_DEFAULT_TRAITS: Record<string, Traits> = {
+export const CATEGORY_DEFAULT_TRAITS: Record<string, Traits> = {
   "IT/개발": { sociability: 2.5, activity: 2.0, creativity: 4.8, leadership: 3.2, expertise: 4.9 },
   "학술": { sociability: 3.0, activity: 2.2, creativity: 3.8, leadership: 4.0, expertise: 4.8 },
   "예술/공연": { sociability: 4.8, activity: 4.5, creativity: 4.9, leadership: 3.5, expertise: 4.0 },
@@ -49,24 +44,6 @@ const CATEGORY_DEFAULT_TRAITS: Record<string, Traits> = {
   "사회과학": { sociability: 3.8, activity: 3.2, creativity: 4.2, leadership: 4.8, expertise: 4.5 },
   "종교": { sociability: 4.2, activity: 2.8, creativity: 3.0, leadership: 3.2, expertise: 2.5 },
 };
-
-function computeCosineSimilarity(a: Traits, b: Traits): number {
-  const vecA = [a.sociability, a.activity, a.creativity, a.leadership, a.expertise];
-  const vecB = [b.sociability, b.activity, b.creativity, b.leadership, b.expertise];
-
-  let dotProduct = 0;
-  let normA = 0;
-  let normB = 0;
-
-  for (let i = 0; i < 5; i++) {
-    dotProduct += vecA[i] * vecB[i];
-    normA += vecA[i] * vecA[i];
-    normB += vecB[i] * vecB[i];
-  }
-
-  if (normA === 0 || normB === 0) return 0.5;
-  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
-}
 
 export function calculateUserTraits(prefs: UserPreferences): Traits {
   if (prefs.quizTraits) {
@@ -113,14 +90,21 @@ export function recommendClubs(prefs: UserPreferences, topN = 5): Recommendation
   const userTraits = calculateUserTraits(prefs);
   const clubs = clubsData as Club[];
 
-  const userKeywords = (prefs.interests || "")
-    .toLowerCase()
+  const userInterestsRaw = (prefs.interests || "").toLowerCase();
+  const userKeywords = userInterestsRaw
     .split(/[\s,./#~!?]+/)
     .filter((w) => w.length >= 2);
 
-  const scoredClubs = clubs.map((club) => {
-    // 1. Cosine similarity of trait vectors (0.0 ~ 1.0)
-    const cosine = computeCosineSimilarity(userTraits, club.traits);
+  interface ScoredCandidate {
+    club: Club;
+    rawScore: number;
+    matchedReasons: string[];
+    highlightKeywords: string[];
+  }
+
+  const scoredClubs: ScoredCandidate[] = clubs.map((club) => {
+    // 1. Euclidean distance-based trait similarity (0.0 ~ 1.0)
+    const similarity = computeTraitSimilarity(userTraits, club.traits);
 
     // 2. Category matching bonus (up to +0.25)
     let categoryBonus = 0;
@@ -134,10 +118,13 @@ export function recommendClubs(prefs: UserPreferences, topN = 5): Recommendation
     // 3. Keyword matching bonus (up to +0.20)
     let keywordBonus = 0;
     const matchedKeywords: string[] = [];
-    if (userKeywords.length > 0) {
+    if (userKeywords.length > 0 || userInterestsRaw.length > 0) {
       for (const kw of club.keywords) {
         const lowerKw = kw.toLowerCase();
-        if (userKeywords.some((ukw) => lowerKw.includes(ukw) || ukw.includes(lowerKw))) {
+        const isMatched =
+          userKeywords.some((ukw) => lowerKw.includes(ukw) || ukw.includes(lowerKw)) ||
+          (lowerKw.length >= 2 && userInterestsRaw.includes(lowerKw));
+        if (isMatched && !matchedKeywords.includes(kw)) {
           matchedKeywords.push(kw);
           keywordBonus += 0.06;
         }
@@ -151,17 +138,14 @@ export function recommendClubs(prefs: UserPreferences, topN = 5): Recommendation
       collegeBonus = 0.05;
     }
 
-    // 5. Current club penalty (if already belonging to it, deprioritize slightly so they discover new ones)
+    // 5. Current club penalty (if already belonging to it, deprioritize slightly)
     let currentClubPenalty = 0;
     if (prefs.currentClub && club.name.toLowerCase().includes(prefs.currentClub.toLowerCase())) {
       currentClubPenalty = -0.15;
     }
 
-    // Total raw score calculation
-    const rawScore = cosine * 0.65 + categoryBonus + keywordBonus + collegeBonus + currentClubPenalty;
-
-    // Map rawScore to realistic percentage (72% ~ 99%)
-    const percentage = Math.min(99, Math.max(72, Math.round(rawScore * 100)));
+    // Unclamped continuous raw score
+    const rawScore = similarity * 0.65 + categoryBonus + keywordBonus + collegeBonus + currentClubPenalty;
 
     // Generate matched reason tags
     const reasons: string[] = [];
@@ -186,14 +170,45 @@ export function recommendClubs(prefs: UserPreferences, topN = 5): Recommendation
 
     return {
       club,
-      matchScore: percentage,
+      rawScore,
       matchedReasons: reasons,
       highlightKeywords: matchedKeywords.length > 0 ? matchedKeywords : club.keywords.slice(0, 3),
     };
   });
 
-  // Sort descending by matchScore
-  scoredClubs.sort((a, b) => b.matchScore - a.matchScore);
+  // 1차 정렬: rawScore 내림차순, 동점 시 club.id 오름차순 (명시적 tie-break)
+  scoredClubs.sort((a, b) => {
+    if (b.rawScore !== a.rawScore) {
+      return b.rawScore - a.rawScore;
+    }
+    return a.club.id.localeCompare(b.club.id);
+  });
 
-  return scoredClubs.slice(0, topN);
+  // Top N 후보 추출
+  const topCandidates = scoredClubs.slice(0, topN);
+
+  if (topCandidates.length === 0) {
+    return [];
+  }
+
+  // topN 후보들끼리 Min-Max 상대 정규화 (75% ~ 98% 구간, min===max인 경우 90% 고정)
+  const rawScores = topCandidates.map((c) => c.rawScore);
+  const minRaw = Math.min(...rawScores);
+  const maxRaw = Math.max(...rawScores);
+  const isUniform = Math.abs(maxRaw - minRaw) < 1e-6;
+
+  return topCandidates.map((c) => {
+    let matchScore = 90;
+    if (!isUniform) {
+      const normalizedRatio = (c.rawScore - minRaw) / (maxRaw - minRaw);
+      matchScore = Math.round(75 + normalizedRatio * (98 - 75));
+    }
+
+    return {
+      club: c.club,
+      matchScore,
+      matchedReasons: c.matchedReasons,
+      highlightKeywords: c.highlightKeywords,
+    };
+  });
 }

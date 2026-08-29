@@ -212,8 +212,9 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
             interactive ? "touch-none" : ""
           }`}
           style={{
-            width: "100%",
-            maxWidth: `${size}px`,
+            width: `${size}px`,
+            height: `${size}px`,
+            maxWidth: "100%",
             aspectRatio: "1/1",
           }}
           title={interactive ? "마우스로 누르거나 당겨보세요! (말랑 쫀득 왁뿌 모션)" : undefined}
@@ -321,13 +322,13 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
       {/* Avatar Title & Info */}
       {showTitle && (
         <div className="text-center mt-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-ku-soft text-ku-crimson text-xs font-extrabold rounded-full mb-1.5">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-ku-soft text-ku-crimson text-xs font-extrabold rounded-full mb-1.5 keep-all">
             <span>{config.subtitle}</span>
           </div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-2xl font-black text-slate-900 tracking-tight leading-[1.3] keep-all max-w-sm mx-auto">
             {config.title}
           </h2>
-          <p className="text-sm text-slate-600 max-w-sm mt-1 mx-auto leading-relaxed">
+          <p className="text-sm text-slate-600 max-w-sm mt-1 mx-auto leading-[1.6] keep-all">
             {config.description}
           </p>
         </div>
