@@ -4,32 +4,42 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --color-crimson: #7A1626;
+    --color-crimson-light: #A63D4F;
+    --color-cream: #FAF6EE;
+    --color-gold: #C9A227;
+    --color-ink: #1F1B18;
+
+    --background: #FAF6EE;
+    --foreground: #1F1B18;
   }
 
   html {
     /* Korean line breaking by default across entire HTML */
     word-break: keep-all;
     overflow-wrap: break-word;
+    background-color: var(--color-cream);
   }
 
   body {
-    @apply bg-[#FAF8F8] text-slate-900 antialiased selection:bg-ku-soft selection:text-ku-crimson;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     word-break: keep-all;
     overflow-wrap: break-word;
     line-height: 1.6;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
 
   /* Headings: consistent 1.3 ~ 1.4 line-height and keep-all */
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.35;
     word-break: keep-all;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
 
   /* Paragraphs and general text elements: default keep-all & 1.6 line-height */
-  p, span, label, button, li {
+  p, span, label, button, li, a {
     word-break: keep-all;
   }
 
@@ -37,8 +47,8 @@
     line-height: 1.6;
   }
 
-  /* Links & Long URL strings: prevent horizontal overflow */
-  a, .break-url, .url-link {
+  /* Specific URL strings: prevent horizontal overflow */
+  .break-url, .url-link {
     overflow-wrap: break-word;
     word-break: break-all;
   }

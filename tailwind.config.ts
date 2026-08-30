@@ -10,30 +10,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ku: {
-          crimson: "#862633",
-          dark: "#621822",
-          light: "#A62B3F",
-          soft: "#FFF0F2",
-          gold: "#C5A059",
-          gray: "#54585A",
+        crimson: {
+          DEFAULT: "#7A1626",
+          light: "#A63D4F",
+          dark: "#540E19",
+          soft: "#F5EBE1",
         },
-        brand: {
-          50: "#fff1f2",
-          100: "#ffe4e6",
-          200: "#fecdd3",
-          300: "#fda4af",
-          400: "#fb7185",
-          500: "#f43f5e",
-          600: "#e11d48",
-          700: "#be123c",
-          800: "#9f1239",
-          900: "#862633",
-          950: "#4c0519",
+        cream: {
+          DEFAULT: "#FAF6EE",
+          paper: "#F5EFE6",
+          dark: "#EDE4D8",
+        },
+        gold: {
+          DEFAULT: "#C9A227",
+          light: "#DFC053",
+          dark: "#9E7E17",
+        },
+        ink: {
+          DEFAULT: "#1F1B18",
+          light: "#4A453F",
+          muted: "#7A746E",
+        },
+        ku: {
+          crimson: "#7A1626",
+          light: "#A63D4F",
+          dark: "#540E19",
+          cream: "#FAF6EE",
+          gold: "#C9A227",
+          ink: "#1F1B18",
+          soft: "#F5EBE1",
+          gray: "#7A746E",
         },
       },
       fontFamily: {
         sans: ["Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "Roboto", "sans-serif"],
+        display: ["Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "Roboto", "sans-serif"],
       },
       lineHeight: {
         title: "1.35",

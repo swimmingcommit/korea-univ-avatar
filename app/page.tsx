@@ -3,22 +3,28 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Compass, Users, Zap, ShieldCheck, CheckCircle2, ChevronRight } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
+import { GeminiStudentBanner } from "@/components/cta/GeminiStudentBanner";
 import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
 
-// Sample avatars for live preview showcase (7 Core Archetypes)
+// Sample avatars for live preview showcase (8 Core Archetypes)
 const SAMPLE_PREVIEWS = [
+  {
+    categories: ["새내기"],
+    interests: "새내기 과잠 본관 붉은깃발 캠퍼스투어",
+    currentClub: "새내기 (탐색 중)",
+    college: "고려대학교",
+  },
   {
     categories: ["예술/공연"],
     interests: "무대 보컬 밴드 댄스 스포트라이트",
     college: "문과대학",
   },
   {
-    categories: ["새내기"],
-    interests: "새내기 과잠 본관 붉은깃발 캠퍼스투어",
-    currentClub: "새내기 (탐색 중)",
-    college: "고려대학교",
+    categories: ["IT/개발"],
+    interests: "코딩 개발 해커톤 파이썬 웹 알고리즘 AI",
+    college: "정보대학",
   },
   {
     categories: ["봉사"],
@@ -88,10 +94,10 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.2]"
+              className="text-4xl xs:text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.15]"
             >
               2학기 동아리,{" "}
-              <span className="text-ku-crimson underline decoration-amber-400 decoration-wavy decoration-2 block sm:inline">
+              <span className="text-ku-crimson block sm:inline">
                 어디 들어갈까?
               </span>
             </motion.h1>
@@ -100,7 +106,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-lg mx-auto md:mx-0 whitespace-pre-line"
+              className="text-base sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-lg mx-auto md:mx-0 whitespace-pre-line"
             >
               취향 몇 개만 고르면{"\n"}
               나랑 닮은 호랑이와 <strong className="text-slate-900">찰떡 동아리</strong>를 찾아드려요. 🐯
@@ -111,40 +117,15 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3.5 pt-2"
+              className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-3"
             >
               <Link
                 href="/create"
-                className="w-full sm:w-auto px-8 py-4 bg-ku-crimson hover:bg-ku-dark text-white font-black text-base rounded-2xl shadow-xl hover:shadow-ku-crimson/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 group"
+                className="w-full sm:w-auto px-10 py-5 sm:px-12 sm:py-5.5 bg-ku-crimson hover:bg-ku-dark text-white font-black text-lg sm:text-xl rounded-3xl shadow-2xl hover:shadow-ku-crimson/40 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-3 group"
               >
-                <span>내 호랑이 뽑기</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span>동아리 추천받기</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
               </Link>
-
-              <Link
-                href="/create/quiz"
-                className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm rounded-2xl border-2 border-slate-200 shadow-sm transition-all flex items-center justify-center gap-2"
-              >
-                <Compass className="w-4 h-4 text-amber-600" />
-                <span>성향 퀴즈로 바로가기</span>
-              </Link>
-            </motion.div>
-
-            {/* Social Trust */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center justify-center md:justify-start gap-4 text-xs text-slate-500 pt-2"
-            >
-              <div className="flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>회원가입 없이 즉시 생성</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>고려대 100+개 공식 & 애기능 동아리 DB</span>
-              </div>
             </motion.div>
           </div>
 
@@ -160,180 +141,36 @@ export default function LandingPage() {
               <div className="relative">
                 <AvatarCanvas config={currentAvatar} size={340} interactive={true} showTitle={true} />
 
-                {/* Sample style selector tabs */}
-                <div className="flex items-center justify-center gap-2 mt-4 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-slate-200 shadow-sm">
+                {/* Sample style selector dot pagination */}
+                <div className="flex items-center justify-center gap-2 mt-4 bg-white/80 backdrop-blur-md px-3.5 py-2 rounded-full border border-slate-200 shadow-sm">
                   {SAMPLE_PREVIEWS.map((sample, idx) => (
                     <button
                       key={idx}
                       onClick={() => setSampleIndex(idx)}
-                      className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${
+                      aria-label={`아바타 미리보기 ${sample.categories[0]}`}
+                      className={`transition-all duration-300 rounded-full ${
                         sampleIndex === idx
-                          ? "bg-ku-crimson text-white shadow-sm"
-                          : "text-slate-600 hover:text-slate-900"
+                          ? "w-6 h-2.5 bg-ku-crimson shadow-xs"
+                          : "w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400"
                       }`}
-                    >
-                      {sample.categories[0]}
-                    </button>
+                    />
                   ))}
                 </div>
               </div>
             )}
           </motion.div>
         </div>
-      </section>
 
-      {/* 1.5. Two-Track Audience Selection (동아리 찾는 사람 vs 동아리원 구하는 임원진) */}
-      <section className="py-4 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Track 1: For Students seeking Clubs */}
-            <div className="p-6 rounded-3xl bg-white border border-rose-100/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 text-ku-crimson text-xs font-black">
-                  <span>🎓 동아리를 찾는 고대 학우</span>
-                </div>
-                <h3 className="text-lg font-black text-slate-900">
-                  나랑 찰떡인 동아리 & 호랑이 찾기
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  취향 몇 개 또는 1분 성향 퀴즈로 나만의 3D 털인형 키링 호랑이와 2학기 추천 동아리를 확인하세요.
-                </p>
-              </div>
-              <Link
-                href="/create"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-ku-crimson hover:bg-ku-crimson/90 text-white text-xs font-bold rounded-xl transition-all shadow-sm"
-              >
-                <span>호랑이 아바타 만들기</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            {/* Track 2: For Club Executives Recruiting Members */}
-            <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-md hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-black border border-amber-400/30">
-                  <span>📢 2학기 신입 부원 모집 임원진</span>
-                </div>
-                <h3 className="text-lg font-black text-white">
-                  우리 동아리 등록 & 2학기 홍보하기
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  동아리 공식 인스타그램/웹사이트를 연동하여 신입생과 재학생들에게 우리 동아리를 매칭 추천하세요!
-                </p>
-              </div>
-              <Link
-                href="/admin"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black rounded-xl transition-all shadow-sm"
-              >
-                <span>우리 동아리 등록/관리하기</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Feature Walkthrough (3-Step Loop) */}
-      <section className="py-16 bg-white border-y border-slate-100 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-xs font-extrabold text-ku-crimson px-3 py-1 bg-ku-soft rounded-full uppercase tracking-wider">
-              HOW IT WORKS
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-3">
-              3단계로 완성하는 나만의 캠퍼스 라이프
-            </h2>
-            <p className="text-sm text-slate-500 mt-2">
-              가볍게 취향을 고르고, 아바타를 확인하고, Gemini AI 심층 코멘트로 마무리!
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 */}
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 space-y-3 relative hover:border-rose-200 transition-colors">
-              <div className="w-10 h-10 rounded-2xl bg-rose-100 text-ku-crimson font-black text-base flex items-center justify-center">
-                1
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">취향 & 관심사 선택</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                현재 소속 동아리, 관심 카테고리(IT, 밴드, 스포츠 등), 혹은 5문항 성향 퀴즈를 선택해 나의 취향을 입력합니다.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 space-y-3 relative hover:border-amber-200 transition-colors">
-              <div className="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 font-black text-base flex items-center justify-center">
-                2
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">아바타 & 동아리 생성</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                파츠 조합 알고리즘으로 호랑이 아바타가 생성되며, 5축 벡터 코사인 유사도로 Top 5 고려대 동아리를 추천합니다.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="p-6 rounded-3xl bg-gradient-to-br from-rose-50 to-amber-50 border border-rose-200/80 space-y-3 relative">
-              <div className="w-10 h-10 rounded-2xl bg-ku-crimson text-white font-black text-base flex items-center justify-center shadow-md">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">Gemini AI 심층 분석</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Google 계정으로 연동하면 호랑이 AI가 1:1로 맞춤 작성한 추천 이유와 2학기 캠퍼스 꿀팁을 언락합니다.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Bottom High Impact Banner */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto rounded-3xl crimson-gradient p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden">
-          {/* Subtle Background Glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 max-w-xl mx-auto space-y-5">
-            <span className="inline-block px-3 py-1 bg-white/15 backdrop-blur-md rounded-full text-xs font-bold text-amber-300 border border-white/10">
-              🐯 안암골 붉은 호랑이들의 선택
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-              이번 학기, 나와 딱 맞는 <br />
-              인생 동아리를 만나보세요!
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-              1분 만에 끝나는 아바타 생성과 함께 2026년 2학기 캠퍼스 라이프를 시작해보세요.
-            </p>
-
-            <div className="pt-2">
-              <Link
-                href="/create"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-ku-crimson hover:bg-slate-100 font-black text-sm rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all"
-              >
-                <span>지금 바로 아바타 만들기</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Mobile Sticky Bottom Action Bar (Thumb-zone 1-Tap CTA) */}
-      <div className="fixed bottom-0 left-0 right-0 p-3 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] sm:hidden flex items-center gap-2">
-        <Link
-          href="/create/quiz"
-          className="p-3 bg-slate-100 active:bg-slate-200 text-slate-700 rounded-2xl flex flex-col items-center justify-center shrink-0"
-          title="성향 퀴즈"
+        {/* Gemini Plus for Students Sign-up Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-4xl mx-auto mt-8 md:mt-12"
         >
-          <Compass className="w-4 h-4 text-amber-600" />
-          <span className="text-[9px] font-black mt-0.5">1분 퀴즈</span>
-        </Link>
-        <Link
-          href="/create"
-          className="flex-1 py-3 px-4 bg-ku-crimson active:bg-ku-dark text-white rounded-2xl font-black text-sm flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform"
-        >
-          <span>🐯 내 호랑이 뽑기</span>
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
+          <GeminiStudentBanner />
+        </motion.div>
+      </section>
     </div>
   );
 }

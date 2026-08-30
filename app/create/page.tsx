@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Sparkles, Search, Compass, Check, ArrowRight, Tag, BookOpen, GraduationCap, X, Users } from "lucide-react";
+import { Sparkles, Search, Check, ArrowRight, Tag, BookOpen, GraduationCap, X, Users } from "lucide-react";
 import clubsData from "@/data/clubs.json";
 import { KU_COLLEGES } from "@/lib/colleges";
 import { UserPreferences } from "@/lib/recommendEngine";
@@ -140,7 +140,7 @@ export default function CreatePage() {
     }
   };
 
-  const handleGenerate = async (withQuiz = false) => {
+  const handleGenerate = async () => {
     if (selectedCategories.length === 0) {
       alert("관심 카테고리를 최소 1개 이상 선택해주세요!");
       return;
@@ -154,11 +154,6 @@ export default function CreatePage() {
     };
 
     localStorage.setItem("ku_avatar_prefs", JSON.stringify(prefs));
-
-    if (withQuiz) {
-      router.push("/create/quiz");
-      return;
-    }
 
     // Playful live AI generation loading animation then route to result
     setIsGenerating(true);
@@ -206,30 +201,17 @@ export default function CreatePage() {
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="text-center space-y-6 max-w-md"
+          className="text-center space-y-6 max-w-xs w-full"
         >
           <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-amber-400 via-rose-500 to-ku-crimson flex items-center justify-center mx-auto text-5xl shadow-2xl border-4 border-white/80 animate-bounce">
             🐯
           </div>
-          <div className="space-y-2">
-            <span className="inline-block px-3 py-1 bg-amber-100 text-amber-900 text-xs font-black rounded-full border border-amber-200">
-              ✨ Nano Banana AI 실시간 키링 렌더링 중
-            </span>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900">
-              {loadingStep === 0 && `[${college}] 맞춤 털인형 솜 채우는 중... 🧸`}
-              {loadingStep === 1 && `[${selectedCategories.join(", ")}] 전용 의상 & 소품 스타일링 중... 👔`}
-              {loadingStep === 2 && "캠퍼스 조명 비추며 3D 키링 완성하는 중! 📸"}
-            </h3>
-            <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
-              입력하신 {interests ? `'${interests}'` : "관심사"}를 반영한 단 하나의 나만의 고려대 호랑이 키링을 빚어내고 있습니다.
-            </p>
-          </div>
 
-          <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
             <motion.div
               className="bg-gradient-to-r from-amber-400 via-rose-500 to-ku-crimson h-full rounded-full"
-              initial={{ width: "15%" }}
-              animate={{ width: loadingStep === 0 ? "45%" : loadingStep === 1 ? "80%" : "100%" }}
+              initial={{ width: "20%" }}
+              animate={{ width: loadingStep === 0 ? "50%" : loadingStep === 1 ? "85%" : "100%" }}
               transition={{ duration: 0.8 }}
             />
           </div>
@@ -242,14 +224,11 @@ export default function CreatePage() {
     <div className="max-w-2xl mx-auto px-4 py-10">
       {/* Title */}
       <div className="text-center mb-8">
-        <span className="inline-block px-3 py-1 bg-ku-soft text-ku-crimson text-xs font-black rounded-full mb-2">
-          STEP 1 OF 2
-        </span>
         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
           동아리 취향 & 프로필 입력 🐯
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
-          나에 대한 간단한 정보를 알려주시면 딱 맞는 호랑이 아바타를 만들어드려요.
+        <p className="text-xs sm:text-sm text-slate-500 mt-1.5 font-medium">
+          나에 대한 간단한 정보를 입력하면 딱 맞는 동아리를 알려드려요.
         </p>
       </div>
 
@@ -453,46 +432,17 @@ export default function CreatePage() {
               })}
             </div>
           </div>
-
-          {/* Soft Nudge / Guidance message */}
-          {!interests.trim() ? (
-            <div className="flex items-center gap-1.5 text-[11px] text-amber-700 bg-amber-50/90 px-3 py-2 rounded-xl border border-amber-200/60 mt-1">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>구체적으로 적을수록 내 취향에 딱 맞는 동아리를 더 정확하게 추천받을 수 있어요!</span>
-            </div>
-          ) : (
-            <div className="flex items-center gap-1.5 text-[11px] text-emerald-700 bg-emerald-50/90 px-3 py-1.5 rounded-xl border border-emerald-200/60 mt-1">
-              <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-              <span>입력하신 키워드가 동아리 매칭 가산점 및 아바타 소품에 반영됩니다.</span>
-            </div>
-          )}
         </div>
 
-        {/* Action Buttons */}
-        <div className="pt-4 space-y-3">
+        {/* Action Button */}
+        <div className="pt-4">
           <button
             type="button"
-            onClick={() => handleGenerate(false)}
+            onClick={handleGenerate}
             className="w-full py-4 px-6 bg-ku-crimson hover:bg-ku-dark text-white font-black text-base rounded-2xl shadow-xl hover:shadow-ku-crimson/30 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
           >
             <Sparkles className="w-5 h-5 text-amber-300" />
-            <span>내 호랑이 아바타 즉시 생성하기</span>
-          </button>
-
-          <div className="relative flex py-1 items-center">
-            <div className="flex-grow border-t border-slate-200"></div>
-            <span className="flex-shrink mx-3 text-slate-400 text-xs font-semibold">또는</span>
-            <div className="flex-grow border-t border-slate-200"></div>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => handleGenerate(true)}
-            className="w-full py-3.5 px-6 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm rounded-2xl shadow-md transition-all flex items-center justify-center gap-2"
-          >
-            <Compass className="w-4 h-4 text-amber-400" />
-            <span>5문항 성향 퀴즈 풀고 더 정밀하게 생성하기</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>나한테 딱 맞는 동아리 확인하기</span>
           </button>
         </div>
       </div>

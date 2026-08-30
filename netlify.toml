@@ -2,5 +2,8 @@
   command = "npm run build"
   publish = ".next"
 
+[build.environment]
+  NEXT_PUBLIC_SITE_URL = "https://ku-tiger-avatar.netlify.app"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"

@@ -86,9 +86,9 @@ export function calculateUserTraits(prefs: UserPreferences): Traits {
   };
 }
 
-export function recommendClubs(prefs: UserPreferences, topN = 5): RecommendationResult[] {
+export function recommendClubs(prefs: UserPreferences, topN = 5, allClubs?: Club[]): RecommendationResult[] {
   const userTraits = calculateUserTraits(prefs);
-  const clubs = clubsData as Club[];
+  const clubs = allClubs || (clubsData as unknown as Club[]);
 
   const userInterestsRaw = (prefs.interests || "").toLowerCase();
   const userKeywords = userInterestsRaw

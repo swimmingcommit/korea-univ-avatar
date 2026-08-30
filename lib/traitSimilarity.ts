@@ -1,3 +1,4 @@
+
 export interface Traits {
   sociability: number;
   activity: number;

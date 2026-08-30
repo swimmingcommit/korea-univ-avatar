@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ExternalLink, Sparkles, Users, Calendar, CheckCircle2, ChevronRight } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { RecommendationResult } from "@/lib/recommendEngine";
 
 interface ClubCardProps {
@@ -10,93 +10,79 @@ interface ClubCardProps {
 }
 
 export const ClubCard: React.FC<ClubCardProps> = ({ result, rank }) => {
-  const { club, matchScore, matchedReasons, highlightKeywords } = result;
+  const { club, matchScore, highlightKeywords } = result;
 
-  const rankBadgeColor =
-    rank === 1
-      ? "bg-amber-500 text-white"
-      : rank === 2
-      ? "bg-slate-700 text-white"
-      : rank === 3
-      ? "bg-amber-700 text-white"
-      : "bg-slate-200 text-slate-700";
+  // Max 2 tag chips per card as requested
+  const limitedTags = highlightKeywords.slice(0, 2);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md hover:border-ku-crimson/40 transition-all group">
-      {/* Header: Rank + Club Name + Match Score */}
-      <div className="flex items-start justify-between gap-3 mb-2.5">
-        <div className="flex items-center gap-2.5 min-w-0">
+    <div className="py-4 px-3 sm:px-5 hover:bg-stone-50/70 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 group">
+      {/* Left: Big Rank Number + Club Details */}
+      <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+        {/* Large Rank Number (Always single-line horizontal with min-width) */}
+        <div className="shrink-0 min-w-[2.75rem] sm:min-w-[3rem] w-11 sm:w-12 text-center flex items-center justify-center pt-0.5">
           <span
-            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-black shrink-0 ${rankBadgeColor}`}
+            className={`text-2xl sm:text-3xl font-black tracking-tight whitespace-nowrap tabular-nums select-none ${
+              rank === 1
+                ? "text-crimson"
+                : rank === 2
+                ? "text-crimson-light"
+                : "text-stone-400"
+            }`}
           >
-            {rank}
+            {rank < 10 ? `0${rank}` : rank}
           </span>
-          <div className="min-w-0">
-            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-ku-crimson transition-colors flex items-center gap-1.5 leading-[1.35] keep-all">
+        </div>
+
+        {/* Club Meta & Description */}
+        <div className="flex-1 min-w-0 space-y-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-base sm:text-lg font-black text-ink group-hover:text-crimson transition-colors break-keep">
               {club.name}
             </h3>
-            <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-0.5 keep-all">
-              <span className="font-semibold text-ku-crimson">{club.type}</span>
-              <span>•</span>
-              <span>{club.college}</span>
+            <span className="text-xs font-bold text-crimson bg-crimson/5 px-2 py-0.5 rounded">
+              {club.type}
+            </span>
+            <span className="text-xs text-stone-500 font-medium">
+              · {club.college}
+            </span>
+          </div>
+
+          <p className="text-xs text-stone-600 leading-relaxed break-keep line-clamp-2">
+            {club.description_short}
+          </p>
+
+          {/* Minimal Tags (Max 2) */}
+          {limitedTags.length > 0 && (
+            <div className="flex items-center gap-2 pt-0.5 text-[11px] text-stone-500 font-medium">
+              {limitedTags.map((tag, idx) => (
+                <span key={idx}>#{tag}</span>
+              ))}
+              {club.recruit_period && (
+                <span className="text-stone-400">
+                  · 모집: {club.recruit_period.replace(/가두모집\s*/g, "").trim()}
+                </span>
+              )}
             </div>
-          </div>
-        </div>
-
-        {/* Match Percentage Pill */}
-        <div className="flex flex-col items-end shrink-0">
-          <div className="inline-flex items-center gap-1 px-2.5 py-1 bg-rose-50 text-ku-crimson rounded-full font-black text-xs border border-rose-200/60 shadow-inner">
-            <Sparkles className="w-3 h-3 text-rose-500 shrink-0" />
-            <span className="keep-all whitespace-nowrap">{matchScore}% 일치</span>
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Description */}
-      <p className="text-xs text-slate-600 leading-[1.6] mb-3 keep-all">
-        {club.description_short}
-      </p>
-
-      {/* Matched Reasons Tags */}
-      <div className="flex flex-wrap items-center gap-1.5 mb-3.5">
-        {matchedReasons.map((reason, idx) => (
-          <span
-            key={idx}
-            className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 keep-all max-w-full leading-[1.35]"
-          >
-            <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
-            <span className="keep-all">{reason}</span>
-          </span>
-        ))}
-      </div>
-
-      {/* Keywords Chips */}
-      <div className="flex flex-wrap items-center gap-1 mb-4">
-        {highlightKeywords.map((kw, idx) => (
-          <span
-            key={idx}
-            className="text-[10px] text-slate-500 bg-slate-50 px-2 py-0.5 rounded font-medium keep-all"
-          >
-            #{kw}
-          </span>
-        ))}
-      </div>
-
-      {/* Footer info & CTA */}
-      <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
-        <div className="flex items-center gap-1 text-slate-500 text-[11px] keep-all">
-          <Calendar className="w-3.5 h-3.5 text-ku-crimson shrink-0" />
-          <span>모집: {club.recruit_period}</span>
+      {/* Right: Match Score & Link */}
+      <div className="flex items-center sm:flex-col sm:items-end justify-between sm:justify-center gap-2 shrink-0 border-t sm:border-t-0 pt-2 sm:pt-0 border-stone-100">
+        <div className="inline-flex items-center gap-1 text-xs font-black text-crimson">
+          <Sparkles className="w-3.5 h-3.5 text-gold" />
+          <span>{matchScore}% 일치</span>
         </div>
 
         <a
           href={club.external_link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs font-bold text-ku-crimson hover:text-ku-dark transition-colors break-url"
+          className="inline-flex items-center gap-1 text-xs font-bold text-stone-600 hover:text-crimson transition-colors py-1 px-2.5 rounded-lg hover:bg-crimson/5"
         >
-          <span className="keep-all">공식 정보 보기</span>
-          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+          <span>공식 정보</span>
+          <ExternalLink className="w-3 h-3 shrink-0" />
         </a>
       </div>
     </div>

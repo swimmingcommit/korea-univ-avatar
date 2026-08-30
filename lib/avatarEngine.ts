@@ -1,5 +1,5 @@
 import { Traits, computeTraitSimilarity } from "./traitSimilarity";
-import { UserPreferences, calculateUserTraits } from "./recommendEngine";
+import { CATEGORY_DEFAULT_TRAITS, UserPreferences, calculateUserTraits } from "./recommendEngine";
 
 export type UserTraits = Traits;
 export type AvatarArchetypeId = "01" | "02" | "03" | "04" | "05" | "06" | "07" | "08";
@@ -12,59 +12,69 @@ export interface ArchetypeRule {
   traitKey?: keyof Traits;
 }
 
+export const ARCHETYPE_IDEAL_CATEGORIES: Record<Exclude<AvatarArchetypeId, "08">, string> = {
+  "01": "예술/공연",
+  "02": "IT/개발",
+  "03": "봉사",
+  "04": "학술",
+  "05": "스포츠",
+  "06": "취미/친목",
+  "07": "미디어/방송",
+};
+
 export const ARCHETYPE_RULES: Record<AvatarArchetypeId, ArchetypeRule> = {
   "01": {
     id: "01",
-    name: "무대 위의 야망 흑표범",
+    name: "폼 미쳤다, 무대 찢고 온 호랑이",
     categories: ["예술/공연"],
     keywords: ["밴드", "공연", "무대", "댄스", "음악", "보컬", "악기", "연극", "뮤지컬", "버스킹", "노래", "합주", "안무"],
     traitKey: "creativity",
   },
   "02": {
     id: "02",
-    name: "밤샘 코딩 잉크 부족 올빼미",
+    name: "밤샘 코딩하다 커피 수액 맞는 호랑이",
     categories: ["IT/개발"],
     keywords: ["코딩", "개발", "해커톤", "파이썬", "웹", "알고리즘", "인공지능", "ai", "프로그래밍", "앱", "백엔드", "프론트엔드", "소프트웨어"],
     traitKey: "expertise",
   },
   "03": {
     id: "03",
-    name: "캠퍼스 평화주의 텀블러 요정",
+    name: "안암골 천사 호랑이",
     categories: ["봉사"],
     keywords: ["봉사", "환경", "멘토링", "나눔", "기여", "사회공헌", "친환경", "텀블러", "에코", "서포터즈"],
     traitKey: "sociability",
   },
   "04": {
     id: "04",
-    name: "전략적 투머치토커 학회장",
+    name: "팩트로 뼈 때리는 호랑이",
     categories: ["학술", "사회과학", "창업"],
     keywords: ["토론", "전략", "발표", "학회", "세미나", "기획", "경영", "스타트업", "학술", "피치", "논문", "리서치", "피칭", "아이디어"],
     traitKey: "leadership",
   },
   "05": {
     id: "05",
-    name: "근손실 걱정하는 중앙광장 러너",
+    name: "근손실 걱정하는 호랑이",
     categories: ["스포츠"],
-    keywords: ["운동", "축구", "농구", "러닝", "헬스", "야구", "피트니스", "배드민턴", "테니스", "클라이밍", "수영", "체육", "근력", "헬창", "마라톤"],
+    keywords: ["운동", "축구", "농구", "러닝", "헬스", "야구", "피트니스", "배드민턴", "테니스", "클라이밍", "수영", "체육", "근력", "헬창", "마라톤", "풋살", "사커", "웨이트"],
     traitKey: "activity",
   },
   "06": {
     id: "06",
-    name: "미지의 취미 탐험가 #갓생살기",
+    name: "틈만 나면 안암 탈출하는 호랑이",
     categories: ["취미/친목"],
     keywords: ["여행", "보드게임", "맛집", "갓생", "요리", "게임", "친목", "취미", "공예", "베이킹", "카페", "원데이클래스", "탐방"],
     traitKey: "sociability",
   },
   "07": {
     id: "07",
-    name: "안암골 감성 필름 크리에이터",
+    name: "낭만 줍는 호랑이",
     categories: ["미디어/방송"],
     keywords: ["사진", "영상", "유튜브", "콘텐츠", "필름", "카메라", "디자인", "편집", "촬영", "방송", "미디어", "포토", "쇼츠", "릴스", "브이로그"],
     traitKey: "creativity",
   },
   "08": {
     id: "08",
-    name: "과잠 입은 새내기 (무소속의 야망)",
+    name: "고뽕 치사량 맞은 갓기 호랑이",
     categories: ["새내기"],
     keywords: ["새내기", "신입생", "탐색", "과잠", "루키", "모름", "자유"],
     traitKey: undefined,
@@ -105,7 +115,7 @@ export function calculateArchetypeScores(prefs: UserPreferences): Record<AvatarA
     });
   });
 
-  // 2. 키워드 매칭: prefs.interests 텍스트에 포함된 키워드 개수 * 15점
+  // 2. 키워드 매칭: prefs.interests 텍스트에 포함된 키워드 개수 * 15점 (최대 3개 매칭 캡 = 최대 45점)
   if (userInterests.trim().length > 0) {
     archetypeIds.forEach((archId) => {
       const rule = ARCHETYPE_RULES[archId];
@@ -115,16 +125,19 @@ export function calculateArchetypeScores(prefs: UserPreferences): Record<AvatarA
           matchedCount++;
         }
       });
-      scores[archId] += matchedCount * 15;
+      const cappedCount = Math.min(matchedCount, 3);
+      scores[archId] += cappedCount * 15;
     });
   }
 
-  // 3. 퀴즈 성향(traits) 반영: (trait값 - 3) * 10 만큼 가감
+  // 3. 5축 성향 유사도 기반 점수 가산: 각 아키타입의 이상적 5축 벡터와의 유사도(0~1) * 40점 (08번 새내기 제외)
   archetypeIds.forEach((archId) => {
-    const rule = ARCHETYPE_RULES[archId];
-    if (rule.traitKey && traits[rule.traitKey] !== undefined) {
-      const traitVal = traits[rule.traitKey];
-      scores[archId] += (traitVal - 3) * 10;
+    if (archId === "08") return;
+    const categoryKey = ARCHETYPE_IDEAL_CATEGORIES[archId as keyof typeof ARCHETYPE_IDEAL_CATEGORIES];
+    const idealVector = CATEGORY_DEFAULT_TRAITS[categoryKey];
+    if (idealVector) {
+      const similarity = computeTraitSimilarity(traits, idealVector);
+      scores[archId] += similarity * 40;
     }
   });
 
@@ -198,15 +211,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
 
   let baseConfig: AvatarConfiguration;
   switch (archetypeId) {
-    case "01": // 무대 위의 야망 흑표범
+    case "01": // 폼 미쳤다, 무대 찢고 온 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "무대 위의 야망 흑표범",
+        title: "폼 미쳤다, 무대 찢고 온 호랑이",
         subtitle: "#공연 #예술 #열정 (활동성·창작성 高)",
-        description: "화려한 조명 아래서 가장 빛나는 카리스마 아티스트! 내 안의 넘치는 끼를 스튜디오나 동방에 가둘 수 없습니다.",
-        speechQuote: "너의 끼는 스튜디오나 동아리방에 갇혀있을 수 없어! 화려한 조명 아래서 가장 빛나는 너!",
-        geminiToneExample: "너의 끼는 스튜디오나 동아리방에 갇혀있을 수 없어! 화려한 조명 아래서 가장 빛나는 너!",
+        description: "동방 구석에 썩히기엔 아까운 미친 끼의 소유자.\n멍석만 깔아주면 도파민 터지는 텐션으로 무대를 장악합니다.\n내 안의 관종력을 주체할 수 없다면 당장 스포트라이트 아래로!",
+        speechQuote: "너의 끼는 동아리방에 갇혀있을 수 없어!\n화려한 조명 아래서 가장 빛나는 너!",
+        geminiToneExample: "너의 끼는 동아리방에 갇혀있을 수 없어!\n화려한 조명 아래서 가장 빛나는 너!",
         colorTheme: {
           primary: "#1E1B4B",
           secondary: "#831843",
@@ -236,15 +249,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-    case "02": // 밤샘 코딩 잉크 부족 올빼미
+    case "02": // 밤샘 코딩하다 커피 수액 맞는 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "밤샘 코딩 잉크 부족 올빼미",
+        title: "밤샘 코딩하다 커피 수액 맞는 호랑이",
         subtitle: "#IT/개발 #밤샘 #몰입 (전문성·창작성 高, 사교성 低)",
-        description: "에러 로그와 치열하게 싸우다 아침을 맞이하는 하드코어 빌더! 잉크는 닳았지만 화면 속 초록색 코드는 쏟아집니다.",
-        speechQuote: "오류와 싸우다 아침을 맞이하는 너, 잉크는 없지만 코드는 넘쳐나! (근데 좀 자...)",
-        geminiToneExample: "오류와 싸우다 아침을 맞이하는 너, 잉크는 없지만 코드는 넘쳐나! (근데 좀 자...)",
+        description: "빨간 맛 에러창과 멱살 잡고 싸우다 동트는 걸 보는 게 일상.\n몸엔 피 대신 아메리카노가 흐르고,\n깃허브 잔디 채우는 맛으로 사는 찐 광기의 몰입형 인재랍니다.",
+        speechQuote: "오류창과 기싸움하느라 오늘 밤도 순삭!\n코드는 돌아가는데 내 멘탈이 안 돌아가네.",
+        geminiToneExample: "오류창과 기싸움하느라 오늘 밤도 순삭!\n코드는 돌아가는데 내 멘탈이 안 돌아가네.",
         colorTheme: {
           primary: "#0F172A",
           secondary: "#10B981",
@@ -274,15 +287,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-    case "03": // 캠퍼스 평화주의 텀블러 요정
+    case "03": // 안암골 천사 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "캠퍼스 평화주의 텀블러 요정",
+        title: "안암골 천사 호랑이",
         subtitle: "#봉사 #환경 #사회과학 (사교성·리더십 高)",
-        description: "세상을 더 따뜻하고 나은 곳으로 바꾸려는 선한 영향력의 소유자! 텀블러처럼 꽉 찬 정의감과 배려심으로 캠퍼스를 밝힙니다.",
-        speechQuote: "세상을 더 나은 곳으로 만들려는 너의 마음! 텀블러처럼 꽉 찬 너의 정의감과 따뜻함!",
-        geminiToneExample: "세상을 더 나은 곳으로 만들려는 너의 마음! 텀블러처럼 꽉 찬 너의 정의감과 따뜻함!",
+        description: "파워 'F' 감성으로 인류애 충전 완료!\n내 주변은 꼭 따뜻하게 챙기고 싶은 프로 다정러.",
+        speechQuote: "세상을 더 나은 곳으로 만들려는 너의 마음!\n정의감과 따뜻함으로 세상을 구한다!",
+        geminiToneExample: "세상을 더 나은 곳으로 만들려는 너의 마음!\n정의감과 따뜻함으로 세상을 구한다!",
         colorTheme: {
           primary: "#047857",
           secondary: "#F59E0B",
@@ -312,15 +325,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-    case "04": // 전략적 투머치토커 학회장
+    case "04": // 팩트로 뼈 때리는 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "전략적 투머치토커 학회장",
+        title: "팩트로 뼈 때리는 호랑이",
         subtitle: "#학술 #토론 #리더십 (전문성·리더십·사교성 高)",
-        description: "철저한 팩트와 논리로 무장한 발표의 달인! 한번 마이크를 잡으면 끝나지 않는 열정 스피치로 청중을 압도합니다.",
-        speechQuote: "팩트와 논리로 무장한 너! 너의 스피치에 모두가 집중할 수밖에! (조금만 짧게 말해줘..)",
-        geminiToneExample: "팩트와 논리로 무장한 너! 너의 스피치에 모두가 집중할 수밖에! (조금만 짧게 말해줘..)",
+        description: "“근거 있어?\" 철저한 논리와 팩트로 무장한 인간 파워포인트.\n가끔 팩폭으로 뼈를 때리기도 하지만,\n기획과 발표에서만큼은 멱살 잡고 하드캐리하는 든든한 브레인이랍니다.",
+        speechQuote: "팩트와 논리로 무장했다!\n당신의 스피치에 모두가 집중할 수밖에!\n(조금만 짧게 말해줘..)",
+        geminiToneExample: "팩트와 논리로 무장했다!\n당신의 스피치에 모두가 집중할 수밖에!\n(조금만 짧게 말해줘..)",
         colorTheme: {
           primary: "#1E3A8A",
           secondary: "#B45309",
@@ -350,15 +363,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-    case "05": // 근손실 걱정하는 중앙광장 러너
+    case "05": // 근손실 걱정하는 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "근손실 걱정하는 중앙광장 러너",
+        title: "근손실 걱정하는 호랑이",
         subtitle: "#스포츠 #체육 #건강 (활동성 高)",
-        description: "안암골 캠퍼스 전체가 나의 트랙! 과잠보다 트레이닝복이 찰떡같이 어울리는 지치지 않는 활력의 에너자이저.",
-        speechQuote: "캠퍼스는 너의 트랙! 과잠보다 운동복이 더 잘 어울리는 너, 오늘 혹시 하체 데이?",
-        geminiToneExample: "캠퍼스는 너의 트랙! 과잠보다 운동복이 더 잘 어울리는 너, 오늘 혹시 하체 데이?",
+        description: "공강 시간엔 높은 확률로 체육관이나 헬스장에 서식 중.\n전공책보다 단백질과 스트랩을 더 소중히 여기며,\n땀 흘리는 활동이라면 일단 눈부터 반짝입니다.",
+        speechQuote: "캠퍼스는 너의 트랙!\n과잠보다 운동복이 더 잘 어울리는 너,\n오늘 혹시 하체 조지러 가는 날?",
+        geminiToneExample: "캠퍼스는 너의 트랙!\n과잠보다 운동복이 더 잘 어울리는 너,\n오늘 혹시 하체 조지러 가는 날?",
         colorTheme: {
           primary: "#DC2626",
           secondary: "#EA580C",
@@ -388,15 +401,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-    case "06": // 미지의 취미 탐험가 #갓생살기
+    case "06": // 틈만 나면 안암 탈출하는 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "미지의 취미 탐험가 #갓생살기",
+        title: "틈만 나면 안암 탈출하는 호랑이",
         subtitle: "#취미/친목 #다양성 #도전 (창작성·사교성 高)",
-        description: "이것저것 다 해보고 싶은 캠퍼스 욕심쟁이! 카메라 메고 보드게임, 맛집, 여행까지 매일이 새로운 어드벤처입니다.",
-        speechQuote: "이것저것 다 해보고 싶은 욕심쟁이! 너의 캠퍼스 라이프는 매일이 새로운 어드벤처!",
-        geminiToneExample: "이것저것 다 해보고 싶은 욕심쟁이! 너의 캠퍼스 라이프는 매일이 새로운 어드벤처!",
+        description: "가만히 있는 걸 못 견디는 호기심 만렙 프로찍먹러.\n안암골에만 갇혀있기엔 역마살이 너무 강해,\n틈만 나면 핫플 탐방과 새로운 취미를 찾아 도파민 사냥을 떠납니다.",
+        speechQuote: "이것저것 다 해보고 싶은 욕심쟁이!\n너의 캠퍼스 라이프는 매일이 새로운 어드벤처!",
+        geminiToneExample: "이것저것 다 해보고 싶은 욕심쟁이!\n너의 캠퍼스 라이프는 매일이 새로운 어드벤처!",
         colorTheme: {
           primary: "#7C3AED",
           secondary: "#EC4899",
@@ -426,15 +439,15 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-    case "07": // 안암골 감성 필름 크리에이터
+    case "07": // 낭만 줍는 호랑이
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
         archetypeId,
-        title: "안암골 감성 필름 크리에이터",
+        title: "낭만 줍는 호랑이",
         subtitle: "#미디어 #콘텐츠 #사진·영상 (창작성·감성 高)",
-        description: "캠퍼스의 모든 찰나를 영화처럼 담아내는 감성 아티스트! 렌즈와 뷰파인더 너머로 안암골의 낭만과 청춘을 기록합니다.",
-        speechQuote: "캠퍼스의 모든 찰나가 너의 뷰파인더 속에선 영화가 돼! 낭만을 기록하는 안암골 최고의 크리에이터!",
-        geminiToneExample: "캠퍼스의 모든 찰나가 너의 뷰파인더 속에선 영화가 돼! 낭만을 기록하는 안암골 최고의 크리에이터!",
+        description: "남들은 걍 지나치는 풍경도 감성 충만하게 건져내는 인간 핀터레스트.\n영감 찾아 셔터를 누르고 밤새 편집 창과 씨름하면서도,\n예쁘게 뽑힌 결과물 하나에 모든 고통을 잊는 낭만파입니다.",
+        speechQuote: "남들은 그냥 지나치는 풍경도\n렌즈를 거치면 작품이 돼!\n안암골 낭만은 네가 다 줍고 다니는구나.",
+        geminiToneExample: "남들은 그냥 지나치는 풍경도\n렌즈를 거치면 작품이 돼!\n안암골 낭만은 네가 다 줍고 다니는구나.",
         colorTheme: {
           primary: "#0F766E",
           secondary: "#D97706",
@@ -464,16 +477,16 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
       };
       break;
 
-        case "08": // 과잠 입은 새내기 (무소속의 야망)
+    case "08": // 고뽕 치사량 맞은 갓기 호랑이
     default:
       baseConfig = {
         id: `avatar_${archetypeId}_${Date.now()}`,
-        archetypeId: "08",
-        title: "과잠 입은 새내기 (무소속의 야망)",
+        archetypeId,
+        title: "고뽕 치사량 맞은 갓기 호랑이",
         subtitle: "#새내기 #탐색 중 #무소속 (무한한 가능성)",
-        description: "아직 어디에도 속하지 않았다는 건, 곧 어디든 갈 수 있다는 뜻! 새빨간 크림슨 과잠을 입고 캠퍼스를 탐색하는 슈퍼 루키.",
-        speechQuote: "아직 어디에도 속하지 않은 너, 그건 곧 어디든 갈 수 있다는 뜻! 무한한 가능성의 새내기!",
-        geminiToneExample: "아직 어디에도 속하지 않은 너, 그건 곧 어디든 갈 수 있다는 뜻! 무한한 가능성의 새내기!",
+        description: "아직 뭘 해야 할지 몰라 이것저것 다 찔러보고 싶은 상태.\n크림슨 과잠 핏에 취해 안암골 곳곳을 기웃거리는 중이며,\n어디든 갈 수 있고 뭐든 될 수 있는 무한한 가능성을 갖고 있습니다.",
+        speechQuote: "아직 어디에도 속하지 않은 너,\n그건 어디든 갈 수 있다는 뜻!\n무한한 가능성의 새내기!",
+        geminiToneExample: "아직 어디에도 속하지 않은 너,\n그건 어디든 갈 수 있다는 뜻!\n무한한 가능성의 새내기!",
         colorTheme: {
           primary: "#862633",
           secondary: "#54131D",

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, RefreshCw, Hand, Heart } from "lucide-react";
+import { Sparkles, RefreshCw } from "lucide-react";
 import { AvatarConfiguration } from "@/lib/avatarEngine";
 import {
   BackgroundLayer,
@@ -125,14 +125,10 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
       <motion.div
         initial={{ opacity: 0, y: 8, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        className="relative mb-3 px-4 py-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border-2 border-ku-crimson/20 max-w-[340px] text-center"
+        className="relative mb-3 px-5 py-3 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border-2 border-ku-crimson/20 max-w-[360px] w-full text-center"
       >
-        <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-ku-crimson mb-0.5">
-          <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin" style={{ animationDuration: "4s" }} />
-          <span>호랑이 아바타의 성향</span>
-        </div>
-        <p className="text-sm font-semibold text-slate-800 leading-snug">
-          &quot;{config.speechQuote}&quot;
+        <p className="text-xs xs:text-sm font-semibold text-slate-800 leading-relaxed whitespace-pre-line text-center keep-all break-keep">
+          {config.speechQuote}
         </p>
         {/* Arrow */}
         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-r-2 border-b-2 border-ku-crimson/20" />
@@ -208,7 +204,7 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
             duration: 0.35,
           }}
           onClick={handleSquish}
-          className={`relative rounded-3xl overflow-hidden shadow-2xl transition-shadow cursor-grab active:cursor-grabbing border-4 border-white/90 hover:shadow-ku-crimson/35 bg-slate-900 ${
+          className={`relative rounded-3xl overflow-hidden shadow-2xl transition-shadow cursor-grab active:cursor-grabbing border-4 border-crimson/25 hover:border-crimson/50 hover:shadow-crimson/30 bg-gradient-to-b from-[#590F1B] to-[#24050A] ${
             interactive ? "touch-none" : ""
           }`}
           style={{
@@ -222,13 +218,11 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
           {viewMode === "plush" ? (
             /* 3D Plush Doll Keychain View */
             <div className="relative w-full h-full pointer-events-none">
-              <Image
-                src={config.plushImageUrl || `/avatars/plush_${config.archetypeId}.png`}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={config.plushImageUrl || `/avatars/plush_${config.archetypeId || "08"}.png`}
                 alt={config.title}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-cover transition-transform duration-300"
+                className="w-full h-full object-cover transition-transform duration-300 pointer-events-none"
               />
               {/* Soft Ambient Shadow Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
@@ -251,57 +245,6 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
               <PropsLayer config={config} />
             </svg>
           )}
-
-          {/* Mode Switcher Button on Top Left */}
-          {interactive && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setViewMode((prev) => (prev === "plush" ? "svg" : "plush"));
-              }}
-              className="absolute top-3 left-3 bg-black/65 hover:bg-black/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-white flex items-center gap-1.5 shadow-md transition-all hover:scale-105 pointer-events-auto"
-              title="털인형 키링 모드 / 일러스트 모드 전환"
-            >
-              {viewMode === "plush" ? (
-                <>
-                  <span>🧸 털인형 키링</span>
-                </>
-              ) : (
-                <>
-                  <span>🎨 일러스트</span>
-                </>
-              )}
-            </button>
-          )}
-
-          {/* Interactive Wakppu Tactile Badge on bottom left */}
-          {interactive && (
-            <div className="absolute bottom-3 left-3 bg-black/65 backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-white flex items-center gap-1.5 shadow-md pointer-events-none">
-              <Hand className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-              <span className="font-semibold text-amber-200">
-                {squishCount > 0 ? `말랑 왁뿌 x${squishCount}` : "꾹꾹 누르고 당겨봐!"}
-              </span>
-            </div>
-          )}
-
-          {/* Dynamic College / KU Badge on top right */}
-          <div className="absolute top-3 right-3 bg-ku-crimson/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-white shadow-md flex items-center gap-1 pointer-events-none">
-            <span>{config.customOverlay?.collegeBadge || "🐯 KU 2026"}</span>
-          </div>
-
-          {/* Dynamic Interest Tags Overlay on bottom right */}
-          {config.customOverlay?.interestKeywords && config.customOverlay.interestKeywords.length > 0 && (
-            <div className="absolute bottom-3 right-3 flex flex-wrap justify-end gap-1 max-w-[180px] pointer-events-none">
-              {config.customOverlay.interestKeywords.map((kw, idx) => (
-                <span
-                  key={idx}
-                  className="bg-amber-400/90 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-black text-slate-950 shadow-sm"
-                >
-                  #{kw}
-                </span>
-              ))}
-            </div>
-          )}
         </motion.div>
 
         {/* Action button beside avatar */}
@@ -322,13 +265,10 @@ export const AvatarCanvas: React.FC<AvatarCanvasProps> = ({
       {/* Avatar Title & Info */}
       {showTitle && (
         <div className="text-center mt-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-ku-soft text-ku-crimson text-xs font-extrabold rounded-full mb-1.5 keep-all">
-            <span>{config.subtitle}</span>
-          </div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight leading-[1.3] keep-all max-w-sm mx-auto">
             {config.title}
           </h2>
-          <p className="text-sm text-slate-600 max-w-sm mt-1 mx-auto leading-[1.6] keep-all">
+          <p className="text-sm text-slate-600 max-w-sm mt-1.5 mx-auto leading-[1.6] whitespace-pre-line keep-all">
             {config.description}
           </p>
         </div>
