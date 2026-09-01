@@ -25,6 +25,7 @@ import {
   UserPreferences,
   Traits,
 } from "@/lib/recommendEngine";
+import { buildShareUrl, parsePrefsFromUrl } from "@/lib/shareUrl";
 
 export default function ResultPage() {
   const router = useRouter();
@@ -49,14 +50,26 @@ export default function ResultPage() {
   useEffect(() => {
     async function loadData() {
       try {
-        const saved = localStorage.getItem("ku_avatar_prefs");
         let userPrefs: UserPreferences = {
           categories: ["IT/개발"],
           college: "정보대학",
         };
 
-        if (saved) {
-          userPrefs = JSON.parse(saved);
+        // 1. Prioritize URL parameters (when opened from KakaoTalk, Instagram, or shared link)
+        let urlPrefs: UserPreferences | null = null;
+        if (typeof window !== "undefined") {
+          const urlParams = new URLSearchParams(window.location.search);
+          urlPrefs = parsePrefsFromUrl(urlParams);
+        }
+
+        if (urlPrefs) {
+          userPrefs = urlPrefs;
+        } else {
+          // 2. Fall back to local storage
+          const saved = localStorage.getItem("ku_avatar_prefs");
+          if (saved) {
+            userPrefs = JSON.parse(saved);
+          }
         }
 
         setPrefs(userPrefs);
@@ -65,7 +78,7 @@ export default function ResultPage() {
 
         const generated = generateAvatar(userPrefs);
 
-        // If URL has shared archetype params, respect them
+        // If URL has explicit shared archetype params, respect them
         if (typeof window !== "undefined") {
           const urlParams = new URLSearchParams(window.location.search);
           const sharedArchetype = urlParams.get("archetype");
@@ -85,7 +98,7 @@ export default function ResultPage() {
         }
 
         const customAiImg = localStorage.getItem("ku_generated_avatar_image");
-        if (customAiImg) {
+        if (customAiImg && !urlPrefs) {
           generated.plushImageUrl = customAiImg;
         }
         setAvatar(generated);
@@ -113,13 +126,7 @@ export default function ResultPage() {
 
   const getShareUrl = () => {
     if (typeof window === "undefined" || !avatar) return "";
-    const url = new URL(window.location.href);
-    url.searchParams.set("archetype", avatar.archetypeId);
-    url.searchParams.set("title", avatar.title);
-    if (avatar.subtitle) {
-      url.searchParams.set("subtitle", avatar.subtitle);
-    }
-    return url.toString();
+    return buildShareUrl(avatar, prefs);
   };
 
   if (!loaded || !avatar) {
@@ -329,6 +336,7 @@ export default function ResultPage() {
           isOpen={isShareModalOpen}
           onClose={() => setIsShareModalOpen(false)}
           avatar={avatar}
+          prefs={prefs}
           cardRef={exportCardRef}
         />
       )}

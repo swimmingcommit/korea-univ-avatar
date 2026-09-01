@@ -12,6 +12,8 @@ const COLLEGE_TOUCHES: Record<string, string> = {
   "정보대학": "wearing tech developer glasses with mini matrix code patch",
   "공과대학/공학": "wearing engineer work jacket with tech pins",
   "문과대학": "wearing a vintage knit scarf with antique literature pin",
+  "심리학부": "wearing a smart scholar cardigan with neural brain pin and psychology badge",
+  "국제대학": "wearing a global diplomat navy blazer with world globe pin and international flag badge",
   "정경대학": "wearing an official leadership blazer with policy badge",
   "사범대학": "wearing a friendly tutor cardigan with chalk pencil badge",
   "디자인조형학부": "wearing an artist beret with paint palette badge",

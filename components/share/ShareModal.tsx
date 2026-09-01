@@ -14,11 +14,14 @@ import {
   Camera,
 } from "lucide-react";
 import { AvatarConfiguration } from "@/lib/avatarEngine";
+import { UserPreferences } from "@/lib/recommendEngine";
+import { buildShareUrl } from "@/lib/shareUrl";
 
 interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
   avatar: AvatarConfiguration;
+  prefs?: UserPreferences;
   cardRef?: React.RefObject<HTMLDivElement>;
 }
 
@@ -26,6 +29,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({
   isOpen,
   onClose,
   avatar,
+  prefs,
   cardRef,
 }) => {
   const [copied, setCopied] = useState(false);
@@ -33,14 +37,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({
   const [downloadMode, setDownloadMode] = useState<"card" | "story" | null>(null);
 
   const getShareUrl = () => {
-    if (typeof window === "undefined") return "";
-    const url = new URL(window.location.href);
-    url.searchParams.set("archetype", avatar.archetypeId);
-    url.searchParams.set("title", avatar.title);
-    if (avatar.subtitle) {
-      url.searchParams.set("subtitle", avatar.subtitle);
-    }
-    return url.toString();
+    return buildShareUrl(avatar, prefs);
   };
 
   const handleCopyLink = async () => {

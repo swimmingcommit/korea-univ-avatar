@@ -5,20 +5,54 @@ import Link from "next/link";
 import { Sparkles, ArrowRight, Compass, ShieldCheck } from "lucide-react";
 import { AvatarCanvas } from "@/components/avatar/AvatarCanvas";
 import { GeminiProCtaBanner } from "@/components/cta/GeminiProCtaBanner";
-import { generateAvatar, AvatarConfiguration } from "@/lib/avatarEngine";
+import { generateAvatar, AvatarConfiguration, AvatarArchetypeId } from "@/lib/avatarEngine";
 import { UserPreferences } from "@/lib/recommendEngine";
+import { parsePrefsFromUrl } from "@/lib/shareUrl";
 
 export default function ShareViewPage() {
   const [avatar, setAvatar] = useState<AvatarConfiguration | null>(null);
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("ku_avatar_prefs");
       let prefs: UserPreferences = { categories: ["IT/개발"], college: "정보대학" };
-      if (saved) {
-        prefs = JSON.parse(saved);
+
+      // 1. Prioritize URL parameters
+      let urlPrefs: UserPreferences | null = null;
+      if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlPrefs = parsePrefsFromUrl(urlParams);
       }
-      setAvatar(generateAvatar(prefs));
+
+      if (urlPrefs) {
+        prefs = urlPrefs;
+      } else {
+        const saved = localStorage.getItem("ku_avatar_prefs");
+        if (saved) {
+          prefs = JSON.parse(saved);
+        }
+      }
+
+      const generated = generateAvatar(prefs);
+
+      if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sharedArchetype = urlParams.get("archetype");
+        const sharedTitle = urlParams.get("title");
+        const sharedSubtitle = urlParams.get("subtitle");
+
+        if (sharedArchetype) {
+          generated.archetypeId = sharedArchetype as AvatarArchetypeId;
+          generated.plushImageUrl = `/avatars/plush_${sharedArchetype}.png`;
+        }
+        if (sharedTitle) {
+          generated.title = sharedTitle;
+        }
+        if (sharedSubtitle) {
+          generated.subtitle = sharedSubtitle;
+        }
+      }
+
+      setAvatar(generated);
     } catch (e) {
       console.error(e);
     }

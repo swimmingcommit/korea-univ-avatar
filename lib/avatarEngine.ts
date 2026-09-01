@@ -524,6 +524,8 @@ export function generateAvatar(prefs: UserPreferences): AvatarConfiguration {
     "정보대학": "💻 정보대학",
     "공과대학/공학": "⚙️ 공과대학",
     "문과대학": "📖 문과대학",
+    "심리학부": "🧠 심리학부",
+    "국제대학": "🌐 국제대학",
     "정경대학": "🏛️ 정경대학",
     "사범대학": "🎓 사범대학",
     "디자인조형학부": "🎨 디자인조형",
